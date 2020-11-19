@@ -5,7 +5,7 @@ using UnityEngine;
 public class PurchaseManager : MonoBehaviour
 {
 
-    public List<SoldierConfig> soldiersPerEpoch;
+    public List<GameObject> soldiersPerEpoch;
 
     public int playerMoney;
 
@@ -27,11 +27,13 @@ public class PurchaseManager : MonoBehaviour
             return;
         }
 
-        SoldierConfig soldierConfig = soldiersPerEpoch[soldierType].GetComponent<SoldierConfig>();
+        GameObject soldier = soldiersPerEpoch[soldierType];
+        SoldierConfig soldierConfig = soldier.GetComponentInChildren<SoldierConfig>();
         if (playerMoney >= soldierConfig.price)
         {
             Debug.Log("Buy soldier " + soldierType);
             playerMoney -= soldierConfig.price;
+            GameObject.Instantiate(soldier, Vector3.zero, Quaternion.identity);
 
         }
         else
