@@ -7184,7 +7184,7 @@ PrefabInstance:
     - target: {fileID: 7477315811980746615, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.57
+      value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
@@ -7269,7 +7269,7 @@ PrefabInstance:
     - target: {fileID: 1473348563471002914, guid: 463d61cd1a5466640908bdb2c9aaeac2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.99
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1828523937366478339, guid: 463d61cd1a5466640908bdb2c9aaeac2,
         type: 3}
@@ -7360,6 +7360,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankSoldier1
       objectReference: {fileID: 0}
+    - target: {fileID: 3267583575534263490, guid: 0f4377e6fc16d3a478384319c5935f48,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3267583575534263491, guid: 0f4377e6fc16d3a478384319c5935f48,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7423,7 +7428,7 @@ PrefabInstance:
     - target: {fileID: 3518382032561319851, guid: 0f4377e6fc16d3a478384319c5935f48,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3971226498456319688, guid: 0f4377e6fc16d3a478384319c5935f48,
         type: 3}
