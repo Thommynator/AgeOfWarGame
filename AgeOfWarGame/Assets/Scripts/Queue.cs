@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Queue : MonoBehaviour
 {
@@ -9,23 +10,12 @@ public class Queue : MonoBehaviour
     public List<GameObject> icons;
     private Queue<GameObject> soldiersInQueue;
     public GameObject queueEmptyImage;
-    public GameObject queueMeleeImage;
-    public GameObject queueRangeImage;
-    public GameObject queueTankImage;
 
     void Start()
     {
         icons = new List<GameObject>();
         soldiersInQueue = new Queue<GameObject>(queueSize);
-        int iconWidth = 8;
-        RectTransform queueDimensions = (RectTransform)this.transform;
-        queueDimensions.sizeDelta = new Vector2(1.5f * iconWidth * queueSize - iconWidth / 2, queueDimensions.rect.height);
-
-        for (int i = 0; i < queueSize; i++)
-        {
-            GameObject icon = InstantiateIconAtPosition(new Vector3(-queueDimensions.rect.width / 2 + i * 12, 0, 0), queueEmptyImage);
-            icons.Add(icon);
-        }
+        InstantiateInitialEmptyIcons();
     }
 
     void Update()
@@ -33,10 +23,23 @@ public class Queue : MonoBehaviour
 
     }
 
+    private void InstantiateInitialEmptyIcons()
+    {
+        int iconWidth = 8;
+        RectTransform queueDimensions = (RectTransform)this.transform;
+        queueDimensions.sizeDelta = new Vector2(1.5f * iconWidth * queueSize - iconWidth / 2, queueDimensions.rect.height);
+
+        for (int i = 0; i < queueSize; i++)
+        {
+            GameObject icon = InstantiateIconAtPosition(new Vector3(-queueDimensions.rect.width / 2 + i * 1.5f * iconWidth, 0, 0), queueEmptyImage);
+            icons.Add(icon);
+        }
+    }
+
     private GameObject InstantiateIconAtPosition(Vector3 position, GameObject iconObject)
     {
         GameObject icon = GameObject.Instantiate<GameObject>(iconObject);
-        icon.transform.parent = this.transform;
+        icon.transform.SetParent(this.transform);
         icon.transform.localPosition = position;
         icon.transform.rotation = Quaternion.identity;
         return icon;
@@ -48,6 +51,7 @@ public class Queue : MonoBehaviour
         {
             this.soldiersInQueue.Enqueue(soldier);
             Debug.Log("Soldiers in Queue: " + soldiersInQueue.Count);
+            UpdateIcons();
             return true;
         }
         return false;
@@ -61,5 +65,36 @@ public class Queue : MonoBehaviour
         }
 
         return this.soldiersInQueue.Dequeue();
+    }
+
+    private void UpdateIcons()
+    {
+        GameObject[] soldiersArray = soldiersInQueue.ToArray();
+        for (int i = 0; i < icons.Count; i++)
+        {
+            if (i < soldiersArray.Length)
+            {
+                Debug.Log("Soldiers in Array: " + soldiersArray.Length + " index i: " + i);
+                Sprite iconSprite = GetCorrespondingIconSprite(soldiersArray[i]);
+                if (iconSprite)
+                {
+                    icons[i].GetComponent<Image>().sprite = iconSprite;
+                }
+            }
+            else
+            {
+                icons[i].GetComponent<Image>().sprite = queueEmptyImage.GetComponent<Image>().sprite;
+            }
+        }
+    }
+
+    private Sprite GetCorrespondingIconSprite(GameObject soldier)
+    {
+        foreach (Transform child in soldier.transform)
+        {
+            if (child.tag == "QueueIcon")
+                return child.GetComponent<SpriteRenderer>().sprite;
+        }
+        return null;
     }
 }

@@ -2027,12 +2027,6 @@ MonoBehaviour:
   icons: []
   queueEmptyImage: {fileID: 803693301493241026, guid: 705f7defad2cab840ba44474263da185,
     type: 3}
-  queueMeleeImage: {fileID: 7703963401812549885, guid: 4d007d661c877fc4190be580dd0b0dc8,
-    type: 3}
-  queueRangeImage: {fileID: 7728857694339999604, guid: 3f8ecde307bf63e40954f1db93c204b2,
-    type: 3}
-  queueTankImage: {fileID: 8645108165869620983, guid: ea718aecb6d0fe94e8313898da467cfc,
-    type: 3}
 --- !u!1 &1412282715
 GameObject:
   m_ObjectHideFlags: 0
@@ -4442,10 +4436,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 478409490}
     m_Modifications:
+    - target: {fileID: 369305505009134491, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6856885074985634379, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: m_Name
       value: MeleeSoldier1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856885074985634379, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7477315811980746615, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
@@ -4597,6 +4601,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4410029110963771627, guid: 463d61cd1a5466640908bdb2c9aaeac2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911434389576044924, guid: 463d61cd1a5466640908bdb2c9aaeac2,
+        type: 3}
+      propertyPath: m_TagString
+      value: QueueIcon
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 463d61cd1a5466640908bdb2c9aaeac2, type: 3}
 --- !u!1001 &3267583575890651558
@@ -4606,6 +4620,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 478409490}
     m_Modifications:
+    - target: {fileID: 61870320003635400, guid: 0f4377e6fc16d3a478384319c5935f48,
+        type: 3}
+      propertyPath: m_TagString
+      value: QueueIcon
+      objectReference: {fileID: 0}
     - target: {fileID: 3267583575534263490, guid: 0f4377e6fc16d3a478384319c5935f48,
         type: 3}
       propertyPath: m_Name
@@ -4675,6 +4694,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3971226498456319688, guid: 0f4377e6fc16d3a478384319c5935f48,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f4377e6fc16d3a478384319c5935f48, type: 3}
