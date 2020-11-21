@@ -13,8 +13,8 @@ public class Queue : MonoBehaviour
 
     void Start()
     {
-        icons = new List<GameObject>();
-        soldiersInQueue = new Queue<GameObject>(queueSize);
+        this.icons = new List<GameObject>();
+        this.soldiersInQueue = new Queue<GameObject>(this.queueSize);
         InstantiateInitialEmptyIcons();
     }
 
@@ -27,12 +27,12 @@ public class Queue : MonoBehaviour
     {
         int iconWidth = 8;
         RectTransform queueDimensions = (RectTransform)this.transform;
-        queueDimensions.sizeDelta = new Vector2(1.5f * iconWidth * queueSize - iconWidth / 2, queueDimensions.rect.height);
+        queueDimensions.sizeDelta = new Vector2(1.5f * iconWidth * this.queueSize - iconWidth / 2, queueDimensions.rect.height);
 
-        for (int i = 0; i < queueSize; i++)
+        for (int i = 0; i < this.queueSize; i++)
         {
             GameObject icon = InstantiateIconAtPosition(new Vector3(-queueDimensions.rect.width / 2 + i * 1.5f * iconWidth, 0, 0), queueEmptyImage);
-            icons.Add(icon);
+            this.icons.Add(icon);
         }
     }
 
@@ -47,14 +47,24 @@ public class Queue : MonoBehaviour
 
     public bool AddSoldierToQueue(GameObject soldier)
     {
-        if (soldiersInQueue.Count < queueSize)
+        if (this.soldiersInQueue.Count < this.queueSize)
         {
             this.soldiersInQueue.Enqueue(soldier);
-            Debug.Log("Soldiers in Queue: " + soldiersInQueue.Count);
             UpdateIcons();
+            if (this.soldiersInQueue.Count == 1)
+            {
+                StartCoroutine(StartCooldownForFirstSoldier());
+            }
             return true;
         }
         return false;
+    }
+
+    private IEnumerator StartCooldownForFirstSoldier()
+    {
+        float spawnDuration = this.soldiersInQueue.Peek().GetComponentInChildren<SoldierConfig>().spawnDuration;
+        yield return new WaitForSeconds(spawnDuration);
+        GetNextSoldierInQueue();
     }
 
     public GameObject GetNextSoldierInQueue()
@@ -63,27 +73,31 @@ public class Queue : MonoBehaviour
         {
             return null;
         }
-
-        return this.soldiersInQueue.Dequeue();
+        GameObject nextSoldier = this.soldiersInQueue.Dequeue();
+        UpdateIcons();
+        if (this.soldiersInQueue.Count > 0)
+        {
+            StartCoroutine(StartCooldownForFirstSoldier());
+        }
+        return nextSoldier;
     }
 
     private void UpdateIcons()
     {
-        GameObject[] soldiersArray = soldiersInQueue.ToArray();
-        for (int i = 0; i < icons.Count; i++)
+        GameObject[] soldiersArray = this.soldiersInQueue.ToArray();
+        for (int i = 0; i < this.icons.Count; i++)
         {
             if (i < soldiersArray.Length)
             {
-                Debug.Log("Soldiers in Array: " + soldiersArray.Length + " index i: " + i);
                 Sprite iconSprite = GetCorrespondingIconSprite(soldiersArray[i]);
                 if (iconSprite)
                 {
-                    icons[i].GetComponent<Image>().sprite = iconSprite;
+                    this.icons[i].GetComponent<Image>().sprite = iconSprite;
                 }
             }
             else
             {
-                icons[i].GetComponent<Image>().sprite = queueEmptyImage.GetComponent<Image>().sprite;
+                this.icons[i].GetComponent<Image>().sprite = queueEmptyImage.GetComponent<Image>().sprite;
             }
         }
     }

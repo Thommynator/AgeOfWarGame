@@ -35,7 +35,6 @@ public class PurchaseManager : MonoBehaviour
         {
             if (queue.GetComponent<Queue>().AddSoldierToQueue(soldier))
             {
-                Debug.Log("Buy soldier " + soldierType);
                 playerMoney -= soldierConfig.price;
             }
             // GameObject.Instantiate(soldier, Vector3.zero, Quaternion.identity);
