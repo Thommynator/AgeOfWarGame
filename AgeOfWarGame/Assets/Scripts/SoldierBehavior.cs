@@ -13,7 +13,7 @@ public class SoldierBehavior : MonoBehaviour
         soldierConfig = GetComponentInChildren<SoldierConfig>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (soldierConfig.isEnemy)
         {

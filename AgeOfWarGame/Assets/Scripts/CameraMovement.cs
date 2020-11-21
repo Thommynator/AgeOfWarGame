@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorizontalMovement : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
     public int boundary;
     public int moveSpeed;
     public float leftLimit;
     public float rightLimit;
+    public float zoomInLimit;
+
+    public float zoomOutLimit;
 
     private void Update()
     {
@@ -23,5 +26,12 @@ public class HorizontalMovement : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
         }
+
+        // zoom
+        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        {
+            GetComponent<Camera>().orthographicSize = Mathf.Clamp(GetComponent<Camera>().orthographicSize - Input.GetAxis("Mouse ScrollWheel") * 5, zoomInLimit, zoomOutLimit);
+        }
+
     }
 }

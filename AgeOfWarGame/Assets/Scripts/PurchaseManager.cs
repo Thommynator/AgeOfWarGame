@@ -37,8 +37,6 @@ public class PurchaseManager : MonoBehaviour
             {
                 playerMoney -= soldierConfig.price;
             }
-            // GameObject.Instantiate(soldier, Vector3.zero, Quaternion.identity);
-
         }
         else
         {

@@ -64,7 +64,9 @@ public class Queue : MonoBehaviour
     {
         float spawnDuration = this.soldiersInQueue.Peek().GetComponentInChildren<SoldierConfig>().spawnDuration;
         yield return new WaitForSeconds(spawnDuration);
-        GetNextSoldierInQueue();
+        GameObject soldier = GetNextSoldierInQueue();
+        GameObject.Instantiate(soldier, new Vector3(-12, 0, 0), Quaternion.identity);
+
     }
 
     public GameObject GetNextSoldierInQueue()
