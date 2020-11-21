@@ -9,6 +9,8 @@ public class PurchaseManager : MonoBehaviour
 
     public int playerMoney;
 
+    public GameObject queue;
+
     void Start()
     {
 
@@ -31,10 +33,10 @@ public class PurchaseManager : MonoBehaviour
         SoldierConfig soldierConfig = soldier.GetComponentInChildren<SoldierConfig>();
         if (playerMoney >= soldierConfig.price)
         {
-            Debug.Log("Buy soldier " + soldierType);
-            playerMoney -= soldierConfig.price;
-            GameObject.Instantiate(soldier, Vector3.zero, Quaternion.identity);
-
+            if (queue.GetComponent<Queue>().AddSoldierToQueue(soldier))
+            {
+                playerMoney -= soldierConfig.price;
+            }
         }
         else
         {
