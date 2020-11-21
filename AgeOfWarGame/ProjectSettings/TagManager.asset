@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - QueueIcon
+  - Soldier
+  - Building
+  - EnemyBuilding
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Soldier
   - 
   - 
   - 
