@@ -12,12 +12,21 @@ public class GameEvents : MonoBehaviour
     }
 
 
-    public event Action<int> onBuySoldier;
-    public void BuySoldierTrigger(int soldierType)
+    public event Action onSpawnAreaFree;
+    public void SpawnAreaFree()
     {
-        if (onBuySoldier != null)
+        if (onSpawnAreaFree != null)
         {
-            onBuySoldier(soldierType);
+            onSpawnAreaFree();
+        }
+    }
+
+    public event Action onSpawnAreaBlocked;
+    public void SpawnAreaBlocked()
+    {
+        if (onSpawnAreaBlocked != null)
+        {
+            onSpawnAreaBlocked();
         }
     }
 

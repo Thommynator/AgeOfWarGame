@@ -8,9 +8,10 @@ public class SoldierConfig : MonoBehaviour
     public float spawnDuration;
     public float strength;
     public float health;
-    public float speed;
+    public float maxSpeed;
     public float rateOfFire;
     public bool hasMeleeAttack;
     public bool hasRangeAttack;
+    public float attackRange;
     public bool isEnemy;
 }

@@ -11,10 +11,17 @@ public class Queue : MonoBehaviour
     private Queue<GameObject> soldiersInQueue;
     public GameObject queueEmptyImage;
 
+    public bool isSpawnAreaFree;
+
     void Start()
     {
+        // subscribe events
+        GameEvents.current.onSpawnAreaFree += () => { isSpawnAreaFree = true; };
+        GameEvents.current.onSpawnAreaBlocked += () => { isSpawnAreaFree = false; };
+
         this.icons = new List<GameObject>();
         this.soldiersInQueue = new Queue<GameObject>(this.queueSize);
+        this.isSpawnAreaFree = true;
         InstantiateInitialEmptyIcons();
     }
 
@@ -64,9 +71,12 @@ public class Queue : MonoBehaviour
     {
         float spawnDuration = this.soldiersInQueue.Peek().GetComponentInChildren<SoldierConfig>().spawnDuration;
         yield return new WaitForSeconds(spawnDuration);
+        while (!isSpawnAreaFree)
+        {
+            yield return new WaitForSeconds(1);
+        }
         GameObject soldier = GetNextSoldierInQueue();
         GameObject.Instantiate(soldier, new Vector3(-12, 0, 0), Quaternion.identity);
-
     }
 
     public GameObject GetNextSoldierInQueue()
