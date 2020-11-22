@@ -171,11 +171,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8574786826982056889}
+  - component: {fileID: 2790952949152433622}
   - component: {fileID: 6786825023379298373}
+  - component: {fileID: 294480531872619527}
   m_Layer: 8
   m_Name: MeleeSoldier1
   m_TagString: Soldier
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -196,6 +198,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2790952949152433622
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856885074985634379}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6786825023379298373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -222,6 +245,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7449822, y: 3.0827703}
   m_EdgeRadius: 0
+--- !u!114 &294480531872619527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856885074985634379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee44828e795ad347967d9388cd1733d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &431619189713850876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -322,6 +357,11 @@ PrefabInstance:
     - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
         type: 3}
       propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
+        type: 3}
+      propertyPath: attackRange
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
