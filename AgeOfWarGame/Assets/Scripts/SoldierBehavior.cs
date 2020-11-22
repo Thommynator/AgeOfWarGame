@@ -38,12 +38,11 @@ public class SoldierBehavior : MonoBehaviour
 
         int targetLayerMask = LayerMask.GetMask(new string[2] { "PlayerSoldier", "EnemySoldier" });
         int lookForwardDistance = 5;
-        Debug.DrawLine(transform.position, transform.position + Vector3.right * lookForwardDistance, Color.blue);
-        RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)transform.position, Vector2.right, lookForwardDistance, targetLayerMask);
+        Debug.DrawLine(new Vector3(transform.position.x, -1, 0), new Vector3(transform.position.x, -1, 0) + Vector3.right * lookForwardDistance, Color.blue);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), Vector2.right, lookForwardDistance, targetLayerMask);
         if (hits.Length > 1)
         {
             ColliderDistance2D colliderDistance = Physics2D.Distance(hits[0].collider, hits[1].collider);
-            Debug.Log(colliderDistance.distance);
             float offsetThreshold = 0.5f;
             if (colliderDistance.distance < offsetThreshold)
             {
