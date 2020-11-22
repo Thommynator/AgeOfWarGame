@@ -47,12 +47,11 @@ MonoBehaviour:
   spawnDuration: 3
   strength: 2
   health: 8
-  speed: 12
+  maxSpeed: 0
   rateOfFire: 2
   hasMeleeAttack: 0
   hasRangeAttack: 1
   attackRange: 50
-  walkRange: 0
   isEnemy: 0
 --- !u!1 &1828523937366478339
 GameObject:
@@ -103,10 +102,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d610644aebc55b44eb8a496acfd9cc64, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

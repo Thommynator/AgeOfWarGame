@@ -2214,7 +2214,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028133392, y: -3.4997897}
+  m_Offset: {x: -0.028133392, y: -6.972957}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2225,7 +2225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 42.047256, y: 2.9893885}
+  m_Size: {x: 42.047256, y: 9.935723}
   m_EdgeRadius: 0
 --- !u!1 &1466025403
 GameObject:
@@ -7246,6 +7246,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2790952949152433622, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790952949152433622, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6856885074985634379, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: m_Name
@@ -7431,9 +7441,19 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1828523938047065285, guid: 463d61cd1a5466640908bdb2c9aaeac2,
+        type: 3}
+      propertyPath: attackRange
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4410029110963771627, guid: 463d61cd1a5466640908bdb2c9aaeac2,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597412087167664783, guid: 463d61cd1a5466640908bdb2c9aaeac2,
+        type: 3}
+      propertyPath: m_LinearDrag
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4911434389576044924, guid: 463d61cd1a5466640908bdb2c9aaeac2,
@@ -7454,6 +7474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: QueueIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148013100443928878, guid: 0f4377e6fc16d3a478384319c5935f48,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3267583575534263490, guid: 0f4377e6fc16d3a478384319c5935f48,
         type: 3}

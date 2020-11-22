@@ -12,76 +12,47 @@ public class SoldierBehavior : MonoBehaviour
 
     private float currentSpeed;
 
+    private Vector2 start;
+
+    private Vector2 end;
+
     void Start()
     {
         this.body = GetComponent<Rigidbody2D>();
         this.soldierConfig = GetComponentInChildren<SoldierConfig>();
         this.currentSpeed = this.soldierConfig.maxSpeed;
+
+        start = new Vector2(0.5f, 0);
+        end = new Vector2(0.8f, 0);
     }
 
     void FixedUpdate()
     {
+
         Walk();
-        // GetAllCollidersInAttackRange(this.soldierConfig.attackRange);
     }
 
     private void Walk()
     {
+        Vector2 newVelocity = Vector2.right * (speedFactor * this.soldierConfig.maxSpeed);
+
+        int targetLayerMask = LayerMask.GetMask(new string[2] { "PlayerSoldier", "EnemySoldier" });
+        int lookForwardDistance = 5;
+        Debug.DrawLine(transform.position, transform.position + Vector3.right * lookForwardDistance, Color.blue);
+        RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)transform.position, Vector2.right, lookForwardDistance, targetLayerMask);
+        if (hits.Length > 1)
+        {
+            ColliderDistance2D colliderDistance = Physics2D.Distance(hits[0].collider, hits[1].collider);
+            Debug.Log(colliderDistance.distance);
+            float offsetThreshold = 0.5f;
+            if (colliderDistance.distance < offsetThreshold)
+            {
+                newVelocity = hits[1].rigidbody.velocity;
+            }
+        }
 
         body.angularVelocity = 0;
-        Vector2 offset = Vector2.right * speedFactor * this.currentSpeed * Time.deltaTime;
-        Debug.Log(offset);
-        body.MovePosition((Vector2)transform.position + offset);
-    }
-
-    // private List<Collider2D> GetSoldierCollidersInRange(float attackRange)
-    // {
-    //     int targetLayerMask = LayerMask.GetMask(new string[2] { "PlayerSoldier", "EnemySoldier" });
-    //     Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, attackRange, targetLayerMask);
-
-    //     List<Collider2D> list = new List<Collider2D>(colliders.Length);
-    //     foreach (Collider2D collider in colliders)
-    //     {
-    //         if (collider.gameObject != this.gameObject)
-    //         {
-    //             list.Add(collider);
-    //             Debug.DrawLine(this.transform.position, collider.transform.position, Color.blue);
-    //         }
-    //     }
-    //     return list;
-    // }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collision");
-        if (collision.gameObject.tag == "Soldier" && IsCollisionInFront(collision))
-        {
-            float speedInFront = collision.gameObject.GetComponent<Rigidbody2D>().velocity.x;
-            if (speedInFront < 0.5f)
-            {
-                this.currentSpeed = 0;
-                body.Sleep();
-            }
-            else
-            {
-                body.WakeUp();
-                this.currentSpeed = speedInFront;
-            }
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Soldier" && IsCollisionInFront(collision))
-        {
-            body.WakeUp();
-            currentSpeed = this.soldierConfig.maxSpeed;
-        }
-    }
-
-    private bool IsCollisionInFront(Collision2D collision)
-    {
-        return collision.gameObject.transform.position.x - this.transform.position.x > 0;
+        body.velocity = Vector2.Lerp(body.velocity, newVelocity, 0.1f);
     }
 
     void OnDrawGizmos()
