@@ -7,35 +7,29 @@ public class SoldierBehavior : MonoBehaviour
 
     private Rigidbody2D body;
     private SoldierConfig soldierConfig;
-
+    private CurrentStats currentStats;
     private float speedFactor = 0.1f;
-
-    private float currentSpeed;
-
-    private Vector2 start;
-
-    private Vector2 end;
+    private float timeOfPreviousAttack;
 
     void Start()
     {
         this.body = GetComponent<Rigidbody2D>();
         this.soldierConfig = GetComponentInChildren<SoldierConfig>();
-        this.currentSpeed = this.soldierConfig.maxSpeed;
-
-        start = new Vector2(0.5f, 0);
-        end = new Vector2(0.8f, 0);
+        this.currentStats = gameObject.AddComponent(typeof(CurrentStats)) as CurrentStats;
+        this.currentStats.currentSpeed = this.soldierConfig.maxSpeed;
+        this.currentStats.health = this.soldierConfig.health;
+        this.timeOfPreviousAttack = 0;
     }
 
     void FixedUpdate()
     {
-
         Walk();
+        MeleeAttack();
     }
 
     private void Walk()
     {
         Vector2 newVelocity = Vector2.right * (speedFactor * this.soldierConfig.maxSpeed);
-
         int targetLayerMask = LayerMask.GetMask(new string[2] { "PlayerSoldier", "EnemySoldier" });
         int lookForwardDistance = 5;
         Debug.DrawLine(new Vector3(transform.position.x, -1, 0), new Vector3(transform.position.x, -1, 0) + Vector3.right * lookForwardDistance, Color.blue);
@@ -54,11 +48,39 @@ public class SoldierBehavior : MonoBehaviour
         body.velocity = Vector2.Lerp(body.velocity, newVelocity, 0.1f);
     }
 
-    void OnDrawGizmos()
+    private void MeleeAttack()
+    {
+        if (!soldierConfig.hasMeleeAttack)
+        {
+            return;
+        }
+
+        int layerMask = LayerMask.GetMask(new string[1] { "EnemySoldier" });
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), Vector2.right, this.soldierConfig.meleeAttackRange, layerMask);
+
+        if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                Debug.Log("Deal damage to " + hit.collider.gameObject.name);
+                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+            }
+            this.timeOfPreviousAttack = Time.time;
+        };
+    }
+
+    void OnDrawGizmosSelected()
     {
         if (!Application.isPlaying) return;
         Gizmos.color = new Color(1, 1, 1, 0.2F);
-        Gizmos.DrawSphere(transform.position, this.soldierConfig.attackRange);
+        if (this.soldierConfig.hasMeleeAttack)
+        {
+            Gizmos.DrawSphere(transform.position, this.soldierConfig.meleeAttackRange);
+        }
+        if (this.soldierConfig.hasRangeAttack)
+        {
+            Gizmos.DrawSphere(transform.position, this.soldierConfig.rangeAttackRange);
+        }
     }
 }
 

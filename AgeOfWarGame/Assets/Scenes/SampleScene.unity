@@ -2389,7 +2389,7 @@ PrefabInstance:
     - target: {fileID: 294480531872619527, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 369305505009134491, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
@@ -2419,7 +2419,7 @@ PrefabInstance:
     - target: {fileID: 6856885074985634379, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7477315811980746615, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
@@ -2487,8 +2487,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 5380968928275781215, guid: 1ab161c0f42af604c84f7015efaa5979, type: 3}
-    - {fileID: 294480531872619527, guid: 1ab161c0f42af604c84f7015efaa5979, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1ab161c0f42af604c84f7015efaa5979, type: 3}
 --- !u!1 &1545577434
 GameObject:
@@ -7362,6 +7361,16 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: meleeAttackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8574786826982056889, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7517,6 +7526,11 @@ PrefabInstance:
       propertyPath: attackRange
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1828523938047065285, guid: 463d61cd1a5466640908bdb2c9aaeac2,
+        type: 3}
+      propertyPath: rangeAttackRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4410029110963771627, guid: 463d61cd1a5466640908bdb2c9aaeac2,
         type: 3}
       propertyPath: m_IsActive
@@ -7645,6 +7659,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807688396733787999, guid: 0f4377e6fc16d3a478384319c5935f48,
+        type: 3}
+      propertyPath: meleeAttackRange
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f4377e6fc16d3a478384319c5935f48, type: 3}
