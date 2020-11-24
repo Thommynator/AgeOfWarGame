@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 8574786826982056889}
   - component: {fileID: 2790952949152433622}
   - component: {fileID: 6786825023379298373}
-  - component: {fileID: 294480531872619527}
+  - component: {fileID: 349940325756008794}
   m_Layer: 8
   m_Name: MeleeSoldier1
   m_TagString: Soldier
@@ -245,7 +245,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7449822, y: 3.0827703}
   m_EdgeRadius: 0
---- !u!114 &294480531872619527
+--- !u!114 &349940325756008794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6856885074985634379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eee44828e795ad347967d9388cd1733d, type: 3}
+  m_Script: {fileID: 11500000, guid: 03e4435d1480bee42bbd9e473463fa11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &431619189713850876

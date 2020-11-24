@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class SoldierBehavior : MonoBehaviour
 {
-
-    private Rigidbody2D body;
-    private SoldierConfig soldierConfig;
-    private CurrentStats currentStats;
-    private float speedFactor = 0.1f;
-    private float timeOfPreviousAttack;
+    protected Rigidbody2D body;
+    protected SoldierConfig soldierConfig;
+    protected CurrentStats currentStats;
+    protected float speedFactor = 0.1f;
+    protected float timeOfPreviousAttack;
 
     void Start()
     {
@@ -23,17 +22,32 @@ public class SoldierBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        Walk();
-        MeleeAttack();
+        if (!MeleeAttack())
+        {
+            Walk();
+            Debug.Log("Walk" + gameObject.name);
+        }
     }
 
-    private void Walk()
+    protected virtual void Walk()
     {
-        Vector2 newVelocity = Vector2.right * (speedFactor * this.soldierConfig.maxSpeed);
+        // implemented in child
+        return;
+    }
+
+    protected virtual bool MeleeAttack()
+    {
+        // implemented in child
+        return false;
+    }
+
+    protected void WalkIntoDirection(Vector3 direction)
+    {
+        Vector2 newVelocity = (Vector2)direction * (speedFactor * this.soldierConfig.maxSpeed);
         int targetLayerMask = LayerMask.GetMask(new string[2] { "PlayerSoldier", "EnemySoldier" });
         int lookForwardDistance = 5;
-        Debug.DrawLine(new Vector3(transform.position.x, -1, 0), new Vector3(transform.position.x, -1, 0) + Vector3.right * lookForwardDistance, Color.blue);
-        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), Vector2.right, lookForwardDistance, targetLayerMask);
+        Debug.DrawLine(new Vector3(transform.position.x, -1, 0), new Vector3(transform.position.x, -1, 0) + direction * lookForwardDistance, Color.blue);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), (Vector2)direction, lookForwardDistance, targetLayerMask);
         if (hits.Length > 1)
         {
             ColliderDistance2D colliderDistance = Physics2D.Distance(hits[0].collider, hits[1].collider);
@@ -44,19 +58,23 @@ public class SoldierBehavior : MonoBehaviour
             }
         }
 
-        body.angularVelocity = 0;
+        this.body.angularVelocity = 0;
         body.velocity = Vector2.Lerp(body.velocity, newVelocity, 0.1f);
     }
 
-    private void MeleeAttack()
+    protected bool MeleeAttackOnLayer(int layerMask, Vector2 direction)
     {
         if (!soldierConfig.hasMeleeAttack)
         {
-            return;
+            return false;
         }
 
-        int layerMask = LayerMask.GetMask(new string[1] { "EnemySoldier" });
-        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), Vector2.right, this.soldierConfig.meleeAttackRange, layerMask);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), direction, this.soldierConfig.meleeAttackRange, layerMask);
+
+        if (hits.Length < 1)
+        {
+            return false;
+        }
 
         if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
         {
@@ -67,11 +85,15 @@ public class SoldierBehavior : MonoBehaviour
             }
             this.timeOfPreviousAttack = Time.time;
         };
+        return true;
     }
+
+
 
     void OnDrawGizmosSelected()
     {
         if (!Application.isPlaying) return;
+
         Gizmos.color = new Color(1, 1, 1, 0.2F);
         if (this.soldierConfig.hasMeleeAttack)
         {

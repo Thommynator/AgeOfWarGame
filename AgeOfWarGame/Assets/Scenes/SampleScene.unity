@@ -2431,6 +2431,26 @@ PrefabInstance:
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: meleeAttackRange
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8574786826982056889, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2486,8 +2506,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8574786826982056889, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 294480531872619527, guid: 1ab161c0f42af604c84f7015efaa5979, type: 3}
+    - {fileID: 349940325756008794, guid: 1ab161c0f42af604c84f7015efaa5979, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ab161c0f42af604c84f7015efaa5979, type: 3}
 --- !u!1 &1545577434
 GameObject:
@@ -7108,6 +7135,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1934242808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6856885074985634379, guid: 1ab161c0f42af604c84f7015efaa5979,
+    type: 3}
+  m_PrefabInstance: {fileID: 1512185652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1934242812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934242808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660566afafc60c44085a4dc4775302f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1969601006
 GameObject:
   m_ObjectHideFlags: 0
@@ -7364,12 +7409,17 @@ PrefabInstance:
     - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: meleeAttackRange
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: attackCooldown
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
+        type: 3}
+      propertyPath: health
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8574786826982056889, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
