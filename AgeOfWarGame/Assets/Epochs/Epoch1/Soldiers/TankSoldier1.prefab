@@ -384,6 +384,11 @@ PrefabInstance:
       propertyPath: meleeAttackRange
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
+        type: 3}
+      propertyPath: rewardMoney
+      value: 175
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e35cca7a42bc2a46a2ba820de34fc9b, type: 3}
 --- !u!4 &750178905132371463 stripped

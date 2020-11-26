@@ -52,6 +52,10 @@ public class SoldierBehavior : MonoBehaviour
 
     private void Die()
     {
+        if (this.soldierConfig.isEnemy)
+        {
+            GameEvents.current.IncreaseMoney(this.soldierConfig.rewardMoney);
+        }
         Destroy(this.gameObject);
     }
 
@@ -71,7 +75,6 @@ public class SoldierBehavior : MonoBehaviour
     {
         Vector2 newVelocity = (Vector2)direction * (speedFactor * this.soldierConfig.maxSpeed);
         int lookForwardDistance = 5;
-        Debug.DrawLine(new Vector3(transform.position.x, -1, 0), new Vector3(transform.position.x, -1, 0) + direction * lookForwardDistance, Color.blue);
         RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), (Vector2)direction, lookForwardDistance, layerMask);
         if (hits.Length > 1)
         {
@@ -105,7 +108,6 @@ public class SoldierBehavior : MonoBehaviour
         {
             foreach (RaycastHit2D hit in hits)
             {
-                Debug.Log("Deal damage to " + hit.collider.gameObject.name);
                 hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
             }
             this.timeOfPreviousAttack = Time.time;
@@ -131,7 +133,6 @@ public class SoldierBehavior : MonoBehaviour
         {
             foreach (RaycastHit2D hit in hits)
             {
-                Debug.Log("Deal damage to " + hit.collider.gameObject.name);
                 hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
             }
             this.timeOfPreviousAttack = Time.time;

@@ -14,7 +14,6 @@ public class CurrentStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Take damage " + damage);
         this.health -= damage;
     }
 }
