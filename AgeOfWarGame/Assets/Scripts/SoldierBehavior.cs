@@ -22,12 +22,22 @@ public class SoldierBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!MeleeAttack())
+        if (MeleeAttack() || RangeAttack())
+        {
+            StopWalking();
+        }
+        else
         {
             Walk();
-            Debug.Log("Walk" + gameObject.name);
         }
     }
+
+    private void StopWalking()
+    {
+        this.body.velocity = Vector2.zero;
+        this.body.angularVelocity = 0;
+    }
+
 
     protected virtual void Walk()
     {
@@ -41,13 +51,18 @@ public class SoldierBehavior : MonoBehaviour
         return false;
     }
 
-    protected void WalkIntoDirection(Vector3 direction)
+    protected virtual bool RangeAttack()
+    {
+        // implemented in child
+        return false;
+    }
+
+    protected void WalkIntoDirection(int layerMask, Vector3 direction)
     {
         Vector2 newVelocity = (Vector2)direction * (speedFactor * this.soldierConfig.maxSpeed);
-        int targetLayerMask = LayerMask.GetMask(new string[2] { "PlayerSoldier", "EnemySoldier" });
         int lookForwardDistance = 5;
         Debug.DrawLine(new Vector3(transform.position.x, -1, 0), new Vector3(transform.position.x, -1, 0) + direction * lookForwardDistance, Color.blue);
-        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), (Vector2)direction, lookForwardDistance, targetLayerMask);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), (Vector2)direction, lookForwardDistance, layerMask);
         if (hits.Length > 1)
         {
             ColliderDistance2D colliderDistance = Physics2D.Distance(hits[0].collider, hits[1].collider);
@@ -70,6 +85,32 @@ public class SoldierBehavior : MonoBehaviour
         }
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), direction, this.soldierConfig.meleeAttackRange, layerMask);
+
+        if (hits.Length < 1)
+        {
+            return false;
+        }
+
+        if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                Debug.Log("Deal damage to " + hit.collider.gameObject.name);
+                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+            }
+            this.timeOfPreviousAttack = Time.time;
+        };
+        return true;
+    }
+
+    protected bool RangeAttackOnLayer(int layerMask, Vector2 direction)
+    {
+        if (!soldierConfig.hasRangeAttack)
+        {
+            return false;
+        }
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), direction, this.soldierConfig.rangeAttackRange, layerMask);
 
         if (hits.Length < 1)
         {
