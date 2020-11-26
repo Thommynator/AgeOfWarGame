@@ -2446,6 +2446,11 @@ PrefabInstance:
       propertyPath: meleeAttackRange
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6807688396733787999, guid: 0f4377e6fc16d3a478384319c5935f48,
+        type: 3}
+      propertyPath: strength
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f4377e6fc16d3a478384319c5935f48, type: 3}
 --- !u!4 &1442385439 stripped
@@ -2590,7 +2595,7 @@ PrefabInstance:
     - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: health
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
@@ -2605,7 +2610,7 @@ PrefabInstance:
     - target: {fileID: 8564832920562495689, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}
       propertyPath: meleeAttackRange
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8574786826982056889, guid: 1ab161c0f42af604c84f7015efaa5979,
         type: 3}

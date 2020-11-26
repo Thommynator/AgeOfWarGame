@@ -22,6 +22,11 @@ public class SoldierBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (this.currentStats.health <= 0)
+        {
+            Die();
+        }
+
         if (MeleeAttack() || RangeAttack())
         {
             StopWalking();
@@ -32,17 +37,22 @@ public class SoldierBehavior : MonoBehaviour
         }
     }
 
-    private void StopWalking()
-    {
-        this.body.velocity = Vector2.zero;
-        this.body.angularVelocity = 0;
-    }
 
 
     protected virtual void Walk()
     {
         // implemented in child
         return;
+    }
+    private void StopWalking()
+    {
+        this.body.velocity = Vector2.zero;
+        this.body.angularVelocity = 0;
+    }
+
+    private void Die()
+    {
+        Destroy(this.gameObject);
     }
 
     protected virtual bool MeleeAttack()
