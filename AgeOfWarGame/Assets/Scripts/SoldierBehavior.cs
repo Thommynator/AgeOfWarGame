@@ -4,42 +4,75 @@ using UnityEngine;
 
 public class SoldierBehavior : MonoBehaviour
 {
-
-    private Rigidbody2D body;
-    private SoldierConfig soldierConfig;
-
-    private float speedFactor = 0.1f;
-
-    private float currentSpeed;
-
-    private Vector2 start;
-
-    private Vector2 end;
+    protected Rigidbody2D body;
+    protected SoldierConfig soldierConfig;
+    protected CurrentStats currentStats;
+    protected float speedFactor = 0.1f;
+    protected float timeOfPreviousAttack;
 
     void Start()
     {
         this.body = GetComponent<Rigidbody2D>();
         this.soldierConfig = GetComponentInChildren<SoldierConfig>();
-        this.currentSpeed = this.soldierConfig.maxSpeed;
-
-        start = new Vector2(0.5f, 0);
-        end = new Vector2(0.8f, 0);
+        this.currentStats = gameObject.AddComponent(typeof(CurrentStats)) as CurrentStats;
+        this.currentStats.currentSpeed = this.soldierConfig.maxSpeed;
+        this.currentStats.health = this.soldierConfig.health;
+        this.timeOfPreviousAttack = 0;
     }
 
     void FixedUpdate()
     {
+        if (this.currentStats.health <= 0)
+        {
+            Die();
+        }
 
-        Walk();
+        if (MeleeAttack() || RangeAttack())
+        {
+            StopWalking();
+        }
+        else
+        {
+            Walk();
+        }
     }
 
-    private void Walk()
-    {
-        Vector2 newVelocity = Vector2.right * (speedFactor * this.soldierConfig.maxSpeed);
 
-        int targetLayerMask = LayerMask.GetMask(new string[2] { "PlayerSoldier", "EnemySoldier" });
+
+    protected virtual void Walk()
+    {
+        // implemented in child
+        return;
+    }
+    private void StopWalking()
+    {
+        this.body.velocity = Vector2.zero;
+        this.body.angularVelocity = 0;
+    }
+
+    private void Die()
+    {
+        Destroy(this.gameObject);
+    }
+
+    protected virtual bool MeleeAttack()
+    {
+        // implemented in child
+        return false;
+    }
+
+    protected virtual bool RangeAttack()
+    {
+        // implemented in child
+        return false;
+    }
+
+    protected void WalkIntoDirection(int layerMask, Vector3 direction)
+    {
+        Vector2 newVelocity = (Vector2)direction * (speedFactor * this.soldierConfig.maxSpeed);
         int lookForwardDistance = 5;
-        Debug.DrawLine(new Vector3(transform.position.x, -1, 0), new Vector3(transform.position.x, -1, 0) + Vector3.right * lookForwardDistance, Color.blue);
-        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), Vector2.right, lookForwardDistance, targetLayerMask);
+        Debug.DrawLine(new Vector3(transform.position.x, -1, 0), new Vector3(transform.position.x, -1, 0) + direction * lookForwardDistance, Color.blue);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), (Vector2)direction, lookForwardDistance, layerMask);
         if (hits.Length > 1)
         {
             ColliderDistance2D colliderDistance = Physics2D.Distance(hits[0].collider, hits[1].collider);
@@ -50,15 +83,77 @@ public class SoldierBehavior : MonoBehaviour
             }
         }
 
-        body.angularVelocity = 0;
+        this.body.angularVelocity = 0;
         body.velocity = Vector2.Lerp(body.velocity, newVelocity, 0.1f);
     }
 
-    void OnDrawGizmos()
+    protected bool MeleeAttackOnLayer(int layerMask, Vector2 direction)
+    {
+        if (!soldierConfig.hasMeleeAttack)
+        {
+            return false;
+        }
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), direction, this.soldierConfig.meleeAttackRange, layerMask);
+
+        if (hits.Length < 1)
+        {
+            return false;
+        }
+
+        if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                Debug.Log("Deal damage to " + hit.collider.gameObject.name);
+                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+            }
+            this.timeOfPreviousAttack = Time.time;
+        };
+        return true;
+    }
+
+    protected bool RangeAttackOnLayer(int layerMask, Vector2 direction)
+    {
+        if (!soldierConfig.hasRangeAttack)
+        {
+            return false;
+        }
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), direction, this.soldierConfig.rangeAttackRange, layerMask);
+
+        if (hits.Length < 1)
+        {
+            return false;
+        }
+
+        if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
+        {
+            foreach (RaycastHit2D hit in hits)
+            {
+                Debug.Log("Deal damage to " + hit.collider.gameObject.name);
+                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+            }
+            this.timeOfPreviousAttack = Time.time;
+        };
+        return true;
+    }
+
+
+
+    void OnDrawGizmosSelected()
     {
         if (!Application.isPlaying) return;
+
         Gizmos.color = new Color(1, 1, 1, 0.2F);
-        Gizmos.DrawSphere(transform.position, this.soldierConfig.attackRange);
+        if (this.soldierConfig.hasMeleeAttack)
+        {
+            Gizmos.DrawSphere(transform.position, this.soldierConfig.meleeAttackRange);
+        }
+        if (this.soldierConfig.hasRangeAttack)
+        {
+            Gizmos.DrawSphere(transform.position, this.soldierConfig.rangeAttackRange);
+        }
     }
 }
 

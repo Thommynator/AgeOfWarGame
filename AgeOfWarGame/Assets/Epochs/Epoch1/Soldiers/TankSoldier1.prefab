@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3267583575534263491}
   - component: {fileID: 1713986122469709981}
   - component: {fileID: 2148013100443928878}
-  - component: {fileID: 7477963921147813723}
+  - component: {fileID: -5580139803855959191}
   m_Layer: 8
   m_Name: TankSoldier1
   m_TagString: Soldier
@@ -164,7 +164,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8216695, y: 4.353579}
   m_EdgeRadius: 0
---- !u!114 &7477963921147813723
+--- !u!114 &-5580139803855959191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3267583575534263490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eee44828e795ad347967d9388cd1733d, type: 3}
+  m_Script: {fileID: 11500000, guid: 03e4435d1480bee42bbd9e473463fa11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3971226498456319688
@@ -337,12 +337,12 @@ PrefabInstance:
     - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
         type: 3}
       propertyPath: strength
-      value: 10
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
         type: 3}
       propertyPath: health
-      value: 30
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
         type: 3}
@@ -368,6 +368,21 @@ PrefabInstance:
         type: 3}
       propertyPath: hasMeleeAttack
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
+        type: 3}
+      propertyPath: meleeAttackRange
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e35cca7a42bc2a46a2ba820de34fc9b, type: 3}
