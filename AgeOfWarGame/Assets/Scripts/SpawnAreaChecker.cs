@@ -8,7 +8,11 @@ public class SpawnAreaChecker : MonoBehaviour
     {
         if (collider.gameObject.tag == "Soldier")
         {
-            GameEvents.current.SpawnAreaBlocked();
+            GameEvents.current.PlayerSpawnAreaBlocked();
+        }
+        if (collider.gameObject.tag == "EnemySoldier")
+        {
+            GameEvents.current.EnemySpawnAreaBlocked();
         }
     }
 
@@ -16,12 +20,23 @@ public class SpawnAreaChecker : MonoBehaviour
     {
         if (collider.gameObject.tag == "Soldier")
         {
-            GameEvents.current.SpawnAreaBlocked();
+            GameEvents.current.PlayerSpawnAreaBlocked();
+        }
+        if (collider.gameObject.tag == "EnemySoldier")
+        {
+            GameEvents.current.EnemySpawnAreaBlocked();
         }
     }
 
-    void OnTriggerExit2D()
+    void OnTriggerExit2D(Collider2D collider)
     {
-        GameEvents.current.SpawnAreaFree();
+        if (collider.gameObject.tag == "Soldier")
+        {
+            GameEvents.current.PlayerSpawnAreaFree();
+        }
+        if (collider.gameObject.tag == "EnemySoldier")
+        {
+            GameEvents.current.EnemySpawnAreaFree();
+        }
     }
 }

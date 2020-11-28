@@ -13,7 +13,7 @@ public class PurchaseManager : MonoBehaviour
 
     void Start()
     {
-
+        GameEvents.current.onIncreaseMoney += (int money) => this.playerMoney += money;
     }
 
     // Update is called once per frame
@@ -43,6 +43,11 @@ public class PurchaseManager : MonoBehaviour
             Debug.Log("Not enough money!");
 
         }
+    }
+
+    public void increaseMoney(int money)
+    {
+        this.playerMoney += money;
     }
 
 

@@ -12,21 +12,49 @@ public class GameEvents : MonoBehaviour
     }
 
 
-    public event Action onSpawnAreaFree;
-    public void SpawnAreaFree()
+    public event Action onPlayerSpawnAreaFree;
+    public void PlayerSpawnAreaFree()
     {
-        if (onSpawnAreaFree != null)
+        if (onPlayerSpawnAreaFree != null)
         {
-            onSpawnAreaFree();
+            onPlayerSpawnAreaFree();
         }
     }
 
-    public event Action onSpawnAreaBlocked;
-    public void SpawnAreaBlocked()
+    public event Action onPlayerSpawnAreaBlocked;
+    public void PlayerSpawnAreaBlocked()
     {
-        if (onSpawnAreaBlocked != null)
+        if (onPlayerSpawnAreaBlocked != null)
         {
-            onSpawnAreaBlocked();
+            onPlayerSpawnAreaBlocked();
+        }
+    }
+
+    public event Action onEnemySpawnAreaFree;
+    public void EnemySpawnAreaFree()
+    {
+        if (onEnemySpawnAreaFree != null)
+        {
+            onEnemySpawnAreaFree();
+        }
+    }
+
+    public event Action onEnemySpawnAreaBlocked;
+    public void EnemySpawnAreaBlocked()
+    {
+        if (onEnemySpawnAreaBlocked != null)
+        {
+            onEnemySpawnAreaBlocked();
+        }
+    }
+
+    public event Action<int> onIncreaseMoney;
+
+    public void IncreaseMoney(int money)
+    {
+        if (onIncreaseMoney != null)
+        {
+            onIncreaseMoney(money);
         }
     }
 

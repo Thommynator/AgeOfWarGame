@@ -9,6 +9,7 @@ public class SoldierBehavior : MonoBehaviour
     protected CurrentStats currentStats;
     protected float speedFactor = 0.1f;
     protected float timeOfPreviousAttack;
+    protected Vector3 relativAttackPosition;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class SoldierBehavior : MonoBehaviour
         this.currentStats.currentSpeed = this.soldierConfig.maxSpeed;
         this.currentStats.health = this.soldierConfig.health;
         this.timeOfPreviousAttack = 0;
+        this.relativAttackPosition = this.transform.Find("Sprite").transform.localPosition;
     }
 
     void FixedUpdate()
@@ -52,6 +54,10 @@ public class SoldierBehavior : MonoBehaviour
 
     private void Die()
     {
+        if (this.soldierConfig.isEnemy)
+        {
+            GameEvents.current.IncreaseMoney(this.soldierConfig.rewardMoney);
+        }
         Destroy(this.gameObject);
     }
 
@@ -71,7 +77,6 @@ public class SoldierBehavior : MonoBehaviour
     {
         Vector2 newVelocity = (Vector2)direction * (speedFactor * this.soldierConfig.maxSpeed);
         int lookForwardDistance = 5;
-        Debug.DrawLine(new Vector3(transform.position.x, -1, 0), new Vector3(transform.position.x, -1, 0) + direction * lookForwardDistance, Color.blue);
         RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), (Vector2)direction, lookForwardDistance, layerMask);
         if (hits.Length > 1)
         {
@@ -94,7 +99,7 @@ public class SoldierBehavior : MonoBehaviour
             return false;
         }
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), direction, this.soldierConfig.meleeAttackRange, layerMask);
+        RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)GetAbsoluteAttackPosition(), direction, this.soldierConfig.meleeAttackRange, layerMask);
 
         if (hits.Length < 1)
         {
@@ -105,7 +110,6 @@ public class SoldierBehavior : MonoBehaviour
         {
             foreach (RaycastHit2D hit in hits)
             {
-                Debug.Log("Deal damage to " + hit.collider.gameObject.name);
                 hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
             }
             this.timeOfPreviousAttack = Time.time;
@@ -120,7 +124,7 @@ public class SoldierBehavior : MonoBehaviour
             return false;
         }
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), direction, this.soldierConfig.rangeAttackRange, layerMask);
+        RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)GetAbsoluteAttackPosition(), direction, this.soldierConfig.rangeAttackRange, layerMask);
 
         if (hits.Length < 1)
         {
@@ -131,12 +135,16 @@ public class SoldierBehavior : MonoBehaviour
         {
             foreach (RaycastHit2D hit in hits)
             {
-                Debug.Log("Deal damage to " + hit.collider.gameObject.name);
                 hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
             }
             this.timeOfPreviousAttack = Time.time;
         };
         return true;
+    }
+
+    protected Vector3 GetAbsoluteAttackPosition()
+    {
+        return transform.position + this.relativAttackPosition;
     }
 
 
@@ -148,11 +156,11 @@ public class SoldierBehavior : MonoBehaviour
         Gizmos.color = new Color(1, 1, 1, 0.2F);
         if (this.soldierConfig.hasMeleeAttack)
         {
-            Gizmos.DrawSphere(transform.position, this.soldierConfig.meleeAttackRange);
+            Gizmos.DrawSphere(GetAbsoluteAttackPosition(), this.soldierConfig.meleeAttackRange);
         }
         if (this.soldierConfig.hasRangeAttack)
         {
-            Gizmos.DrawSphere(transform.position, this.soldierConfig.rangeAttackRange);
+            Gizmos.DrawSphere(GetAbsoluteAttackPosition(), this.soldierConfig.rangeAttackRange);
         }
     }
 }
