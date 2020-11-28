@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369305505009134491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.56, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 8574786826982056889}
   m_RootOrder: 1
@@ -232,7 +232,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.56}
+  m_Offset: {x: 0, y: -1.27}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -243,7 +243,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7449822, y: 3.0827703}
+  m_Size: {x: 1.54, y: 1.47}
   m_EdgeRadius: 0
 --- !u!114 &349940325756008794
 MonoBehaviour:
@@ -342,7 +342,7 @@ PrefabInstance:
     - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
         type: 3}
       propertyPath: health
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
         type: 3}
@@ -382,7 +382,7 @@ PrefabInstance:
     - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
         type: 3}
       propertyPath: meleeAttackRange
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e35cca7a42bc2a46a2ba820de34fc9b, type: 3}

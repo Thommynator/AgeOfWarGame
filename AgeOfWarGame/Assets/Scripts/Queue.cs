@@ -78,7 +78,7 @@ public class Queue : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         GameObject nextSoldier = GetNextSoldierInQueue();
-        GameObject soldier = GameObject.Instantiate(nextSoldier, new Vector3(-12, 0, 0), Quaternion.identity);
+        GameObject soldier = GameObject.Instantiate(nextSoldier, new Vector3(-13, 0, 0), Quaternion.identity);
         soldier.transform.SetParent(playerSoldiers.transform);
     }
 

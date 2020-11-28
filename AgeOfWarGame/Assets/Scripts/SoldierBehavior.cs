@@ -9,6 +9,7 @@ public class SoldierBehavior : MonoBehaviour
     protected CurrentStats currentStats;
     protected float speedFactor = 0.1f;
     protected float timeOfPreviousAttack;
+    protected Vector3 relativAttackPosition;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class SoldierBehavior : MonoBehaviour
         this.currentStats.currentSpeed = this.soldierConfig.maxSpeed;
         this.currentStats.health = this.soldierConfig.health;
         this.timeOfPreviousAttack = 0;
+        this.relativAttackPosition = this.transform.Find("Sprite").transform.localPosition;
     }
 
     void FixedUpdate()
@@ -97,7 +99,7 @@ public class SoldierBehavior : MonoBehaviour
             return false;
         }
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), direction, this.soldierConfig.meleeAttackRange, layerMask);
+        RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)GetAbsoluteAttackPosition(), direction, this.soldierConfig.meleeAttackRange, layerMask);
 
         if (hits.Length < 1)
         {
@@ -122,7 +124,7 @@ public class SoldierBehavior : MonoBehaviour
             return false;
         }
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, -1), direction, this.soldierConfig.rangeAttackRange, layerMask);
+        RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)GetAbsoluteAttackPosition(), direction, this.soldierConfig.rangeAttackRange, layerMask);
 
         if (hits.Length < 1)
         {
@@ -140,6 +142,11 @@ public class SoldierBehavior : MonoBehaviour
         return true;
     }
 
+    protected Vector3 GetAbsoluteAttackPosition()
+    {
+        return transform.position + this.relativAttackPosition;
+    }
+
 
 
     void OnDrawGizmosSelected()
@@ -149,11 +156,11 @@ public class SoldierBehavior : MonoBehaviour
         Gizmos.color = new Color(1, 1, 1, 0.2F);
         if (this.soldierConfig.hasMeleeAttack)
         {
-            Gizmos.DrawSphere(transform.position, this.soldierConfig.meleeAttackRange);
+            Gizmos.DrawSphere(GetAbsoluteAttackPosition(), this.soldierConfig.meleeAttackRange);
         }
         if (this.soldierConfig.hasRangeAttack)
         {
-            Gizmos.DrawSphere(transform.position, this.soldierConfig.rangeAttackRange);
+            Gizmos.DrawSphere(GetAbsoluteAttackPosition(), this.soldierConfig.rangeAttackRange);
         }
     }
 }
