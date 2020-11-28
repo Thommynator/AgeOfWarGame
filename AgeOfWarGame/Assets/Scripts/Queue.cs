@@ -13,15 +13,17 @@ public class Queue : MonoBehaviour
 
     public bool isSpawnAreaFree;
 
+    private GameObject playerSoldiers;
+
     void Start()
     {
         // subscribe events
-        GameEvents.current.onSpawnAreaFree += () => { isSpawnAreaFree = true; };
-        GameEvents.current.onSpawnAreaBlocked += () => { isSpawnAreaFree = false; };
-
+        GameEvents.current.onPlayerSpawnAreaFree += () => { isSpawnAreaFree = true; };
+        GameEvents.current.onPlayerSpawnAreaBlocked += () => { isSpawnAreaFree = false; };
         this.icons = new List<GameObject>();
         this.soldiersInQueue = new Queue<GameObject>(this.queueSize);
         this.isSpawnAreaFree = true;
+        this.playerSoldiers = GameObject.Find("PlayerSoldiers");
         InstantiateInitialEmptyIcons();
     }
 
@@ -75,8 +77,9 @@ public class Queue : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
         }
-        GameObject soldier = GetNextSoldierInQueue();
-        GameObject.Instantiate(soldier, new Vector3(-12, 0, 0), Quaternion.identity);
+        GameObject nextSoldier = GetNextSoldierInQueue();
+        GameObject soldier = GameObject.Instantiate(nextSoldier, new Vector3(-12, 0, 0), Quaternion.identity);
+        soldier.transform.SetParent(playerSoldiers.transform);
     }
 
     public GameObject GetNextSoldierInQueue()
