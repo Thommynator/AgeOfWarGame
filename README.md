@@ -1,4 +1,4 @@
-# AgeOfWarGame
+# Age Of War Game (Remake)
 
 I'm re-creating the old browser flash game "Age Of War" to get more familiar with Unity.
 
