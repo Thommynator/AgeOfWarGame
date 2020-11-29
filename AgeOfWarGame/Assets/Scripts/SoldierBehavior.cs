@@ -10,6 +10,7 @@ public class SoldierBehavior : MonoBehaviour
     protected float speedFactor = 0.1f;
     protected float timeOfPreviousAttack;
     protected Vector3 relativAttackPosition;
+    public HealthBar healthBar;
 
     void Start()
     {
@@ -20,6 +21,8 @@ public class SoldierBehavior : MonoBehaviour
         this.currentStats.health = this.soldierConfig.health;
         this.timeOfPreviousAttack = 0;
         this.relativAttackPosition = this.transform.Find("Sprite").transform.localPosition;
+        this.healthBar = GetComponentInChildren<HealthBar>();
+        this.healthBar.SetMaxHealth(this.soldierConfig.health);
     }
 
     void FixedUpdate()
@@ -37,6 +40,7 @@ public class SoldierBehavior : MonoBehaviour
         {
             Walk();
         }
+        this.healthBar.SetHealth(this.currentStats.health);
     }
 
 
