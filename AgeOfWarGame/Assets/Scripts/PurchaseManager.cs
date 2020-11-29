@@ -41,7 +41,6 @@ public class PurchaseManager : MonoBehaviour
         else
         {
             Debug.Log("Not enough money!");
-
         }
     }
 

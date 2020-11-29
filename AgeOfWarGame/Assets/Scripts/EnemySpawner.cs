@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public float tankWeightProbability;
     public float minimumSpawnCooldown;
 
+    private float nextSpawnCooldown;
     private float weightProbabilitySum;
     private Vector3 spawnPosition;
     private GameObject enemySoldiers;
@@ -26,20 +27,20 @@ public class EnemySpawner : MonoBehaviour
         GameEvents.current.onEnemySpawnAreaBlocked += () => { isSpawnAreaFree = false; };
 
         this.weightProbabilitySum = meleeWeightProbability + rangeWeightProbability + tankWeightProbability;
-        this.spawnPosition = new Vector3(14, 0, 0);
+        this.spawnPosition = new Vector3(15, 0, 0);
         this.enemySoldiers = GameObject.Find("EnemySoldiers");
         this.isSpawnAreaFree = true;
         this.timeOfPreviousSpawn = Time.time;
+        this.nextSpawnCooldown = NextSpawnCooldown();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isSpawnAreaFree && Time.time - timeOfPreviousSpawn > minimumSpawnCooldown)
+        if (isSpawnAreaFree && Time.time - timeOfPreviousSpawn > nextSpawnCooldown)
         {
             PickRandomSoldier();
         }
-
     }
 
     private void PickRandomSoldier()
@@ -67,5 +68,11 @@ public class EnemySpawner : MonoBehaviour
         GameObject soldier = GameObject.Instantiate(nextSoldier, this.spawnPosition, Quaternion.identity);
         soldier.transform.SetParent(enemySoldiers.transform);
         this.timeOfPreviousSpawn = Time.time;
+        this.nextSpawnCooldown = NextSpawnCooldown();
+    }
+
+    private float NextSpawnCooldown()
+    {
+        return this.minimumSpawnCooldown * Random.Range(1.0f, 3.0f);
     }
 }
