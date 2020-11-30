@@ -11,11 +11,11 @@ public class PlayerSoldier : SoldierBehavior
 
     protected override bool MeleeAttack()
     {
-        return base.MeleeAttackOnLayer(LayerMask.GetMask(new string[1] { "EnemySoldier" }), Vector2.right);
+        return base.MeleeAttackOnLayer(LayerMask.GetMask(new string[2] { "EnemySoldier", "EnemyBuilding" }), Vector2.right);
     }
 
     protected override bool RangeAttack()
     {
-        return base.RangeAttackOnLayer(LayerMask.GetMask(new string[1] { "EnemySoldier" }), Vector2.right);
+        return base.RangeAttackOnLayer(LayerMask.GetMask(new string[2] { "EnemySoldier", "EnemyBuilding" }), Vector2.right);
     }
 }
