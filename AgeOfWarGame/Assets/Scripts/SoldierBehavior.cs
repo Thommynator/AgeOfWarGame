@@ -10,7 +10,7 @@ public class SoldierBehavior : MonoBehaviour
     protected float speedFactor = 0.1f;
     protected float timeOfPreviousAttack;
     protected Vector3 relativAttackPosition;
-    public HealthBar healthBar;
+    protected HealthBar healthBar;
 
     void Start()
     {
@@ -104,6 +104,11 @@ public class SoldierBehavior : MonoBehaviour
         }
 
         RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)GetAbsoluteAttackPosition(), direction, this.soldierConfig.meleeAttackRange, layerMask);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            Debug.Log(hit.collider.gameObject.name);
+        }
 
         if (hits.Length < 1)
         {
