@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fba5dee8ec5794984ae61251d27043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2973015813309756194, guid: 60b30a901f3aec645be1ec69d4626278,
+  projectile: {fileID: 359730076809458137, guid: 60b30a901f3aec645be1ec69d4626278,
     type: 3}
   amountOfProjectiles: 20
   minTimeBetweenSpawning: 0.1
