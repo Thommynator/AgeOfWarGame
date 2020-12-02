@@ -68,6 +68,32 @@
        apply_no_weight="true"
        apply_with_weight="true"
        only_selected="false" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter995"
+       x="-0.00058872765"
+       width="1.0011775"
+       y="-0.0010535789"
+       height="1.0021072">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.0095415215"
+         id="feGaussianBlur997" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter999"
+       x="-0.00012"
+       width="1.00024"
+       y="-0.00012"
+       height="1.00024">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.0095415215"
+         id="feGaussianBlur1001" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -77,7 +103,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70710678"
-     inkscape:cx="364.68909"
+     inkscape:cx="354.7896"
      inkscape:cy="562.65239"
      inkscape:document-units="mm"
      inkscape:current-layer="layer2"
@@ -108,7 +134,7 @@
      id="layer2"
      inkscape:label="Ebene 2">
     <path
-       style="opacity:0.5;fill:#999999;fill-opacity:1;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:0.5;fill:#999999;fill-opacity:1;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;filter:url(#filter999)"
        id="path893"
        sodipodi:type="arc"
        sodipodi:cx="107.3999"
@@ -125,7 +151,7 @@
     <text
        xml:space="preserve"
        id="text909"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect911);fill:#000000;fill-opacity:1;stroke:none;"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect911);fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter995);"
        transform="translate(175.87445,140.91627)"
        inkscape:export-xdpi="16.58"
        inkscape:export-ydpi="16.58"><tspan
