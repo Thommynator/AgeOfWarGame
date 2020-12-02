@@ -58,6 +58,16 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action<int> onIncreaseXp;
+
+    public void IncreaseXp(int xp)
+    {
+        if (onIncreaseXp != null)
+        {
+            onIncreaseXp(xp);
+        }
+    }
+
     public event Action onGameOver;
 
     public void GameOver()

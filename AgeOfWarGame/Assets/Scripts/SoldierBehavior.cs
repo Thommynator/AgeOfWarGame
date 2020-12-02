@@ -61,6 +61,7 @@ public class SoldierBehavior : MonoBehaviour
         if (this.soldierConfig.isEnemy)
         {
             GameEvents.current.IncreaseMoney(this.soldierConfig.rewardMoney);
+            GameEvents.current.IncreaseXp(this.soldierConfig.rewardXp);
         }
         Destroy(this.gameObject);
     }
