@@ -44,11 +44,4 @@ public class PurchaseManager : MonoBehaviour
         }
     }
 
-    public void increaseMoney(int money)
-    {
-        this.playerMoney += money;
-    }
-
-
-
 }

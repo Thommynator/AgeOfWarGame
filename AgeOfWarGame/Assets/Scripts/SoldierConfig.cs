@@ -16,4 +16,5 @@ public class SoldierConfig : MonoBehaviour
     public float rangeAttackRange;
     public bool isEnemy;
     public int rewardMoney;
+    public int rewardXp;
 }
