@@ -1802,8 +1802,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676ab7cc6ba9c1f4b8583ac1734c5505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialAttackConfig: {fileID: -4354916188080122949, guid: 73718c49e2448de4da979d3fae73d2a9,
-    type: 3}
+  specialAttackConfigs:
+  - {fileID: 11400000, guid: 04ef57be7f0651c4ea99304c9e898e7e, type: 2}
+  epochIndex: 0
 --- !u!4 &542993892
 Transform:
   m_ObjectHideFlags: 0
