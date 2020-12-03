@@ -3101,13 +3101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0221dc620827e3e4098677068c7d6518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeSoldier: {fileID: 8301349170372683887, guid: c8b62a5193df54a4f87c3451614fc85b,
+  meleeSoldier: {fileID: 6856885074985634379, guid: 1ab161c0f42af604c84f7015efaa5979,
     type: 3}
   meleeWeightProbability: 5
-  rangeSoldier: {fileID: 4807133572217210344, guid: ee1f5c2f2b88f444ea893ba54eabc246,
+  rangeSoldier: {fileID: 1828523937366478339, guid: 463d61cd1a5466640908bdb2c9aaeac2,
     type: 3}
   rangeWeightProbability: 3
-  tankSoldier: {fileID: 8061127100472748572, guid: 62cb2af5ce57b3645913d417738ae14b,
+  tankSoldier: {fileID: 3267583575534263490, guid: 0f4377e6fc16d3a478384319c5935f48,
     type: 3}
   tankWeightProbability: 2
   minimumSpawnCooldown: 5

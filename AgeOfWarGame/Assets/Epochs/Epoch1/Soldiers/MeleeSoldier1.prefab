@@ -26,10 +26,10 @@ Transform:
   m_GameObject: {fileID: 369305505009134491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.25, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8574786826982056889}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5433668786519677117
 SpriteRenderer:
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 1.7, y: 1.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -110,7 +110,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8574786826982056889}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2308140278045971501
 SpriteRenderer:
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 3785768077241578717}
   - component: {fileID: 1327343301499373575}
   - component: {fileID: 1190589245782040296}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 4417012433163824948}
   - component: {fileID: 7788129298094446813}
   - component: {fileID: 802287611196415243}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HealthBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 3977031181753400046}
   - component: {fileID: 3529601265156643009}
   - component: {fileID: 6153159595864091909}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 3812307298511577367}
   - component: {fileID: 57291756651822898}
   - component: {fileID: 7430049161688937077}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,9 +552,9 @@ GameObject:
   - component: {fileID: 2790952949152433622}
   - component: {fileID: 6786825023379298373}
   - component: {fileID: 349940325756008794}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MeleeSoldier1
-  m_TagString: Soldier
+  m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -571,7 +571,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4958457509199975847}
-  - {fileID: 2507529810658939281}
   - {fileID: 7477315811980746615}
   - {fileID: 8932218305455377482}
   m_Father: {fileID: 0}
@@ -633,10 +632,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6856885074985634379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e4435d1480bee42bbd9e473463fa11, type: 3}
+  m_Script: {fileID: 11500000, guid: eee44828e795ad347967d9388cd1733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  soldierConfig: {fileID: 11400000, guid: 3f949ece0fe38f048a47bd02d4613a4d, type: 2}
 --- !u!1 &7956472230640779270
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +647,7 @@ GameObject:
   - component: {fileID: 3257560325645359570}
   - component: {fileID: 7685413285768344905}
   - component: {fileID: 1591346469145863159}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,138 +710,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1001 &431619189713850876
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8574786826982056889}
-    m_Modifications:
-    - target: {fileID: 2273243362307133242, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_Name
-      value: 'SoldierMeleeConfig '
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: price
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: spawnDuration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: strength
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: health
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: rateOfFire
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: hasMeleeAttack
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: attackRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: rewardMoney
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: attackCooldown
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: meleeAttackRange
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4e35cca7a42bc2a46a2ba820de34fc9b, type: 3}
---- !u!4 &2507529810658939281 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-    type: 3}
-  m_PrefabInstance: {fileID: 431619189713850876}
-  m_PrefabAsset: {fileID: 0}

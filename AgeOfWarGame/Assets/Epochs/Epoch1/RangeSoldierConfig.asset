@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144034004779d8c4cb92889f57ad0b14, type: 3}
+  m_Name: RangeSoldierConfig
+  m_EditorClassIdentifier: 
+  price: 50
+  health: 20
+  maxSpeed: 15
+  spawnDuration: 3
+  rewardMoney: 70
+  rewardXp: 50
+  strength: 8
+  attackCooldown: 1
+  attackType: 1
+  meleeAttackRange: 0
+  rangeAttackRange: 4
+  characterQueueIcon: {fileID: 21300000, guid: bdfe4460da48ec04684c2868c3f10e76, type: 3}

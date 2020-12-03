@@ -30,7 +30,7 @@ public class PurchaseManager : MonoBehaviour
         }
 
         GameObject soldier = soldiersPerEpoch[soldierType];
-        SoldierConfig soldierConfig = soldier.GetComponentInChildren<SoldierConfig>();
+        SoldierConfig soldierConfig = soldier.GetComponent<SoldierBehavior>().soldierConfig;
         if (playerMoney >= soldierConfig.price)
         {
             if (queue.GetComponent<Queue>().AddSoldierToQueue(soldier))

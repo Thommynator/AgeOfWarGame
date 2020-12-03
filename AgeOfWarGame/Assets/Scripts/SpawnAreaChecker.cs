@@ -6,7 +6,7 @@ public class SpawnAreaChecker : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Soldier")
+        if (collider.gameObject.tag == "PlayerSoldier")
         {
             GameEvents.current.PlayerSpawnAreaBlocked();
         }
@@ -18,7 +18,7 @@ public class SpawnAreaChecker : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Soldier")
+        if (collider.gameObject.tag == "PlayerSoldier")
         {
             GameEvents.current.PlayerSpawnAreaBlocked();
         }
@@ -30,7 +30,7 @@ public class SpawnAreaChecker : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Soldier")
+        if (collider.gameObject.tag == "PlayerSoldier")
         {
             GameEvents.current.PlayerSpawnAreaFree();
         }
