@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3267583575534263491}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8488520605479795821
 SpriteRenderer:
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6787554261222326641}
   - component: {fileID: 1076652865621505722}
   - component: {fileID: 9105806778656921270}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 2878924025241354587}
   - component: {fileID: 857366380369445791}
   - component: {fileID: 608638394179263145}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,9 +298,9 @@ GameObject:
   - component: {fileID: 1713986122469709981}
   - component: {fileID: 2148013100443928878}
   - component: {fileID: -5580139803855959191}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TankSoldier1
-  m_TagString: Soldier
+  m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,7 +317,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 857202401061380267}
-  - {fileID: 750178905132371463}
   - {fileID: 3518382032561319851}
   - {fileID: 8828058649893924167}
   m_Father: {fileID: 0}
@@ -379,9 +378,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3267583575534263490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e4435d1480bee42bbd9e473463fa11, type: 3}
+  m_Script: {fileID: 11500000, guid: eee44828e795ad347967d9388cd1733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soldierConfig: {fileID: 11400000, guid: c72a6ababbbb3534d861bea04d1194ee, type: 2}
 --- !u!1 &3866523049235353451
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 6623395674381034432}
   - component: {fileID: 8844732970624935469}
   - component: {fileID: 8942477281501149909}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,10 +482,10 @@ Transform:
   m_GameObject: {fileID: 3971226498456319688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.25, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3267583575534263491}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1164806722538680433
 SpriteRenderer:
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 6320360810393407578}
   - component: {fileID: 4224660123077108972}
   - component: {fileID: 5216018193135571967}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 9140984881735764707}
   - component: {fileID: 431895306764675858}
   - component: {fileID: 7478394297867656565}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HealthBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,143 +710,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1001 &3267583576703340138
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 3267583575534263491}
-    m_Modifications:
-    - target: {fileID: 2273243362307133242, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_Name
-      value: SoldierTankConfig
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: price
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: spawnDuration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: strength
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: health
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: rateOfFire
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: hasRangeAttack
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: attackRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: hasMeleeAttack
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: attackCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: meleeAttackRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8295926782332248373, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-        type: 3}
-      propertyPath: rewardMoney
-      value: 175
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4e35cca7a42bc2a46a2ba820de34fc9b, type: 3}
---- !u!4 &750178905132371463 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2824287266193899629, guid: 4e35cca7a42bc2a46a2ba820de34fc9b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3267583576703340138}
-  m_PrefabAsset: {fileID: 0}

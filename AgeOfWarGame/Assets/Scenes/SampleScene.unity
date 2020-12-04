@@ -1802,8 +1802,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676ab7cc6ba9c1f4b8583ac1734c5505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialAttackConfig: {fileID: -4354916188080122949, guid: 73718c49e2448de4da979d3fae73d2a9,
-    type: 3}
+  specialAttackConfigs:
+  - {fileID: 11400000, guid: 04ef57be7f0651c4ea99304c9e898e7e, type: 2}
+  epochIndex: 0
 --- !u!4 &542993892
 Transform:
   m_ObjectHideFlags: 0
@@ -3101,15 +3102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0221dc620827e3e4098677068c7d6518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeSoldier: {fileID: 8301349170372683887, guid: c8b62a5193df54a4f87c3451614fc85b,
-    type: 3}
-  meleeWeightProbability: 5
-  rangeSoldier: {fileID: 4807133572217210344, guid: ee1f5c2f2b88f444ea893ba54eabc246,
-    type: 3}
-  rangeWeightProbability: 3
-  tankSoldier: {fileID: 8061127100472748572, guid: 62cb2af5ce57b3645913d417738ae14b,
-    type: 3}
-  tankWeightProbability: 2
   minimumSpawnCooldown: 5
 --- !u!1 &1257525846
 GameObject:
@@ -9897,6 +9889,7 @@ GameObject:
   - component: {fileID: 2074175850}
   - component: {fileID: 2074175851}
   - component: {fileID: 2074175852}
+  - component: {fileID: 2074175853}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9930,10 +9923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d03f1c45c1a5a748bfa3d5baec116c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldiersPerEpoch:
-  - {fileID: 6856885074985634379, guid: 1ab161c0f42af604c84f7015efaa5979, type: 3}
-  - {fileID: 1828523937366478339, guid: 463d61cd1a5466640908bdb2c9aaeac2, type: 3}
-  - {fileID: 3267583575534263490, guid: 0f4377e6fc16d3a478384319c5935f48, type: 3}
   playerMoney: 1000
   queue: {fileID: 1352637300}
 --- !u!114 &2074175852
@@ -9949,6 +9938,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xp: 50
+--- !u!114 &2074175853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074175849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7426f9a396e62a54f829f996483ec4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldiersOfAllEpochs:
+  - {fileID: 11400000, guid: ca6df978a42c84645a1d48fac77aa7f4, type: 2}
+  playerEpoch: 0
+  enemyEpoch: 0
 --- !u!1001 &2805410300643654215
 PrefabInstance:
   m_ObjectHideFlags: 0

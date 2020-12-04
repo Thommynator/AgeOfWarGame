@@ -40,14 +40,14 @@ public class Queue : MonoBehaviour
 
         for (int i = 0; i < this.queueSize; i++)
         {
-            GameObject icon = InstantiateIconAtPosition(new Vector3(-queueDimensions.rect.width / 2 + i * 1.5f * iconWidth, 0, 0), queueEmptyImage);
+            GameObject icon = InstantiateIconAtPosition(new Vector3(-queueDimensions.rect.width / 2 + i * 1.5f * iconWidth, 0, 0));
             this.icons.Add(icon);
         }
     }
 
-    private GameObject InstantiateIconAtPosition(Vector3 position, GameObject iconObject)
+    private GameObject InstantiateIconAtPosition(Vector3 position)
     {
-        GameObject icon = GameObject.Instantiate<GameObject>(iconObject);
+        GameObject icon = GameObject.Instantiate<GameObject>(this.queueEmptyImage);
         icon.transform.SetParent(this.transform);
         icon.transform.localPosition = position;
         icon.transform.rotation = Quaternion.identity;
@@ -71,14 +71,21 @@ public class Queue : MonoBehaviour
 
     private IEnumerator StartCooldownForFirstSoldier()
     {
-        float spawnDuration = this.soldiersInQueue.Peek().GetComponentInChildren<SoldierConfig>().spawnDuration;
+        float spawnDuration = this.soldiersInQueue.Peek().GetComponent<SoldierBehavior>().soldierConfig.spawnDuration;
         yield return new WaitForSeconds(spawnDuration);
         while (!isSpawnAreaFree)
         {
             yield return new WaitForSeconds(1);
         }
         GameObject nextSoldier = GetNextSoldierInQueue();
+        SpawnSoldier(nextSoldier);
+    }
+
+    private void SpawnSoldier(GameObject nextSoldier)
+    {
         GameObject soldier = GameObject.Instantiate(nextSoldier, new Vector3(-15, 0, 0), Quaternion.identity);
+        soldier.gameObject.tag = "PlayerSoldier";
+        soldier.layer = LayerMask.NameToLayer("PlayerSoldier");
         soldier.transform.SetParent(playerSoldiers.transform);
     }
 
@@ -119,11 +126,6 @@ public class Queue : MonoBehaviour
 
     private Sprite GetCorrespondingIconSprite(GameObject soldier)
     {
-        foreach (Transform child in soldier.transform)
-        {
-            if (child.tag == "QueueIcon")
-                return child.GetComponent<SpriteRenderer>().sprite;
-        }
-        return null;
+        return soldier.GetComponent<SoldierBehavior>().soldierConfig.characterQueueIcon;
     }
 }

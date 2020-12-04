@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SoldierBehavior : MonoBehaviour
 {
+    public SoldierConfig soldierConfig;
     protected Rigidbody2D body;
-    protected SoldierConfig soldierConfig;
     protected CurrentStats currentStats;
-    protected float speedFactor = 0.1f;
+    protected float speedFactor = 0.2f;
     protected float timeOfPreviousAttack;
     protected Vector3 relativAttackPosition;
     protected HealthBar healthBar;
@@ -15,7 +15,6 @@ public class SoldierBehavior : MonoBehaviour
     void Start()
     {
         this.body = GetComponent<Rigidbody2D>();
-        this.soldierConfig = GetComponentInChildren<SoldierConfig>();
         this.currentStats = gameObject.AddComponent(typeof(CurrentStats)) as CurrentStats;
         this.currentStats.currentSpeed = this.soldierConfig.maxSpeed;
         this.currentStats.health = this.soldierConfig.health;
@@ -45,10 +44,16 @@ public class SoldierBehavior : MonoBehaviour
 
 
 
-    protected virtual void Walk()
+    protected void Walk()
     {
-        // implemented in child
-        return;
+        if (isEnemy())
+        {
+            WalkIntoDirection(LayerMask.GetMask(new string[1] { "EnemySoldier" }), Vector3.left);
+        }
+        else
+        {
+            WalkIntoDirection(LayerMask.GetMask(new string[1] { "PlayerSoldier" }), Vector3.right);
+        }
     }
     private void StopWalking()
     {
@@ -58,7 +63,7 @@ public class SoldierBehavior : MonoBehaviour
 
     private void Die()
     {
-        if (this.soldierConfig.isEnemy)
+        if (isEnemy())
         {
             GameEvents.current.IncreaseMoney(this.soldierConfig.rewardMoney);
             GameEvents.current.IncreaseXp(this.soldierConfig.rewardXp);
@@ -66,16 +71,29 @@ public class SoldierBehavior : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected virtual bool MeleeAttack()
+    protected bool MeleeAttack()
     {
-        // implemented in child
-        return false;
+        if (isEnemy())
+        {
+            return MeleeAttackOnLayer(LayerMask.GetMask(new string[2] { "PlayerSoldier", "PlayerBuilding" }), Vector2.left);
+        }
+        else
+        {
+            return MeleeAttackOnLayer(LayerMask.GetMask(new string[2] { "EnemySoldier", "EnemyBuilding" }), Vector2.right);
+        }
+
     }
 
     protected virtual bool RangeAttack()
     {
-        // implemented in child
-        return false;
+        if (isEnemy())
+        {
+            return RangeAttackOnLayer(LayerMask.GetMask(new string[2] { "PlayerSoldier", "PlayerBuilding" }), Vector2.left);
+        }
+        else
+        {
+            return RangeAttackOnLayer(LayerMask.GetMask(new string[2] { "EnemySoldier", "EnemyBuilding" }), Vector2.right);
+        }
     }
 
     protected void WalkIntoDirection(int layerMask, Vector3 direction)
@@ -99,17 +117,12 @@ public class SoldierBehavior : MonoBehaviour
 
     protected bool MeleeAttackOnLayer(int layerMask, Vector2 direction)
     {
-        if (!soldierConfig.hasMeleeAttack)
+        if (soldierConfig.attackType != SoldierConfig.AttackType.MELEE && soldierConfig.attackType != SoldierConfig.AttackType.BOTH)
         {
             return false;
         }
 
         RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)GetAbsoluteAttackPosition(), direction, this.soldierConfig.meleeAttackRange, layerMask);
-
-        foreach (RaycastHit2D hit in hits)
-        {
-            Debug.Log(hit.collider.gameObject.name);
-        }
 
         if (hits.Length < 1)
         {
@@ -129,7 +142,7 @@ public class SoldierBehavior : MonoBehaviour
 
     protected bool RangeAttackOnLayer(int layerMask, Vector2 direction)
     {
-        if (!soldierConfig.hasRangeAttack)
+        if (soldierConfig.attackType != SoldierConfig.AttackType.RANGE && soldierConfig.attackType != SoldierConfig.AttackType.BOTH)
         {
             return false;
         }
@@ -143,35 +156,51 @@ public class SoldierBehavior : MonoBehaviour
 
         if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
         {
-            foreach (RaycastHit2D hit in hits)
+            List<RaycastHit2D> sortedHits = SortHitsByIncreasingDistance(hits);
+            foreach (RaycastHit2D hit in sortedHits)
             {
                 hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+                if (!this.soldierConfig.canAttackMultiple)
+                {
+                    break;
+                }
             }
             this.timeOfPreviousAttack = Time.time;
         };
         return true;
     }
 
+    private List<RaycastHit2D> SortHitsByIncreasingDistance(RaycastHit2D[] hits)
+    {
+        List<RaycastHit2D> sortedHits = new List<RaycastHit2D>(hits);
+        sortedHits.Sort((x, y) => x.CompareTo(y));
+        return sortedHits;
+    }
+
+
     protected Vector3 GetAbsoluteAttackPosition()
     {
         return transform.position + this.relativAttackPosition;
     }
-
-
 
     void OnDrawGizmosSelected()
     {
         if (!Application.isPlaying) return;
 
         Gizmos.color = new Color(1, 1, 1, 0.2F);
-        if (this.soldierConfig.hasMeleeAttack)
+        if (this.soldierConfig.attackType == SoldierConfig.AttackType.MELEE || this.soldierConfig.attackType == SoldierConfig.AttackType.BOTH)
         {
             Gizmos.DrawSphere(GetAbsoluteAttackPosition(), this.soldierConfig.meleeAttackRange);
         }
-        if (this.soldierConfig.hasRangeAttack)
+        if (this.soldierConfig.attackType == SoldierConfig.AttackType.RANGE || this.soldierConfig.attackType == SoldierConfig.AttackType.BOTH)
         {
             Gizmos.DrawSphere(GetAbsoluteAttackPosition(), this.soldierConfig.rangeAttackRange);
         }
+    }
+
+    private bool isEnemy()
+    {
+        return this.gameObject.tag == "EnemySoldier";
     }
 }
 

@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
-    public GameObject meleeSoldier;
-    public float meleeWeightProbability;
-    public GameObject rangeSoldier;
-    public float rangeWeightProbability;
-    public GameObject tankSoldier;
-    public float tankWeightProbability;
     public float minimumSpawnCooldown;
-
     private float nextSpawnCooldown;
-    private float weightProbabilitySum;
     private Vector3 spawnPosition;
     private GameObject enemySoldiers;
     private bool isSpawnAreaFree;
@@ -26,7 +17,6 @@ public class EnemySpawner : MonoBehaviour
         GameEvents.current.onEnemySpawnAreaFree += () => { isSpawnAreaFree = true; };
         GameEvents.current.onEnemySpawnAreaBlocked += () => { isSpawnAreaFree = false; };
 
-        this.weightProbabilitySum = meleeWeightProbability + rangeWeightProbability + tankWeightProbability;
         this.spawnPosition = new Vector3(15, 0, 0);
         this.enemySoldiers = GameObject.Find("EnemySoldiers");
         this.isSpawnAreaFree = true;
@@ -45,27 +35,43 @@ public class EnemySpawner : MonoBehaviour
 
     private void PickRandomSoldier()
     {
+        List<GameObject> soldiersOfCurrentEpoch = EpochManager.current.GetSoldiersOfCurrentEnemyEpoch();
+        List<float> weightRanges = new List<float>(soldiersOfCurrentEpoch.Count + 1);
+        weightRanges.Add(0);
+        float weightProbabilitySum = 0.0f;
+        foreach (GameObject soldier in soldiersOfCurrentEpoch)
+        {
+            float weight = CalculateProbabilityWeight(soldier);
+            weightRanges.Add(weight);
+            weightProbabilitySum += weight;
+        }
+
         float randomNumber = Random.Range(0, weightProbabilitySum);
-        if (randomNumber >= 0 && randomNumber < meleeWeightProbability)
+
+        for (int i = 0; i < soldiersOfCurrentEpoch.Count; i++)
         {
-            // spawn melee solider
-            SpawnSoldier(meleeSoldier);
+            if (randomNumber >= weightRanges[i] && randomNumber < weightRanges[i + 1])
+            {
+                SpawnSoldier(soldiersOfCurrentEpoch[i]);
+            }
         }
-        else if (randomNumber >= meleeWeightProbability && randomNumber < meleeWeightProbability + rangeWeightProbability)
-        {
-            // spawn range soldier
-            SpawnSoldier(rangeSoldier);
-        }
-        else if (randomNumber >= meleeWeightProbability + rangeWeightProbability && randomNumber < meleeWeightProbability + rangeWeightProbability + tankWeightProbability)
-        {
-            // spawn tank soldier
-            SpawnSoldier(tankSoldier);
-        }
+    }
+
+    private float CalculateProbabilityWeight(GameObject soldier)
+    {
+        SoldierConfig soldierConfig = soldier.GetComponent<SoldierBehavior>().soldierConfig;
+        float weight = 100.0f / (soldierConfig.health + soldierConfig.price);
+        Debug.Log(soldier.gameObject.name + " has a probability weight of " + weight);
+        return weight;
     }
 
     private void SpawnSoldier(GameObject nextSoldier)
     {
         GameObject soldier = GameObject.Instantiate(nextSoldier, this.spawnPosition, Quaternion.identity);
+        soldier.transform.localScale = new Vector3(-1, 1, 1);
+        soldier.transform.Find("HealthBarCanvas").Find("HealthBar").localScale = new Vector3(-1, 1, 1);
+        soldier.tag = "EnemySoldier";
+        soldier.layer = LayerMask.NameToLayer("EnemySoldier");
         soldier.transform.SetParent(enemySoldiers.transform);
         this.timeOfPreviousSpawn = Time.time;
         this.nextSpawnCooldown = NextSpawnCooldown();

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PurchaseManager : MonoBehaviour
 {
-
-    public List<GameObject> soldiersPerEpoch;
-
     public int playerMoney;
 
     public GameObject queue;
@@ -24,13 +21,16 @@ public class PurchaseManager : MonoBehaviour
 
     public void TryToBuySoldier(int soldierType)
     {
-        if (soldierType < 0 || soldierType > soldiersPerEpoch.Count - 1)
+
+        List<GameObject> soldiersOfCurrentEpoch = EpochManager.current.GetSoldiersOfCurrentPlayerEpoch();
+
+        if (soldierType < 0 || soldierType > soldiersOfCurrentEpoch.Count - 1)
         {
             return;
         }
 
-        GameObject soldier = soldiersPerEpoch[soldierType];
-        SoldierConfig soldierConfig = soldier.GetComponentInChildren<SoldierConfig>();
+        GameObject soldier = soldiersOfCurrentEpoch[soldierType];
+        SoldierConfig soldierConfig = soldier.GetComponent<SoldierBehavior>().soldierConfig;
         if (playerMoney >= soldierConfig.price)
         {
             if (queue.GetComponent<Queue>().AddSoldierToQueue(soldier))

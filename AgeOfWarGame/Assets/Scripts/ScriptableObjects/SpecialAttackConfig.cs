@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SpecialAttackConfig : MonoBehaviour
+[CreateAssetMenu(fileName = "Special Attack Config", menuName = "ScriptableObjects/SpecialAttackConfig", order = 1)]
+public class SpecialAttackConfig : ScriptableObject
 {
+
     public GameObject projectile;
     public int amountOfProjectiles;
+    public int xpCosts;
+    public float cooldownDuration;
+    public float damage;
     public float minTimeBetweenSpawning;
     public float maxTimeBetweenSpawning;
     public float minX;
     public float maxX;
-    public int xpCosts;
 }
