@@ -20,6 +20,7 @@ public class SoldierConfig : ScriptableObject
     public AttackType attackType;
     public float meleeAttackRange;
     public float rangeAttackRange;
+    public bool canAttackMultiple;
 
 
     [Header("Visuals")]

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c001e768a2db1684e93091690a57c53c, type: 3}
+  m_Name: Epoch1
+  m_EditorClassIdentifier: 
+  soldiersPerEpoch:
+  - {fileID: 6856885074985634379, guid: 1ab161c0f42af604c84f7015efaa5979, type: 3}
+  - {fileID: 1828523937366478339, guid: 463d61cd1a5466640908bdb2c9aaeac2, type: 3}
+  - {fileID: 3267583575534263490, guid: 0f4377e6fc16d3a478384319c5935f48, type: 3}

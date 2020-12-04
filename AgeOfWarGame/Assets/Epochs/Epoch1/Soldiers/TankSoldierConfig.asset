@@ -23,4 +23,5 @@ MonoBehaviour:
   attackType: 0
   meleeAttackRange: 3
   rangeAttackRange: 0
+  canAttackMultiple: 1
   characterQueueIcon: {fileID: 21300000, guid: 8621afeabf245ab4cb2f4bc9128798c0, type: 3}

@@ -156,14 +156,27 @@ public class SoldierBehavior : MonoBehaviour
 
         if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
         {
-            foreach (RaycastHit2D hit in hits)
+            List<RaycastHit2D> sortedHits = SortHitsByIncreasingDistance(hits);
+            foreach (RaycastHit2D hit in sortedHits)
             {
                 hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+                if (!this.soldierConfig.canAttackMultiple)
+                {
+                    break;
+                }
             }
             this.timeOfPreviousAttack = Time.time;
         };
         return true;
     }
+
+    private List<RaycastHit2D> SortHitsByIncreasingDistance(RaycastHit2D[] hits)
+    {
+        List<RaycastHit2D> sortedHits = new List<RaycastHit2D>(hits);
+        sortedHits.Sort((x, y) => x.CompareTo(y));
+        return sortedHits;
+    }
+
 
     protected Vector3 GetAbsoluteAttackPosition()
     {
