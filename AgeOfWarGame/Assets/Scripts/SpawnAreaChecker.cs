@@ -1,42 +1,46 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnAreaChecker : MonoBehaviour
 {
+    public SpawnArea spawnAreaToCheck;
+
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "PlayerSoldier")
-        {
-            GameEvents.current.PlayerSpawnAreaBlocked();
-        }
-        if (collider.gameObject.tag == "EnemySoldier")
-        {
-            GameEvents.current.EnemySpawnAreaBlocked();
-        }
+        CheckPlayerSpawnArea(collider);
+        CheckEnemySpawnArea(collider);
     }
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "PlayerSoldier")
-        {
-            GameEvents.current.PlayerSpawnAreaBlocked();
-        }
-        if (collider.gameObject.tag == "EnemySoldier")
-        {
-            GameEvents.current.EnemySpawnAreaBlocked();
-        }
+        CheckPlayerSpawnArea(collider);
+        CheckEnemySpawnArea(collider);
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "PlayerSoldier")
+        CheckPlayerSpawnArea(collider);
+        CheckEnemySpawnArea(collider);
+    }
+
+    private void CheckPlayerSpawnArea(Collider2D collider)
+    {
+        if (spawnAreaToCheck == SpawnArea.PLAYER && collider.gameObject.tag == "PlayerSoldier")
         {
             GameEvents.current.PlayerSpawnAreaFree();
         }
-        if (collider.gameObject.tag == "EnemySoldier")
+    }
+
+    private void CheckEnemySpawnArea(Collider2D collider)
+    {
+        if (spawnAreaToCheck == SpawnArea.ENEMY && collider.gameObject.tag == "EnemySoldier")
         {
             GameEvents.current.EnemySpawnAreaFree();
         }
+    }
+
+
+    public enum SpawnArea
+    {
+        PLAYER, ENEMY
     }
 }
