@@ -50,19 +50,33 @@ public class PurchaseManager : MonoBehaviour
     public void TryToBuyTurretSlot()
     {
 
-        if (playerMoney >= 10)
+        if (!this.turretManager.IsMaxTurrsetSlotLimitReached())
         {
-            if (this.turretManager.AddNewTurretSlot())
+            int turretSlotCosts = this.turretManager.GetCostsForNextTurretSlot();
+            if (playerMoney >= turretSlotCosts && this.turretManager.AddNewTurretSlot())
             {
-                playerMoney -= 10;
-                Debug.Log("Bought new turret slot!");
+                playerMoney -= turretSlotCosts;
+            }
+            else
+            {
+                Debug.Log("Not enough money!");
             }
         }
         else
         {
-            Debug.Log("Not enough money!");
+            Debug.Log("Turret slot limit is reached!");
         }
 
+    }
+
+    public bool TryToBuyNewTurret(int slotId, int turretType)
+    {
+        if (this.turretManager.IsSlotFree(slotId) && playerMoney >= this.turretManager.GetTurretCosts(turretType))
+        {
+            this.turretManager.BuyTurretForSlot(turretType, slotId);
+            playerMoney -= this.turretManager.GetTurretCosts(turretType);
+        }
+        return true;
     }
 
 }
