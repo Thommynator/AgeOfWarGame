@@ -8,9 +8,12 @@ public class PurchaseManager : MonoBehaviour
 
     public GameObject queue;
 
+    private TurretManager turretManager;
+
     void Start()
     {
         GameEvents.current.onIncreaseMoney += (int money) => this.playerMoney += money;
+        this.turretManager = GetComponent<TurretManager>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,24 @@ public class PurchaseManager : MonoBehaviour
         {
             Debug.Log("Not enough money!");
         }
+    }
+
+    public void TryToBuyTurretSlot()
+    {
+
+        if (playerMoney >= 10)
+        {
+            if (this.turretManager.AddNewTurretSlot())
+            {
+                playerMoney -= 10;
+                Debug.Log("Bought new turret slot!");
+            }
+        }
+        else
+        {
+            Debug.Log("Not enough money!");
+        }
+
     }
 
 }

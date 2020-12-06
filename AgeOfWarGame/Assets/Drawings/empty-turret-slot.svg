@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="empty-turret-slot.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35370861"
+     inkscape:cx="136.5461"
+     inkscape:cy="790.98861"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="428"
+     inkscape:window-maximized="1"
+     inkscape:snap-global="false" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.98;fill:#e6e6e6;fill-opacity:0.75;stroke:none;stroke-width:4.71289;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:12.5;stroke-dasharray:14.1387, 14.13870000000000005;stroke-dashoffset:8.01194;stroke-opacity:0.5;paint-order:markers fill stroke"
+       id="rect850"
+       width="197.50633"
+       height="89.716927"
+       x="6.1015601"
+       y="43.455387"
+       inkscape:export-xdpi="20"
+       inkscape:export-ydpi="20" />
+    <rect
+       style="opacity:0.503;fill:none;fill-opacity:0.75;stroke:#333333;stroke-width:4.89625;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:12.5;stroke-dasharray:14.6887, 14.68870000000000076;stroke-dashoffset:8.32365;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect833"
+       width="202.41733"
+       height="94.484344"
+       x="3.6460624"
+       y="41.071678"
+       inkscape:export-xdpi="20"
+       inkscape:export-ydpi="20" />
+  </g>
+</svg>
