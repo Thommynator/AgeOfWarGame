@@ -42,8 +42,8 @@ public class EnemySpawner : MonoBehaviour
         foreach (GameObject soldier in soldiersOfCurrentEpoch)
         {
             float weight = CalculateProbabilityWeight(soldier);
-            weightRanges.Add(weight);
             weightProbabilitySum += weight;
+            weightRanges.Add(weightProbabilitySum);
         }
 
         float randomNumber = Random.Range(0, weightProbabilitySum);
@@ -53,6 +53,7 @@ public class EnemySpawner : MonoBehaviour
             if (randomNumber >= weightRanges[i] && randomNumber < weightRanges[i + 1])
             {
                 SpawnSoldier(soldiersOfCurrentEpoch[i]);
+                break;
             }
         }
     }
@@ -60,7 +61,7 @@ public class EnemySpawner : MonoBehaviour
     private float CalculateProbabilityWeight(GameObject soldier)
     {
         SoldierConfig soldierConfig = soldier.GetComponent<SoldierBehavior>().soldierConfig;
-        float weight = 100.0f / (soldierConfig.health + soldierConfig.price);
+        float weight = 100.0f / (soldierConfig.price + soldierConfig.health + soldierConfig.strength / soldierConfig.attackCooldown);
         Debug.Log(soldier.gameObject.name + " has a probability weight of " + weight);
         return weight;
     }

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: RangeSoldierConfig
   m_EditorClassIdentifier: 
   price: 50
-  health: 20
+  health: 15
   maxSpeed: 15
   spawnDuration: 3
   rewardMoney: 70
   rewardXp: 50
-  strength: 8
+  strength: 5
   attackCooldown: 1
   attackType: 1
   meleeAttackRange: 0
