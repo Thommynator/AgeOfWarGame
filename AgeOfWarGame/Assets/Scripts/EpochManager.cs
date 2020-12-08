@@ -6,6 +6,8 @@ public class EpochManager : MonoBehaviour
 {
     public static EpochManager current;
     public List<SoldiersPerEpochConfig> soldiersOfAllEpochs;
+    public List<TurretsPerEpochConfig> turretsOfAllEpochs;
+
     public int playerEpoch;
     public int enemyEpoch;
 
@@ -25,5 +27,15 @@ public class EpochManager : MonoBehaviour
     public List<GameObject> GetSoldiersOfCurrentEnemyEpoch()
     {
         return soldiersOfAllEpochs[enemyEpoch].soldiersPerEpoch;
+    }
+
+    public List<GameObject> GetTurretsOfCurrentPlayerEpoch()
+    {
+        return turretsOfAllEpochs[playerEpoch].turretsPerEpoch;
+    }
+
+    public List<GameObject> GetTurretsOfCurrentEnemyEpoch()
+    {
+        return turretsOfAllEpochs[enemyEpoch].turretsPerEpoch;
     }
 }

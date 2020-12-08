@@ -6,7 +6,8 @@ using System;
 public class TurretManager : MonoBehaviour
 {
 
-    List<GameObject> turretSlots;
+
+    public List<GameObject> turretSlots;
 
     public GameObject emptyTurretSlot;
 
@@ -56,12 +57,17 @@ public class TurretManager : MonoBehaviour
     public int GetTurretCosts(int turretType)
     {
         List<int> costs = new List<int>(new int[3] { 500, 800, 1000 });
-        return costs[turretType];
+        return EpochManager.current.GetTurretsOfCurrentPlayerEpoch()[turretType].GetComponent<TurretBehavior>().turretConfig.price;
     }
 
     public void BuyTurretForSlot(int turretType, int slotId)
     {
         Debug.Log("Bought turret " + turretType + " for slot " + slotId);
+        List<GameObject> turretsPerEpoch = EpochManager.current.GetTurretsOfCurrentPlayerEpoch();
+        GameObject turret = Instantiate(turretsPerEpoch[turretType], this.turretSlots[slotId].transform.position, Quaternion.identity);
+        turret.transform.SetParent(this.turretCanvas.transform);
+        Destroy(this.turretSlots[slotId]);
+        this.turretSlots[slotId] = turret;
     }
 
 
