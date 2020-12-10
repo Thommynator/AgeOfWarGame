@@ -7,9 +7,9 @@ public class TurretManager : MonoBehaviour
 {
 
 
-    public List<GameObject> turretSlots;
+    public List<TurretSlot> turretSlots;
 
-    public GameObject emptyTurretSlot;
+    public GameObject emptyTurretSlotPrefab;
 
     private GameObject turretCanvas;
 
@@ -18,23 +18,22 @@ public class TurretManager : MonoBehaviour
     void Start()
     {
         this.maxSlotAmount = 3;
-        this.turretSlots = new List<GameObject>(maxSlotAmount);
+        this.turretSlots = new List<TurretSlot>(maxSlotAmount);
         this.turretCanvas = GameObject.Find("TurretCanvas");
     }
 
-    public bool AddNewTurretSlot()
+    public bool AddNewEmptyTurretSlot()
     {
         if (IsMaxTurrsetSlotLimitReached())
         {
             return false;
         }
 
-        GameObject newSlot = Instantiate(this.emptyTurretSlot);
-        newSlot.GetComponentInChildren<TurretSelector>().slotId = this.turretSlots.Count;
-        newSlot.transform.SetParent(this.turretCanvas.transform);
-        newSlot.transform.localPosition = new Vector3(1.6f, -3f + this.turretSlots.Count, 0);
-        this.turretSlots.Add(newSlot);
-
+        GameObject emptySlot = Instantiate(this.emptyTurretSlotPrefab);
+        emptySlot.GetComponentInChildren<TurretSelector>().slotId = this.turretSlots.Count;
+        emptySlot.transform.SetParent(this.turretCanvas.transform);
+        emptySlot.transform.localPosition = new Vector3(1.6f, -3f + this.turretSlots.Count, 0);
+        this.turretSlots.Add(new TurretSlot(emptySlot, true));
         return true;
     }
 
@@ -51,23 +50,44 @@ public class TurretManager : MonoBehaviour
 
     public bool IsSlotFree(int slotId)
     {
-        return true;
+        return this.turretSlots[slotId].isFree;
     }
 
     public int GetTurretCosts(int turretType)
     {
-        List<int> costs = new List<int>(new int[3] { 500, 800, 1000 });
-        return EpochManager.current.GetTurretsOfCurrentPlayerEpoch()[turretType].GetComponent<TurretBehavior>().turretConfig.price;
+        return EpochManager.current.GetTurretsOfCurrentPlayerEpoch()[turretType].GetComponent<TurretBehavior>().turretConfig.buyingPrice;
     }
 
     public void BuyTurretForSlot(int turretType, int slotId)
     {
-        Debug.Log("Bought turret " + turretType + " for slot " + slotId);
         List<GameObject> turretsPerEpoch = EpochManager.current.GetTurretsOfCurrentPlayerEpoch();
-        GameObject turret = Instantiate(turretsPerEpoch[turretType], this.turretSlots[slotId].transform.position, Quaternion.identity);
+        GameObject turret = Instantiate(turretsPerEpoch[turretType], this.turretSlots[slotId].turret.transform);
         turret.transform.SetParent(this.turretCanvas.transform);
-        Destroy(this.turretSlots[slotId]);
-        this.turretSlots[slotId] = turret;
+        turret.GetComponentInChildren<TurretSelector>().slotId = slotId;
+        Destroy(this.turretSlots[slotId].turret);
+        this.turretSlots[slotId] = new TurretSlot(turret, false);
+    }
+
+    public void RemoveTurretFromTurretSlot(int slotId)
+    {
+        GameObject currentTurret = this.turretSlots[slotId].turret;
+        GameObject emptySlot = Instantiate(this.emptyTurretSlotPrefab, currentTurret.transform);
+        emptySlot.transform.SetParent(this.turretCanvas.transform);
+        emptySlot.GetComponentInChildren<TurretSelector>().slotId = slotId;
+        Destroy(currentTurret);
+        this.turretSlots[slotId] = new TurretSlot(emptySlot, true);
+    }
+
+    public class TurretSlot
+    {
+        public GameObject turret;
+        public bool isFree;
+
+        public TurretSlot(GameObject turret, bool isFree)
+        {
+            this.turret = turret;
+            this.isFree = isFree;
+        }
     }
 
 

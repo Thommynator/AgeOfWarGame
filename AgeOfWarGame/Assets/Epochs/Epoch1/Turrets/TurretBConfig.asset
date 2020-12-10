@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7f263151338f74da9998c988e588b4, type: 3}
   m_Name: TurretBConfig
   m_EditorClassIdentifier: 
-  price: 500
+  buyingPrice: 500
+  sellingPrice: 200
   strength: 10
   attackCooldown: 1
   attackRange: 5
   canAttackMultiple: 0
+  projectile: {fileID: 0}

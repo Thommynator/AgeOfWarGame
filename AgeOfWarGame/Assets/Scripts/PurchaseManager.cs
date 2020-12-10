@@ -34,11 +34,11 @@ public class PurchaseManager : MonoBehaviour
 
         GameObject soldier = soldiersOfCurrentEpoch[soldierType];
         SoldierConfig soldierConfig = soldier.GetComponent<SoldierBehavior>().soldierConfig;
-        if (playerMoney >= soldierConfig.price)
+        if (this.playerMoney >= soldierConfig.price)
         {
             if (queue.GetComponent<Queue>().AddSoldierToQueue(soldier))
             {
-                playerMoney -= soldierConfig.price;
+                this.playerMoney -= soldierConfig.price;
             }
         }
         else
@@ -53,9 +53,9 @@ public class PurchaseManager : MonoBehaviour
         if (!this.turretManager.IsMaxTurrsetSlotLimitReached())
         {
             int turretSlotCosts = this.turretManager.GetCostsForNextTurretSlot();
-            if (playerMoney >= turretSlotCosts && this.turretManager.AddNewTurretSlot())
+            if (this.playerMoney >= turretSlotCosts && this.turretManager.AddNewEmptyTurretSlot())
             {
-                playerMoney -= turretSlotCosts;
+                this.playerMoney -= turretSlotCosts;
             }
             else
             {
@@ -71,11 +71,20 @@ public class PurchaseManager : MonoBehaviour
 
     public bool TryToBuyNewTurret(int slotId, int turretType)
     {
-        if (this.turretManager.IsSlotFree(slotId) && playerMoney >= this.turretManager.GetTurretCosts(turretType))
+        if (this.turretManager.IsSlotFree(slotId) && this.playerMoney >= this.turretManager.GetTurretCosts(turretType))
         {
             this.turretManager.BuyTurretForSlot(turretType, slotId);
-            playerMoney -= this.turretManager.GetTurretCosts(turretType);
+            this.playerMoney -= this.turretManager.GetTurretCosts(turretType);
+            return true;
         }
+        return false;
+    }
+
+    public bool SellExistingTurret(int slotId)
+    {
+        int sellingPrice = this.turretManager.turretSlots[slotId].turret.GetComponent<TurretBehavior>().turretConfig.sellingPrice;
+        this.turretManager.RemoveTurretFromTurretSlot(slotId);
+        this.playerMoney += sellingPrice;
         return true;
     }
 

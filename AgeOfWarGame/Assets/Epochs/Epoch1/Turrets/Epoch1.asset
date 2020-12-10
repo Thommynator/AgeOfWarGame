@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Epoch1
   m_EditorClassIdentifier: Assembly-CSharp::TurretsPerEpochConfig
   turretsPerEpoch:
-  - {fileID: 7729197371607536134, guid: 5429d2cb01fd81b4e82779eb43f99d61, type: 3}
-  - {fileID: 7729197371607536134, guid: 3dbe4ab8a3ed642449de49f1bcbcd70e, type: 3}
-  - {fileID: 7729197371607536134, guid: 30b70d6d9c16abd42afc46a35380399e, type: 3}
+  - {fileID: 9080159246403843283, guid: aa5b9e0c5b1290241bf4ed0068c47425, type: 3}
+  - {fileID: 9080159246403843283, guid: b4d1cd8b321450a47b275321201f21d4, type: 3}
+  - {fileID: 9080159246403843283, guid: ffcd72cb43f7549449cd90a75f8cc29d, type: 3}

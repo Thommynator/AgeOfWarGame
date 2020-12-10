@@ -899,8 +899,8 @@ GameObject:
   - component: {fileID: 6542263715672876564}
   - component: {fileID: 7786390808221871839}
   m_Layer: 5
-  m_Name: TurretSelection
-  m_TagString: TurretSelection
+  m_Name: TurretOptions
+  m_TagString: TurretOptions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1062,7 +1062,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7786390808221871839}
-        m_MethodName: ShowPurchasableTurretSelection
+        m_MethodName: ShowTurretOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
