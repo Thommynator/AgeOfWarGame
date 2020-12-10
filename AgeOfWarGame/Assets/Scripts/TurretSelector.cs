@@ -12,34 +12,41 @@ public class TurretSelector : MonoBehaviour
     void Start()
     {
         this.purchaseManager = GameObject.Find("GameManager").GetComponent<PurchaseManager>();
-        HidePurchasableTurretSelection();
-
+        HideTurretSelection();
     }
 
-    public void ShowPurchasableTurretSelection()
+    public void ShowTurretSelection()
     {
+        // hide all other selections first
         GameObject[] allSelections = GameObject.FindGameObjectsWithTag("TurretSelection");
         foreach (GameObject selection in allSelections)
         {
-            selection.GetComponent<TurretSelector>().HidePurchasableTurretSelection();
+            selection.GetComponent<TurretSelector>().HideTurretSelection();
         }
+
+        // show current selection
         this.gameObject.SetActive(true);
-        StartCoroutine(AutoHidePurchasableTurretOptions(5));
+        StartCoroutine(AutoHideTurretSelection(5));
     }
 
-    public void HidePurchasableTurretSelection()
+    public void HideTurretSelection()
     {
         this.gameObject.SetActive(false);
     }
 
-    private IEnumerator AutoHidePurchasableTurretOptions(float duration)
+    private IEnumerator AutoHideTurretSelection(float duration)
     {
         yield return new WaitForSeconds(duration);
-        HidePurchasableTurretSelection();
+        HideTurretSelection();
     }
 
     public void TryToBuyTurret(int turretType)
     {
         this.purchaseManager.TryToBuyNewTurret(this.slotId, turretType);
+    }
+
+    public void SellTurret()
+    {
+        this.purchaseManager.SellExistingTurret(this.slotId);
     }
 }

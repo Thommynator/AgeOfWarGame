@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class TurretConfig : ScriptableObject
 {
     [Header("General")]
-    public int price;
+    public int buyingPrice;
+    public int sellingPrice;
 
 
     [Header("Combat")]

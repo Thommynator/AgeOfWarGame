@@ -1062,7 +1062,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7786390808221871839}
-        m_MethodName: ShowPurchasableTurretSelection
+        m_MethodName: ShowTurretSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
