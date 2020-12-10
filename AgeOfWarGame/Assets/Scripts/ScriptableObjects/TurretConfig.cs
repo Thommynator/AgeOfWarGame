@@ -16,5 +16,5 @@ public class TurretConfig : ScriptableObject
     public float attackCooldown;
     public float attackRange;
     public bool canAttackMultiple;
-
+    public GameObject projectile;
 }
