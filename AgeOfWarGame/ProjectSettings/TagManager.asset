@@ -9,7 +9,7 @@ TagManager:
   - EnemyBuilding
   - PlayerSoldier
   - PlayerBuilding
-  - TurretSelection
+  - TurretOptions
   layers:
   - Default
   - TransparentFX
