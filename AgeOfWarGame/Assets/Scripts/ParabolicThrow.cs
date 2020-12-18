@@ -11,13 +11,15 @@ public class ParabolicThrow : ProjectileAttack
         colliderObject = GetComponent<Collider2D>();
     }
 
-    public override void AttackPosition(Vector2 targetPosition)
+    public override void AttackPosition(Vector2 targetPosition, float damage)
     {
+        base.damage = damage;
+
         Vector2 s = targetPosition - (Vector2)this.transform.position;
         float alpha = 45 * Mathf.Deg2Rad;
         float g = -Physics2D.gravity.y;
         float requiredSpeed = s.x / Mathf.Cos(alpha) * Mathf.Sqrt(g / (2 * (s.x * Mathf.Tan(alpha) - s.y)));
-        body.AddForce(new Vector2(Mathf.Cos(alpha) * requiredSpeed, Mathf.Sin(alpha) * requiredSpeed), ForceMode2D.Impulse);
+        body.velocity = new Vector2(Mathf.Cos(alpha) * requiredSpeed, Mathf.Sin(alpha) * requiredSpeed);
     }
 
 }

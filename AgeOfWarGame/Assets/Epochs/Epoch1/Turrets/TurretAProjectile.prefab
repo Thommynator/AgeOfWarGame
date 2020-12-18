@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 894529288043472088}
   - component: {fileID: 894529288043472093}
   - component: {fileID: 894529288043472090}
-  - component: {fileID: -739533420453636438}
+  - component: {fileID: -1995448035748049474}
   m_Layer: 12
-  m_Name: StoneProjectileParabolical
+  m_Name: TurretAProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 894529288043472092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3705290505268291233}
   m_Father: {fileID: 0}
@@ -71,7 +71,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-739533420453636438
+--- !u!114 &-1995448035748049474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 894529288043472092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0b6145b8e12fe4aa9e361c3869fa6c, type: 3}
+  m_Script: {fileID: 11500000, guid: b5a0bf509eab5be42855ca020c961cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &894529286410934775

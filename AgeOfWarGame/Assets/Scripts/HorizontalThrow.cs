@@ -11,11 +11,17 @@ public class HorizontalThrow : ProjectileAttack
         colliderObject = GetComponent<Collider2D>();
     }
 
-    public override void AttackPosition(Vector2 targetPosition)
+    public override void AttackPosition(Vector2 targetPosition, float damage)
     {
+        base.damage = damage;
         Vector2 differenceToTarget = targetPosition - (Vector2)this.transform.position;
-        float requiredSpeedInX = differenceToTarget.x / (Mathf.Sqrt(2 * -differenceToTarget.y / -Physics.gravity.y));
-        body.AddForce(new Vector2(requiredSpeedInX, 0), ForceMode2D.Impulse);
+
+        // horizontal throw can not go higher than its start position
+        if (differenceToTarget.y < 0)
+        {
+            float requiredSpeedInX = differenceToTarget.x / (Mathf.Sqrt(2 * -differenceToTarget.y / -Physics.gravity.y));
+            body.velocity = new Vector2(requiredSpeedInX, 0);
+        }
     }
 
 }

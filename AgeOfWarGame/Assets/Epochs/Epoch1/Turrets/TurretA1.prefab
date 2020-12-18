@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretConfig: {fileID: 11400000, guid: 9f242d09ab4d5d949b246bb31c4e5fc8, type: 2}
+  target: {fileID: 3871660250415760153, guid: 2b142d9e108119c489a05e4736edc496, type: 3}
 --- !u!1 &9088574831460358472
 GameObject:
   m_ObjectHideFlags: 0
