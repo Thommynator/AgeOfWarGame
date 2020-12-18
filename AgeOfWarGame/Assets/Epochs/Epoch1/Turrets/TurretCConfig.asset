@@ -18,4 +18,5 @@ MonoBehaviour:
   attackCooldown: 1
   attackRange: 5
   canAttackMultiple: 0
-  projectile: {fileID: 0}
+  projectile: {fileID: 894529288043472092, guid: a9013fd9957a94e429d0364c5721c19a,
+    type: 3}

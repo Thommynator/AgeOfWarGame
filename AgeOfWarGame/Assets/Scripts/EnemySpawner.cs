@@ -62,7 +62,6 @@ public class EnemySpawner : MonoBehaviour
     {
         SoldierConfig soldierConfig = soldier.GetComponent<SoldierBehavior>().soldierConfig;
         float weight = 100.0f / (soldierConfig.price + soldierConfig.health + soldierConfig.strength / soldierConfig.attackCooldown);
-        Debug.Log(soldier.gameObject.name + " has a probability weight of " + weight);
         return weight;
     }
 

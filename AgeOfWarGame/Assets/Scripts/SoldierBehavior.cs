@@ -5,12 +5,12 @@ using UnityEngine;
 public class SoldierBehavior : MonoBehaviour
 {
     public SoldierConfig soldierConfig;
-    protected Rigidbody2D body;
-    protected CurrentStats currentStats;
-    protected float speedFactor = 0.2f;
-    protected float timeOfPreviousAttack;
-    protected Vector3 relativAttackPosition;
-    protected HealthBar healthBar;
+    private Rigidbody2D body;
+    private CurrentStats currentStats;
+    private float speedFactor = 0.2f;
+    private float timeOfPreviousAttack;
+    private Vector3 relativAttackPosition;
+    private HealthBar healthBar;
 
     void Start()
     {

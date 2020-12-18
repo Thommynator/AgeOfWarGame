@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6152775144340005170}
   - component: {fileID: 8499905033508251039}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Meteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 359730076809458137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a6c531297f28fa43b87b9f4aa47bc6c, type: 3}
+  m_Script: {fileID: 11500000, guid: ad471c3381cc7204e8b5ca85608e4893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   specialAttackConfig: {fileID: 11400000, guid: 04ef57be7f0651c4ea99304c9e898e7e,
