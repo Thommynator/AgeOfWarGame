@@ -16,7 +16,7 @@ MonoBehaviour:
   sellingPrice: 350
   strength: 5
   attackCooldown: 3
-  attackRange: 5
+  attackRange: 10
   canAttackMultiple: 0
   projectile: {fileID: 894529288043472092, guid: 4eeab8a276f225546abffe9d06c0da20,
     type: 3}

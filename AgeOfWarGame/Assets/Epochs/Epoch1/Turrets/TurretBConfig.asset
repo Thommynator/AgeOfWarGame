@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyingPrice: 500
   sellingPrice: 200
-  strength: 20
-  attackCooldown: 3
-  attackRange: 5
-  canAttackMultiple: 0
-  projectile: {fileID: 894529288043472092, guid: 4eeab8a276f225546abffe9d06c0da20,
+  strength: 1
+  attackCooldown: 1
+  attackRange: 10
+  canAttackMultiple: 1
+  projectile: {fileID: 894529288043472092, guid: 108c596b03b0ceb47a2dcb6ea6b6c09b,
     type: 3}
