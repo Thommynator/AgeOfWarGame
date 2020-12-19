@@ -636,6 +636,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldierConfig: {fileID: 11400000, guid: 3f949ece0fe38f048a47bd02d4613a4d, type: 2}
+  painSounds:
+  - {fileID: 8300000, guid: 42d010098af840d4488ed54ce421510e, type: 3}
+  - {fileID: 8300000, guid: 4082b5cf8c9adcf4aadb562a8dc3fba3, type: 3}
+  - {fileID: 8300000, guid: 2052307f330a4c749b985dacfa49d710, type: 3}
+  - {fileID: 8300000, guid: f5fb52eff0cd19040913e59758661bad, type: 3}
+  - {fileID: 8300000, guid: 40c48155b41e5154babd8cde8b266966, type: 3}
 --- !u!1 &7956472230640779270
 GameObject:
   m_ObjectHideFlags: 0

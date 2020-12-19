@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldierConfig: {fileID: 11400000, guid: 1d592e67861778649ad4f5a8785784ae, type: 2}
+  painSounds:
+  - {fileID: 8300000, guid: f8f796d9295dd914d8710e78f5b46c20, type: 3}
 --- !u!1 &4410029110963771627
 GameObject:
   m_ObjectHideFlags: 0
