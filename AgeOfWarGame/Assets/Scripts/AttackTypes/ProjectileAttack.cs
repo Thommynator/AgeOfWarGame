@@ -14,22 +14,7 @@ public class ProjectileAttack : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (PlayerProjectileHitEnemy(collision) || EnemyProjectileHitPlayer(collision))
-        {
-            collision.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.damage);
-        }
+        collision.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.damage);
         Destroy(this.gameObject);
-    }
-
-
-    protected bool PlayerProjectileHitEnemy(Collision2D collision)
-    {
-        return this.gameObject.tag == "PlayerTurretProjectile" && collision.collider.gameObject.tag == "EnemySoldier";
-    }
-
-    protected bool EnemyProjectileHitPlayer(Collision2D collision)
-    {
-        return this.gameObject.tag == "EnemyTurretProjectile" && collision.collider.gameObject.tag == "PlayerSoldier";
     }
 }

@@ -64,7 +64,6 @@ public class TurretManager : MonoBehaviour
         GameObject turret = Instantiate(turretsPerEpoch[turretType], this.turretSlots[slotId].turret.transform);
         turret.transform.SetParent(this.turretCanvas.transform);
         turret.GetComponentInChildren<TurretSelector>().slotId = slotId;
-        turret.tag = "PlayerTurret";
         Destroy(this.turretSlots[slotId].turret);
         this.turretSlots[slotId] = new TurretSlot(turret, false);
     }
