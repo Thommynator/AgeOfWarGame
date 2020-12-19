@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 894529288043472088}
   - component: {fileID: 894529288043472093}
   - component: {fileID: 894529288043472090}
-  - component: {fileID: -6069685454196973184}
+  - component: {fileID: -2793767035315585519}
   m_Layer: 12
   m_Name: TurretCProjectile
   m_TagString: Untagged
@@ -71,7 +71,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-6069685454196973184
+--- !u!114 &-2793767035315585519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
