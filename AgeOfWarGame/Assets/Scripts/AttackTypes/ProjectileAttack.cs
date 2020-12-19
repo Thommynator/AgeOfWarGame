@@ -14,7 +14,10 @@ public class ProjectileAttack : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.damage);
+        if (collision.gameObject.tag == "PlayerSoldier" || collision.gameObject.tag == "EnemySoldier")
+        {
+            collision.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.damage);
+        }
         Destroy(this.gameObject);
     }
 }

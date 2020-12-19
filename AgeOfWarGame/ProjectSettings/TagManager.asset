@@ -12,6 +12,8 @@ TagManager:
   - TurretOptions
   - PlayerTurretProjectile
   - EnemyTurretProjectile
+  - PlayerTurret
+  - EnemyTurret
   layers:
   - Default
   - TransparentFX

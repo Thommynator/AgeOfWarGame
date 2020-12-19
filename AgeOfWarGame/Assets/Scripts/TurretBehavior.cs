@@ -40,15 +40,19 @@ public class TurretBehavior : MonoBehaviour
         projectile.GetComponent<ProjectileAttack>().AttackObject(collider.gameObject, this.turretConfig.strength);
     }
 
-
     private List<Collider2D> FindAllEnemiesInRange()
     {
         List<Collider2D> enemieColliders = new List<Collider2D>();
         ContactFilter2D contactFilter = new ContactFilter2D();
-        contactFilter.SetLayerMask(LayerMask.GetMask(new string[] { "EnemySoldier" }));
+        if (this.tag == "PlayerTurret")
+        {
+            contactFilter.SetLayerMask(LayerMask.GetMask(new string[] { "EnemySoldier" }));
+        }
+        else if (this.tag == "EnemyTurret")
+        {
+            contactFilter.SetLayerMask(LayerMask.GetMask(new string[] { "PlayerSoldier" }));
+        }
         Physics2D.OverlapCircle(this.transform.position, this.turretConfig.attackRange, contactFilter, enemieColliders);
-
-        Debug.Log("Enemies: " + enemieColliders.Count);
         return enemieColliders;
     }
 

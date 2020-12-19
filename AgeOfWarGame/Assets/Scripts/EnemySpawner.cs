@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
         GameEvents.current.onEnemySpawnAreaFree += () => { isSpawnAreaFree = true; };
         GameEvents.current.onEnemySpawnAreaBlocked += () => { isSpawnAreaFree = false; };
 
-        this.spawnPosition = new Vector3(15, 0, 0);
+        this.spawnPosition = new Vector3(17, -1, 0);
         this.enemySoldiers = GameObject.Find("EnemySoldiers");
         this.isSpawnAreaFree = true;
         this.timeOfPreviousSpawn = Time.time;

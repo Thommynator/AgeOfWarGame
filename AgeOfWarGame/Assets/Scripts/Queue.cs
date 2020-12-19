@@ -10,10 +10,9 @@ public class Queue : MonoBehaviour
     public List<GameObject> icons;
     private Queue<GameObject> soldiersInQueue;
     public GameObject queueEmptyImage;
-
     public bool isSpawnAreaFree;
-
     private GameObject playerSoldiers;
+    private AudioSource spawnSound;
 
     void Start()
     {
@@ -24,6 +23,7 @@ public class Queue : MonoBehaviour
         this.soldiersInQueue = new Queue<GameObject>(this.queueSize);
         this.isSpawnAreaFree = true;
         this.playerSoldiers = GameObject.Find("PlayerSoldiers");
+        this.spawnSound = GetComponent<AudioSource>();
         InstantiateInitialEmptyIcons();
     }
 
@@ -83,7 +83,8 @@ public class Queue : MonoBehaviour
 
     private void SpawnSoldier(GameObject nextSoldier)
     {
-        GameObject soldier = GameObject.Instantiate(nextSoldier, new Vector3(-15, 0, 0), Quaternion.identity);
+        this.spawnSound.Play();
+        GameObject soldier = GameObject.Instantiate(nextSoldier, new Vector3(-17, -1, 0), Quaternion.identity);
         soldier.gameObject.tag = "PlayerSoldier";
         soldier.layer = LayerMask.NameToLayer("PlayerSoldier");
         soldier.transform.SetParent(playerSoldiers.transform);
