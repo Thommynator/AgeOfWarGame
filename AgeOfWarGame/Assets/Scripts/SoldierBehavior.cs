@@ -12,6 +12,8 @@ public class SoldierBehavior : MonoBehaviour
     private Vector3 relativAttackPosition;
     private HealthBar healthBar;
 
+    public AudioClip[] painSounds;
+
     void Start()
     {
         this.body = GetComponent<Rigidbody2D>();
@@ -68,6 +70,13 @@ public class SoldierBehavior : MonoBehaviour
             GameEvents.current.IncreaseMoney(this.soldierConfig.rewardMoney);
             GameEvents.current.IncreaseXp(this.soldierConfig.rewardXp);
         }
+
+        if (painSounds.Length > 0)
+        {
+            AudioClip randomClip = painSounds[Random.Range(0, painSounds.Length)];
+            AudioSource.PlayClipAtPoint(randomClip, new Vector3(transform.position.x, transform.position.y, -10));
+        }
+
         Destroy(this.gameObject);
     }
 
