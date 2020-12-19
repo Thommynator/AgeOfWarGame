@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 894529288043472090}
   - component: {fileID: -739533420453636438}
   m_Layer: 12
-  m_Name: TurretBProjectile 1
+  m_Name: TurretBProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 894529288043472092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0b6145b8e12fe4aa9e361c3869fa6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 597411a72a8f646478ef5b7e403e282c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &894529286410934775

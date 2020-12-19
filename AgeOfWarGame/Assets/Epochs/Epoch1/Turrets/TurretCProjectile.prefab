@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 894529288043472088}
   - component: {fileID: 894529288043472093}
   - component: {fileID: 894529288043472090}
-  - component: {fileID: -739533420453636438}
+  - component: {fileID: -6069685454196973184}
   m_Layer: 12
   m_Name: TurretCProjectile
   m_TagString: Untagged
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 200
+  m_Mass: 400
   m_LinearDrag: 0
   m_AngularDrag: 20
   m_GravityScale: 1
@@ -71,7 +71,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-739533420453636438
+--- !u!114 &-6069685454196973184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 894529288043472092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0b6145b8e12fe4aa9e361c3869fa6c, type: 3}
+  m_Script: {fileID: 11500000, guid: e8049ad198e712342a0908939361de26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &894529286410934775

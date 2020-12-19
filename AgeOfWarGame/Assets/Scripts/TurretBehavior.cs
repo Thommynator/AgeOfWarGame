@@ -37,7 +37,17 @@ public class TurretBehavior : MonoBehaviour
     {
         GameObject projectile = Instantiate(this.turretConfig.projectile, this.transform);
         projectile.transform.SetParent(null);
-        projectile.GetComponent<ProjectileAttack>().AttackPosition(collider.gameObject.transform.position, this.turretConfig.strength);
+        if (this.tag == "PlayerTurret")
+        {
+            projectile.tag = "PlayerTurretProjectile";
+            projectile.layer = LayerMask.NameToLayer("PlayerTurretProjectile");
+        }
+        else if (this.tag == "EnemyTurret")
+        {
+            projectile.tag = "EnemyTurretProjectile";
+            projectile.layer = LayerMask.NameToLayer("EnemyTurretProjectile");
+        }
+        projectile.GetComponent<ProjectileAttack>().AttackObject(collider.gameObject, this.turretConfig.strength);
     }
 
 

@@ -11,10 +11,10 @@ public class HorizontalThrow : ProjectileAttack
         colliderObject = GetComponent<Collider2D>();
     }
 
-    public override void AttackPosition(Vector2 targetPosition, float damage)
+    public override void AttackObject(GameObject target, float damage)
     {
         base.damage = damage;
-        Vector2 differenceToTarget = targetPosition - (Vector2)this.transform.position;
+        Vector2 differenceToTarget = (Vector2)target.transform.position - (Vector2)this.transform.position;
 
         // horizontal throw can not go higher than its start position
         if (differenceToTarget.y < 0)
