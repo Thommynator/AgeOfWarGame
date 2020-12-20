@@ -14,7 +14,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="GUI.svg">
+   sodipodi:docname="GUI.svg"
+   inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\TurretOptions\sell-turret.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <defs
      id="defs2">
     <inkscape:path-effect
@@ -415,8 +418,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35745651"
-     inkscape:cx="455.48136"
-     inkscape:cy="-983.3603"
+     inkscape:cx="1175.9784"
+     inkscape:cy="-413.45019"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -951,7 +954,10 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:69.3585px;font-family:Napolitana;-inkscape-font-specification:'Napolitana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1a3836;fill-opacity:1;stroke-width:1.73397">1</tspan></text>
     </g>
     <g
-       id="g3809">
+       id="g3809"
+       inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\TurretOptions\buy-turret.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
       <path
          style="opacity:0.95;fill:#1a3836;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round"
          sodipodi:type="inkscape:offset"
@@ -1010,17 +1016,27 @@
     <path
        id="path3762"
        style="opacity:0.95;fill:#1a3836;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round"
-       d="m 1051.125,-932.43555 c -51.24155,0 -91.80273,45.08227 -91.80273,99.44922 v 126.60742 h 420.16213 v -126.60742 c 0,-54.36695 -40.5592,-99.44922 -91.8008,-99.44922 z m -91.80273,226.05577 v 161.77539 c 0,54.36693 40.5599,99.45703 91.80273,99.45703 h 236.5586 c 51.2429,0 91.8008,-45.0901 91.8008,-99.45703 v -161.77539 z"
+       d="m 1051.125,-932.43555 c -51.24155,0 -91.80273,45.08227 -91.80273,99.44922 v 126.60742 h 420.16213 v -126.60742 c 0,-54.36695 -40.5592,-99.44922 -91.8008,-99.44922 z m -91.80273,226.05577 0,342.21693 c 0,54.36693 40.5599,99.45703 91.80273,99.45703 h 236.5586 c 51.2429,0 91.8008,-45.0901 91.8008,-99.45703 l 0,-342.21693 z"
        transform="scale(0.26458333)"
-       sodipodi:nodetypes="ssccssscsssscc" />
+       sodipodi:nodetypes="ssccssscsssscc"
+       inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\TurretOptions\sell-turret.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
     <path
        id="path3764"
        style="opacity:0.95;fill:#e3f2f1;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round"
-       d="M 1051.127 -921.04492 C 1006.579 -921.04492 970.71484 -881.76983 970.71484 -832.98438 L 970.71484 -709.17773 L 970.71484 -706.37891 L 970.71484 -547.40039 C 970.71484 -498.61494 1006.579 -459.33984 1051.127 -459.33984 L 1287.6855 -459.33984 C 1332.2335 -459.33984 1368.0977 -498.61494 1368.0977 -547.40039 L 1368.0977 -706.37891 L 1368.0977 -709.17773 L 1368.0977 -832.98438 C 1368.0977 -881.76983 1332.2335 -921.04492 1287.6855 -921.04492 L 1051.127 -921.04492 z "
-       transform="scale(0.26458333)" />
+       d="m 1051.127,-921.04492 c -44.548,0 -80.41216,39.27509 -80.41216,88.06054 v 123.80665 2.79882 l 0,340.81883 c 0,48.78545 35.86416,88.06055 80.41216,88.06055 h 236.5585 c 44.548,0 80.4122,-39.2751 80.4122,-88.06055 l 0,-340.81883 v -2.79882 -123.80665 c 0,-48.78545 -35.8642,-88.06054 -80.4122,-88.06054 z"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\TurretOptions\sell-turret.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       sodipodi:nodetypes="ssccssssccsss" />
     <g
        id="g3841"
-       transform="translate(1.6067764e-5,-4.0710081)">
+       transform="translate(1.6067764e-5,-4.0710081)"
+       inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\TurretOptions\sell-turret.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
       <path
          style="fill:#fec601;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 283.21262,-227.69888 -7.49435,-0.55514 -6.47661,2.49812 -1.29532,5.18128 1.2028,6.29156 8.14202,3.51587 1.48037,3.79344 -2.96074,1.29532 -6.1065,0.27757 -1.66542,4.62614 6.93922,3.70092 8.14203,-5.18128 3.42334,-6.10651 2.86821,0.37009 0.4626,6.19903 14.61862,0.74019 0.83273,-3.23831 -0.83273,-3.97848 -4.99623,-0.46262 1.85047,-2.86821 -0.27757,-5.64389 4.07101,-3.05326 -0.27758,-4.62615 -14.80367,-0.64766 -2.12802,12.58312 -1.57289,2.4056 -2.12802,-4.16354 -6.75418,-3.2383 -2.40559,-3.42335 2.31307,-0.74018 5.73643,-0.83271 z"
@@ -1052,8 +1068,8 @@
     </g>
     <g
        id="g3899"
-       transform="matrix(1.1748289,0,0,1.1748289,264.474,-184.00926)"
-       inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\money-bar.png"
+       transform="matrix(1.1748289,0,0,1.1748289,364.39875,-212.87641)"
+       inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\TurretOptions\sell-button.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300">
       <path
