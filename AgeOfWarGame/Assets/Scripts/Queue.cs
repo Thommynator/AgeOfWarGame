@@ -7,14 +7,13 @@ public class Queue : MonoBehaviour
 {
 
     public int queueSize;
-    public List<GameObject> icons;
-    private Queue<GameObject> soldiersInQueue;
-    public GameObject queueEmptyImage;
-    public bool isSpawnAreaFree;
-    private GameObject playerSoldiers;
-
     public AudioClip addToQueueSound;
     public AudioClip spawnSound;
+    private List<GameObject> icons;
+    private Queue<GameObject> soldiersInQueue;
+    public GameObject queueEmptyImage;
+    private bool isSpawnAreaFree;
+    private GameObject playerSoldiers;
 
     private AudioSource audioSource;
 
@@ -44,7 +43,7 @@ public class Queue : MonoBehaviour
 
         for (int i = 0; i < this.queueSize; i++)
         {
-            GameObject icon = InstantiateIconAtPosition(new Vector3(-queueDimensions.rect.width / 2 + i * 1.5f * iconWidth, 0, 0));
+            GameObject icon = InstantiateIconAtPosition(new Vector3(-queueDimensions.rect.width / 2 + i * 1.5f * iconWidth, -iconWidth, 0));
             this.icons.Add(icon);
         }
     }
