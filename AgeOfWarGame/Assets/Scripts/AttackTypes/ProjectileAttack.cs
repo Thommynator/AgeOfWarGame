@@ -3,9 +3,7 @@ using UnityEngine;
 
 public class ProjectileAttack : MonoBehaviour
 {
-
     protected float damage;
-
     public virtual void AttackObject(GameObject target, float damage)
     {
         // Implemented by the child

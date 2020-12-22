@@ -1,15 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Castle : MonoBehaviour
 {
-
     private HealthBar healthBar;
-
     private CurrentStats currentStats;
 
-    // Start is called before the first frame update
     void Start()
     {
         this.currentStats = gameObject.AddComponent(typeof(CurrentStats)) as CurrentStats;
@@ -18,7 +13,6 @@ public class Castle : MonoBehaviour
         this.healthBar.SetMaxHealth(this.currentStats.health);
     }
 
-    // Update is called once per frame
     void Update()
     {
         this.healthBar.SetHealth(this.currentStats.health);

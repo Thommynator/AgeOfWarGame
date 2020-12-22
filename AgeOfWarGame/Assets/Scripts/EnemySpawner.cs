@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -11,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
     private bool isSpawnAreaFree;
     private float timeOfPreviousSpawn;
 
-    // Start is called before the first frame update
     void Start()
     {
         GameEvents.current.onEnemySpawnAreaFree += () => { isSpawnAreaFree = true; };
@@ -24,7 +22,6 @@ public class EnemySpawner : MonoBehaviour
         this.nextSpawnCooldown = NextSpawnCooldown();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isSpawnAreaFree && Time.time - timeOfPreviousSpawn > nextSpawnCooldown)

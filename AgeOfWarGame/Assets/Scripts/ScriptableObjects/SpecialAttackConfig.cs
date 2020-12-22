@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Special Attack Config", menuName = "ScriptableObjects/SpecialAttackConfig", order = 1)]
 public class SpecialAttackConfig : ScriptableObject
 {
-
     public GameObject projectile;
     public int amountOfProjectiles;
     public int xpCosts;

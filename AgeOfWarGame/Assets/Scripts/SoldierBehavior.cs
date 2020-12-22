@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SoldierBehavior : MonoBehaviour
 {
     public SoldierConfig soldierConfig;
+    public AudioClip[] painSounds;
     private Rigidbody2D body;
     private CurrentStats currentStats;
     private float speedFactor = 0.2f;
     private float timeOfPreviousAttack;
     private Vector3 relativAttackPosition;
     private HealthBar healthBar;
-
-    public AudioClip[] painSounds;
 
     void Start()
     {
@@ -43,8 +41,6 @@ public class SoldierBehavior : MonoBehaviour
         }
         this.healthBar.SetHealth(this.currentStats.health);
     }
-
-
 
     protected void Walk()
     {

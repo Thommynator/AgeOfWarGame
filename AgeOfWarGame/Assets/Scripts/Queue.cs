@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Queue : MonoBehaviour
 {
-
     public int queueSize;
     public AudioClip addToQueueSound;
     public AudioClip spawnSound;
@@ -28,11 +27,6 @@ public class Queue : MonoBehaviour
         this.playerSoldiers = GameObject.Find("PlayerSoldiers");
         audioSource = GetComponent<AudioSource>();
         InstantiateInitialEmptyIcons();
-    }
-
-    void Update()
-    {
-
     }
 
     private void InstantiateInitialEmptyIcons()

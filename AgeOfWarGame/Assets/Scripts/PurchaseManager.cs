@@ -1,25 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PurchaseManager : MonoBehaviour
 {
     public int playerMoney;
-
     public GameObject queue;
-
     private TurretManager turretManager;
 
     void Start()
     {
         GameEvents.current.onIncreaseMoney += (int money) => this.playerMoney += money;
         this.turretManager = GetComponent<TurretManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void TryToBuySoldier(int soldierType)
@@ -66,7 +57,6 @@ public class PurchaseManager : MonoBehaviour
         {
             Debug.Log("Turret slot limit is reached!");
         }
-
     }
 
     public bool TryToBuyNewTurret(int slotId, int turretType)

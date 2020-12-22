@@ -39,7 +39,6 @@ public class SpawnAreaChecker : MonoBehaviour
         }
     }
 
-
     public enum SpawnArea
     {
         PLAYER, ENEMY

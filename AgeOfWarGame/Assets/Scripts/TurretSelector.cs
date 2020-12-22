@@ -1,12 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretSelector : MonoBehaviour
 {
-
     public int slotId;
-
     private PurchaseManager purchaseManager;
 
     void Start()
