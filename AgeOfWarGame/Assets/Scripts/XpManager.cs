@@ -2,7 +2,6 @@
 
 public class XpManager : MonoBehaviour
 {
-
     public int xp;
 
     void Start()

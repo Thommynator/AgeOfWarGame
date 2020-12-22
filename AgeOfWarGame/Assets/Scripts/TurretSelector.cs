@@ -40,6 +40,7 @@ public class TurretSelector : MonoBehaviour
     public void TryToBuyTurret(int turretType)
     {
         this.purchaseManager.TryToBuyNewTurret(this.slotId, turretType);
+        HideTurretOptions();
     }
 
     public void SellTurret()
