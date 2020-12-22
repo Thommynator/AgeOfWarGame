@@ -48,6 +48,7 @@ public class Queue : MonoBehaviour
         icon.transform.SetParent(this.transform);
         icon.transform.localPosition = position;
         icon.transform.rotation = Quaternion.identity;
+        icon.transform.localScale = Vector3.one;
         return icon;
     }
 

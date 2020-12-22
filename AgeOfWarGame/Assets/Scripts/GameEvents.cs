@@ -48,11 +48,20 @@ public class GameEvents : MonoBehaviour
 
     public event Action<int> onIncreaseMoney;
 
-    public void IncreaseMoney(int money)
+    public void IncreaseMoney(int moneyAmount)
     {
         if (onIncreaseMoney != null)
         {
-            onIncreaseMoney(money);
+            onIncreaseMoney(moneyAmount);
+        }
+    }
+
+    public event Action<int> onDecreaseMoney;
+    public void DecreaseMoney(int moneyAmount)
+    {
+        if (onDecreaseMoney != null)
+        {
+            onDecreaseMoney(moneyAmount);
         }
     }
 

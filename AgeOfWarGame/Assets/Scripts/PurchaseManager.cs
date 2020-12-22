@@ -4,12 +4,19 @@ using UnityEngine;
 public class PurchaseManager : MonoBehaviour
 {
     public int playerMoney;
+    public ParticleSystem decreaseMoneyPS;
     public GameObject queue;
     private TurretManager turretManager;
 
     void Start()
     {
         GameEvents.current.onIncreaseMoney += (int money) => this.playerMoney += money;
+        GameEvents.current.onDecreaseMoney += (int money) =>
+        {
+            this.playerMoney -= money;
+            this.decreaseMoneyPS.Play();
+        };
+
         this.turretManager = GetComponent<TurretManager>();
     }
 
@@ -29,7 +36,7 @@ public class PurchaseManager : MonoBehaviour
         {
             if (queue.GetComponent<Queue>().AddSoldierToQueue(soldier))
             {
-                this.playerMoney -= soldierConfig.price;
+                GameEvents.current.DecreaseMoney(soldierConfig.price);
             }
         }
         else
@@ -46,7 +53,7 @@ public class PurchaseManager : MonoBehaviour
             int turretSlotCosts = this.turretManager.GetCostsForNextTurretSlot();
             if (this.playerMoney >= turretSlotCosts && this.turretManager.AddNewEmptyTurretSlot())
             {
-                this.playerMoney -= turretSlotCosts;
+                GameEvents.current.DecreaseMoney(turretSlotCosts);
             }
             else
             {
@@ -64,7 +71,7 @@ public class PurchaseManager : MonoBehaviour
         if (this.turretManager.IsSlotFree(slotId) && this.playerMoney >= this.turretManager.GetTurretCosts(turretType))
         {
             this.turretManager.BuyTurretForSlot(turretType, slotId);
-            this.playerMoney -= this.turretManager.GetTurretCosts(turretType);
+            GameEvents.current.DecreaseMoney(this.turretManager.GetTurretCosts(turretType));
             return true;
         }
         return false;
@@ -74,7 +81,7 @@ public class PurchaseManager : MonoBehaviour
     {
         int sellingPrice = this.turretManager.turretSlots[slotId].turret.GetComponent<TurretBehavior>().turretConfig.sellingPrice;
         this.turretManager.RemoveTurretFromTurretSlot(slotId);
-        this.playerMoney += sellingPrice;
+        GameEvents.current.IncreaseMoney(sellingPrice);
         return true;
     }
 
