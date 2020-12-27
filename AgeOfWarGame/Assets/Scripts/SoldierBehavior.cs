@@ -11,6 +11,7 @@ public class SoldierBehavior : MonoBehaviour
     private float timeOfPreviousAttack;
     private Vector3 relativAttackPosition;
     private HealthBar healthBar;
+    public GameObject earnerGameObject;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class SoldierBehavior : MonoBehaviour
         this.timeOfPreviousAttack = 0;
         this.relativAttackPosition = this.transform.Find("Sprite").transform.localPosition;
         this.healthBar = GetComponentInChildren<HealthBar>();
+        this.earnerGameObject = GameObject.Find("Earner");
         this.healthBar.SetMaxHealth(this.soldierConfig.health);
     }
 
@@ -65,6 +67,9 @@ public class SoldierBehavior : MonoBehaviour
         {
             GameEvents.current.IncreaseMoney(this.soldierConfig.rewardMoney);
             GameEvents.current.IncreaseXp(this.soldierConfig.rewardXp);
+
+            GameObject earner = GameObject.Instantiate(earnerGameObject, transform.position, Quaternion.identity);
+            earner.GetComponent<Earner>().Play();
         }
 
         if (painSounds.Length > 0)
