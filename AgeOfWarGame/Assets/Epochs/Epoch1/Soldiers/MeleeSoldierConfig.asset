@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 25
   health: 50
-  maxSpeed: 10
+  maxSpeed: 15
   spawnDuration: 2
   rewardMoney: 50
   rewardXp: 50
@@ -23,4 +23,5 @@ MonoBehaviour:
   attackType: 0
   meleeAttackRange: 1.5
   rangeAttackRange: 0
+  canAttackMultiple: 0
   characterQueueIcon: {fileID: 21300000, guid: 808d2b71b1b74074ebe2ba73b09c482f, type: 3}

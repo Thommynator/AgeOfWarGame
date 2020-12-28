@@ -98,6 +98,7 @@ MonoBehaviour:
   soldierConfig: {fileID: 11400000, guid: 1d592e67861778649ad4f5a8785784ae, type: 2}
   painSounds:
   - {fileID: 8300000, guid: f8f796d9295dd914d8710e78f5b46c20, type: 3}
+  earnerGameObject: {fileID: 0}
 --- !u!1 &4410029110963771627
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +110,7 @@ GameObject:
   - component: {fileID: 1473348563471002914}
   - component: {fileID: 9045400463550488407}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

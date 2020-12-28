@@ -386,6 +386,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0e49cc5643d45224291cc47925fec14c, type: 3}
   - {fileID: 8300000, guid: 9844ecf38f171cc40b8eb2f089af228d, type: 3}
   - {fileID: 8300000, guid: 99a4d29c7ddac3b4bb6bf1743ccf56b4, type: 3}
+  earnerGameObject: {fileID: 0}
 --- !u!1 &3866523049235353451
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +472,7 @@ GameObject:
   - component: {fileID: 3518382032561319851}
   - component: {fileID: 1164806722538680433}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

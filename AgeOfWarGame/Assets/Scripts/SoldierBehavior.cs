@@ -5,13 +5,14 @@ public class SoldierBehavior : MonoBehaviour
 {
     public SoldierConfig soldierConfig;
     public AudioClip[] painSounds;
+    public GameObject earnerGameObject;
     private Rigidbody2D body;
     private CurrentStats currentStats;
     private float speedFactor = 0.2f;
     private float timeOfPreviousAttack;
     private Vector3 relativAttackPosition;
     private HealthBar healthBar;
-    public GameObject earnerGameObject;
+    private Animator animator;
 
     void Start()
     {
@@ -20,10 +21,11 @@ public class SoldierBehavior : MonoBehaviour
         this.currentStats.currentSpeed = this.soldierConfig.maxSpeed;
         this.currentStats.health = this.soldierConfig.health;
         this.timeOfPreviousAttack = 0;
-        this.relativAttackPosition = this.transform.Find("Sprite").transform.localPosition;
-        this.healthBar = GetComponentInChildren<HealthBar>();
+        this.relativAttackPosition = this.transform.Find("Body").transform.localPosition;
         this.earnerGameObject = GameObject.Find("Earner");
+        this.healthBar = GetComponentInChildren<HealthBar>();
         this.healthBar.SetMaxHealth(this.soldierConfig.health);
+        this.animator = GetComponentInChildren<Animator>();
     }
 
     void FixedUpdate()
@@ -46,6 +48,7 @@ public class SoldierBehavior : MonoBehaviour
 
     protected void Walk()
     {
+        this.animator.SetBool("isWalking", true);
         if (isEnemy())
         {
             WalkIntoDirection(LayerMask.GetMask(new string[1] { "EnemySoldier" }), Vector3.left);
@@ -57,6 +60,7 @@ public class SoldierBehavior : MonoBehaviour
     }
     private void StopWalking()
     {
+        this.animator.SetBool("isWalking", false);
         this.body.velocity = Vector2.zero;
         this.body.angularVelocity = 0;
     }
@@ -121,8 +125,15 @@ public class SoldierBehavior : MonoBehaviour
             }
         }
 
-        this.body.angularVelocity = 0;
-        body.velocity = Vector2.Lerp(body.velocity, newVelocity, 0.1f);
+        if (newVelocity.magnitude < 0.1f)
+        {
+            StopWalking();
+        }
+        else
+        {
+            this.body.angularVelocity = 0;
+            body.velocity = Vector2.Lerp(body.velocity, newVelocity, 0.1f);
+        }
     }
 
     protected bool MeleeAttackOnLayer(int layerMask, Vector2 direction)
@@ -141,6 +152,7 @@ public class SoldierBehavior : MonoBehaviour
 
         if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
         {
+            this.animator.SetTrigger("attack");
             foreach (RaycastHit2D hit in hits)
             {
                 hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
@@ -166,6 +178,7 @@ public class SoldierBehavior : MonoBehaviour
 
         if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
         {
+            this.animator.SetTrigger("attack");
             List<RaycastHit2D> sortedHits = SortHitsByIncreasingDistance(hits);
             foreach (RaycastHit2D hit in sortedHits)
             {

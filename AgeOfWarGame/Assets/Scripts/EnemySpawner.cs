@@ -65,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnSoldier(GameObject nextSoldier)
     {
         GameObject soldier = GameObject.Instantiate(nextSoldier, this.spawnPosition, Quaternion.identity);
-        soldier.transform.localScale = new Vector3(-1, 1, 1);
+        soldier.transform.localScale = new Vector3(-soldier.transform.localScale.x, soldier.transform.localScale.y, soldier.transform.localScale.z);
         soldier.transform.Find("HealthBarCanvas").Find("HealthBar").localScale = new Vector3(-1, 1, 1);
         soldier.tag = "EnemySoldier";
         soldier.layer = LayerMask.NameToLayer("EnemySoldier");

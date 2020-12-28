@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Epoch1
   m_EditorClassIdentifier: 
   soldiersPerEpoch:
-  - {fileID: 6856885074985634379, guid: 1ab161c0f42af604c84f7015efaa5979, type: 3}
-  - {fileID: 1828523937366478339, guid: 463d61cd1a5466640908bdb2c9aaeac2, type: 3}
-  - {fileID: 3267583575534263490, guid: 0f4377e6fc16d3a478384319c5935f48, type: 3}
+  - {fileID: 1334498835589197996, guid: e4fbe84bdecf24145ad641b4b9904782, type: 3}
+  - {fileID: 1334498835589197996, guid: e4fbe84bdecf24145ad641b4b9904782, type: 3}
+  - {fileID: 1334498835589197996, guid: e4fbe84bdecf24145ad641b4b9904782, type: 3}
