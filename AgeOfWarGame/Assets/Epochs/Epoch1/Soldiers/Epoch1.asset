@@ -15,4 +15,4 @@ MonoBehaviour:
   soldiersPerEpoch:
   - {fileID: 1334498835589197996, guid: e4fbe84bdecf24145ad641b4b9904782, type: 3}
   - {fileID: 4519680553085103690, guid: 0345ae3c87d603742af7b334cafb56db, type: 3}
-  - {fileID: 1334498835589197996, guid: e4fbe84bdecf24145ad641b4b9904782, type: 3}
+  - {fileID: 6468561336101442311, guid: 4e08d13ddbe4773478f55d4e14a2c44d, type: 3}

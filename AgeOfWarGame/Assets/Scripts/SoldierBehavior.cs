@@ -35,7 +35,7 @@ public class SoldierBehavior : MonoBehaviour
             Die();
         }
 
-        if (MeleeAttack() || RangeAttack())
+        if (Attack())
         {
             StopWalking();
         }
@@ -85,30 +85,39 @@ public class SoldierBehavior : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected bool MeleeAttack()
+    protected bool Attack()
     {
-        if (isEnemy())
+        if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
         {
-            return MeleeAttackOnLayer(LayerMask.GetMask(new string[2] { "PlayerSoldier", "PlayerBuilding" }), Vector2.left);
-        }
-        else
-        {
-            return MeleeAttackOnLayer(LayerMask.GetMask(new string[2] { "EnemySoldier", "EnemyBuilding" }), Vector2.right);
-        }
+            List<RaycastHit2D> soldiersToAttack = new List<RaycastHit2D>();
+            if (soldierConfig.attackType == SoldierConfig.AttackType.MELEE)
+            {
+                soldiersToAttack = FindSoldiersToAttack(this.soldierConfig.meleeAttackRange);
+            }
+            else if (soldierConfig.attackType == SoldierConfig.AttackType.RANGE)
+            {
+                soldiersToAttack = FindSoldiersToAttack(this.soldierConfig.rangeAttackRange);
+            }
 
+            if (soldiersToAttack.Count < 1)
+            {
+                return false;
+            }
+
+            this.animator.SetTrigger("attack");
+            foreach (RaycastHit2D hit in soldiersToAttack)
+            {
+                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+                if (!this.soldierConfig.canAttackMultiple)
+                {
+                    break;
+                }
+            }
+            this.timeOfPreviousAttack = Time.time;
+        };
+        return true;
     }
 
-    protected virtual bool RangeAttack()
-    {
-        if (isEnemy())
-        {
-            return RangeAttackOnLayer(LayerMask.GetMask(new string[2] { "PlayerSoldier", "PlayerBuilding" }), Vector2.left);
-        }
-        else
-        {
-            return RangeAttackOnLayer(LayerMask.GetMask(new string[2] { "EnemySoldier", "EnemyBuilding" }), Vector2.right);
-        }
-    }
 
     protected void WalkIntoDirection(int layerMask, Vector3 direction)
     {
@@ -136,61 +145,22 @@ public class SoldierBehavior : MonoBehaviour
         }
     }
 
-    protected bool MeleeAttackOnLayer(int layerMask, Vector2 direction)
+    protected List<RaycastHit2D> FindSoldiersToAttack(float attackRange)
     {
-        if (soldierConfig.attackType != SoldierConfig.AttackType.MELEE && soldierConfig.attackType != SoldierConfig.AttackType.BOTH)
+        Vector2 direction;
+        int layerMask;
+        if (isEnemy())
         {
-            return false;
+            layerMask = LayerMask.GetMask(new string[2] { "PlayerSoldier", "PlayerBuilding" });
+            direction = Vector2.left;
         }
-
-        RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)GetAbsoluteAttackPosition(), direction, this.soldierConfig.meleeAttackRange, layerMask);
-
-        if (hits.Length < 1)
+        else
         {
-            return false;
+            direction = Vector2.right;
+            layerMask = LayerMask.GetMask(new string[2] { "EnemySoldier", "EnemyBuilding" });
         }
-
-        if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
-        {
-            this.animator.SetTrigger("attack");
-            foreach (RaycastHit2D hit in hits)
-            {
-                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
-            }
-            this.timeOfPreviousAttack = Time.time;
-        };
-        return true;
-    }
-
-    protected bool RangeAttackOnLayer(int layerMask, Vector2 direction)
-    {
-        if (soldierConfig.attackType != SoldierConfig.AttackType.RANGE && soldierConfig.attackType != SoldierConfig.AttackType.BOTH)
-        {
-            return false;
-        }
-
-        RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)GetAbsoluteAttackPosition(), direction, this.soldierConfig.rangeAttackRange, layerMask);
-
-        if (hits.Length < 1)
-        {
-            return false;
-        }
-
-        if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
-        {
-            this.animator.SetTrigger("attack");
-            List<RaycastHit2D> sortedHits = SortHitsByIncreasingDistance(hits);
-            foreach (RaycastHit2D hit in sortedHits)
-            {
-                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
-                if (!this.soldierConfig.canAttackMultiple)
-                {
-                    break;
-                }
-            }
-            this.timeOfPreviousAttack = Time.time;
-        };
-        return true;
+        RaycastHit2D[] hits = Physics2D.RaycastAll((Vector2)GetAbsoluteAttackPosition(), direction, attackRange, layerMask);
+        return SortHitsByIncreasingDistance(hits);
     }
 
     private List<RaycastHit2D> SortHitsByIncreasingDistance(RaycastHit2D[] hits)
