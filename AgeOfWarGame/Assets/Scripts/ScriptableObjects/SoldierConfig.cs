@@ -26,6 +26,6 @@ public class SoldierConfig : ScriptableObject
 
     public enum AttackType
     {
-        MELEE, RANGE, BOTH
+        MELEE, RANGE
     }
 }

@@ -14,6 +14,9 @@ public class SoldierBehavior : MonoBehaviour
     private HealthBar healthBar;
     private Animator animator;
 
+    [SerializeField]
+    public List<RaycastHit2D> nextSoldiersToAttack;
+
     void Start()
     {
         this.body = GetComponent<Rigidbody2D>();
@@ -25,17 +28,19 @@ public class SoldierBehavior : MonoBehaviour
         this.earnerGameObject = GameObject.Find("Earner");
         this.healthBar = GetComponentInChildren<HealthBar>();
         this.healthBar.SetMaxHealth(this.soldierConfig.health);
-        this.animator = GetComponentInChildren<Animator>();
+        this.animator = GetComponent<Animator>();
+        this.nextSoldiersToAttack = new List<RaycastHit2D>();
     }
 
     void FixedUpdate()
     {
+        Debug.Log(this.animator.GetBool("isWalking"));
         if (this.currentStats.health <= 0)
         {
             Die();
         }
 
-        if (Attack())
+        if (PrepareAttack())
         {
             StopWalking();
         }
@@ -85,37 +90,45 @@ public class SoldierBehavior : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected bool Attack()
+    protected bool PrepareAttack()
     {
+        // search for targets
+        if (soldierConfig.attackType == SoldierConfig.AttackType.MELEE)
+        {
+            this.nextSoldiersToAttack = FindSoldiersToAttack(this.soldierConfig.meleeAttackRange);
+        }
+        else if (soldierConfig.attackType == SoldierConfig.AttackType.RANGE)
+        {
+            this.nextSoldiersToAttack = FindSoldiersToAttack(this.soldierConfig.rangeAttackRange);
+        }
+
+        if (this.nextSoldiersToAttack.Count < 1)
+        {
+            return false;
+        }
+
         if (Time.time - this.timeOfPreviousAttack > this.soldierConfig.attackCooldown)
         {
-            List<RaycastHit2D> soldiersToAttack = new List<RaycastHit2D>();
-            if (soldierConfig.attackType == SoldierConfig.AttackType.MELEE)
-            {
-                soldiersToAttack = FindSoldiersToAttack(this.soldierConfig.meleeAttackRange);
-            }
-            else if (soldierConfig.attackType == SoldierConfig.AttackType.RANGE)
-            {
-                soldiersToAttack = FindSoldiersToAttack(this.soldierConfig.rangeAttackRange);
-            }
-
-            if (soldiersToAttack.Count < 1)
-            {
-                return false;
-            }
-
-            this.animator.SetTrigger("attack");
-            foreach (RaycastHit2D hit in soldiersToAttack)
-            {
-                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
-                if (!this.soldierConfig.canAttackMultiple)
-                {
-                    break;
-                }
-            }
             this.timeOfPreviousAttack = Time.time;
+            this.animator.SetTrigger("attack");
         };
         return true;
+    }
+
+    /**
+    This function is called by an animation event.
+    */
+    public void Attack()
+    {
+        foreach (RaycastHit2D hit in this.nextSoldiersToAttack)
+        {
+            hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+            if (!this.soldierConfig.canAttackMultiple)
+            {
+                break;
+            }
+        }
+        this.nextSoldiersToAttack = new List<RaycastHit2D>();
     }
 
 
@@ -181,11 +194,11 @@ public class SoldierBehavior : MonoBehaviour
         if (!Application.isPlaying) return;
 
         Gizmos.color = new Color(1, 1, 1, 0.2F);
-        if (this.soldierConfig.attackType == SoldierConfig.AttackType.MELEE || this.soldierConfig.attackType == SoldierConfig.AttackType.BOTH)
+        if (this.soldierConfig.attackType == SoldierConfig.AttackType.MELEE)
         {
             Gizmos.DrawSphere(GetAbsoluteAttackPosition(), this.soldierConfig.meleeAttackRange);
         }
-        if (this.soldierConfig.attackType == SoldierConfig.AttackType.RANGE || this.soldierConfig.attackType == SoldierConfig.AttackType.BOTH)
+        if (this.soldierConfig.attackType == SoldierConfig.AttackType.RANGE)
         {
             Gizmos.DrawSphere(GetAbsoluteAttackPosition(), this.soldierConfig.rangeAttackRange);
         }

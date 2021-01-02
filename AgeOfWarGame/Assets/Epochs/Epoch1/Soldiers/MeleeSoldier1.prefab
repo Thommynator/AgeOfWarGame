@@ -299,7 +299,6 @@ GameObject:
   - component: {fileID: 1334498835496246684}
   - component: {fileID: 1334498835496246691}
   - component: {fileID: 1334498835496246690}
-  - component: {fileID: 1334498835496246685}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -400,25 +399,6 @@ MonoBehaviour:
     m_Extent: {x: 7.136757, y: 6.487808, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
---- !u!95 &1334498835496246685
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334498835496246689}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d260399c42ace50478b36fadc7f9ad95, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1334498835589197996
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,6 +411,7 @@ GameObject:
   - component: {fileID: 8555104018175765588}
   - component: {fileID: -2398051962407253005}
   - component: {fileID: 1628566927768821152}
+  - component: {fileID: 658286628010240051}
   m_Layer: 0
   m_Name: MeleeSoldier1
   m_TagString: Untagged
@@ -522,6 +503,25 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 40c48155b41e5154babd8cde8b266966, type: 3}
   earnerGameObject: {fileID: 3774441541673008942, guid: b9a41022f79b3df42b48f0f49b0d891e,
     type: 3}
+--- !u!95 &658286628010240051
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334498835589197996}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d260399c42ace50478b36fadc7f9ad95, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1334498835666845688
 GameObject:
   m_ObjectHideFlags: 0
