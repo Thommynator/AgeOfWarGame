@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Soldier Config", menuName = "ScriptableObjects/SoldierConfig", order = 1)]
 public class SoldierConfig : ScriptableObject
@@ -29,6 +26,6 @@ public class SoldierConfig : ScriptableObject
 
     public enum AttackType
     {
-        MELEE, RANGE, BOTH
+        MELEE, RANGE
     }
 }

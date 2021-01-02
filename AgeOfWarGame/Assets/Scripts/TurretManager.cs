@@ -1,18 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class TurretManager : MonoBehaviour
 {
-
-
     public List<TurretSlot> turretSlots;
-
     public GameObject emptyTurretSlotPrefab;
-
     private GameObject turretCanvas;
-
     private int maxSlotAmount;
 
     void Start()

@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpecialAttackSpawner : MonoBehaviour
 {
 
-    private XpManager xpManager;
-    public List<SpecialAttackConfig> specialAttackConfigs;
     public int epochIndex;
+    public List<SpecialAttackConfig> specialAttackConfigs;
+    private XpManager xpManager;
 
     public void Start()
     {

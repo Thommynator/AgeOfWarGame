@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ac35fead756a186418e43e76dc8e2885, type: 3}
   m_Name: Epoch1
-  m_EditorClassIdentifier: Assembly-CSharp::TurretsPerEpochConfig
+  m_EditorClassIdentifier: 
   turretsPerEpoch:
   - {fileID: 9080159246403843283, guid: aa5b9e0c5b1290241bf4ed0068c47425, type: 3}
   - {fileID: 9080159246403843283, guid: b4d1cd8b321450a47b275321201f21d4, type: 3}

@@ -1,17 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-
     public Gradient gradient;
     private Slider slider;
     private Image fillImage;
 
-
-    // Start is called before the first frame update
     void Awake()
     {
         this.slider = GetComponent<Slider>();
