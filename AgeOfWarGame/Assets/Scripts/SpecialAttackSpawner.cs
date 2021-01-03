@@ -1,31 +1,31 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpecialAttackSpawner : MonoBehaviour
 {
+    public GameObject cooldownVisualization;
+
     private XpManager xpManager;
 
-    private float timeOfPreviousExecution;
+    private float timeOfNextPossibleExecution;
 
     public void Start()
     {
         this.xpManager = GameObject.Find("GameManager").GetComponent<XpManager>();
-        this.timeOfPreviousExecution = 0;
+        this.timeOfNextPossibleExecution = 0;
     }
 
     public void StartAttackForPlayer()
     {
         SpecialAttackConfig config = EpochManager.current.GetSpecialAttackConfigOfCurrentPlayerEpoch();
 
-        float deltaTime = Time.time - this.timeOfPreviousExecution;
-        Debug.Log(deltaTime);
-        if (deltaTime > config.cooldownDuration)
+        if (Time.time > timeOfNextPossibleExecution)
         {
             if (this.xpManager.xp >= config.xpCosts)
             {
-                this.timeOfPreviousExecution = Time.time;
+                this.timeOfNextPossibleExecution = Time.time + config.cooldownDuration;
                 GameEvents.current.DecreasecreaseXp(config.xpCosts);
+                this.cooldownVisualization.GetComponent<CooldownController>().StartCooldown(config.cooldownDuration);
                 StartCoroutine(SpawnRandomly(true));
             }
             else
@@ -35,7 +35,7 @@ public class SpecialAttackSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("Cooldown!");
+            Debug.Log("Special attack is on cooldown!");
         }
     }
 
