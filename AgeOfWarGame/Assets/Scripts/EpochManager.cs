@@ -6,6 +6,7 @@ public class EpochManager : MonoBehaviour
     public static EpochManager current;
     public List<SoldiersPerEpochConfig> soldiersOfAllEpochs;
     public List<TurretsPerEpochConfig> turretsOfAllEpochs;
+    public List<SpecialAttackConfig> specialAttacksOfAllEpochs;
 
     public int playerEpoch;
     public int enemyEpoch;
@@ -36,5 +37,15 @@ public class EpochManager : MonoBehaviour
     public List<GameObject> GetTurretsOfCurrentEnemyEpoch()
     {
         return turretsOfAllEpochs[enemyEpoch].turretsPerEpoch;
+    }
+
+    public SpecialAttackConfig GetSpecialAttackConfigOfCurrentPlayerEpoch()
+    {
+        return specialAttacksOfAllEpochs[playerEpoch];
+    }
+
+    public SpecialAttackConfig GetSpecialAttackConfigOfCurrentEnemyEpoch()
+    {
+        return specialAttacksOfAllEpochs[enemyEpoch];
     }
 }

@@ -4,39 +4,56 @@ using UnityEngine;
 
 public class SpecialAttackSpawner : MonoBehaviour
 {
-
-    public int epochIndex;
-    public List<SpecialAttackConfig> specialAttackConfigs;
     private XpManager xpManager;
+
+    private float timeOfPreviousExecution;
 
     public void Start()
     {
         this.xpManager = GameObject.Find("GameManager").GetComponent<XpManager>();
-        this.epochIndex = 0;
+        this.timeOfPreviousExecution = 0;
     }
 
-    public void StartAttack()
+    public void StartAttackForPlayer()
     {
-        // TODO check cooldown
+        SpecialAttackConfig config = EpochManager.current.GetSpecialAttackConfigOfCurrentPlayerEpoch();
 
-        if (this.xpManager.xp >= this.specialAttackConfigs[epochIndex].xpCosts)
+        float deltaTime = Time.time - this.timeOfPreviousExecution;
+        Debug.Log(deltaTime);
+        if (deltaTime > config.cooldownDuration)
         {
-            GameEvents.current.DecreasecreaseXp(this.specialAttackConfigs[epochIndex].xpCosts);
-            StartCoroutine(SpawnRandomly());
+            if (this.xpManager.xp >= config.xpCosts)
+            {
+                this.timeOfPreviousExecution = Time.time;
+                GameEvents.current.DecreasecreaseXp(config.xpCosts);
+                StartCoroutine(SpawnRandomly(true));
+            }
+            else
+            {
+                Debug.Log("Not enough XP!");
+            }
         }
         else
         {
-            Debug.Log("Not enough XP!");
+            Debug.Log("Cooldown!");
         }
     }
 
-    private IEnumerator SpawnRandomly()
+    public void StartAttackForEnemy()
     {
-        for (int i = 0; i < this.specialAttackConfigs[epochIndex].amountOfProjectiles; i++)
+        StartCoroutine(SpawnRandomly(false));
+    }
+
+    private IEnumerator SpawnRandomly(bool attackEnemyTeam)
+    {
+        SpecialAttackConfig config = EpochManager.current.GetSpecialAttackConfigOfCurrentPlayerEpoch();
+
+        for (int i = 0; i < config.amountOfProjectiles; i++)
         {
-            GameObject.Instantiate(this.specialAttackConfigs[epochIndex].projectile,
-                new Vector3(Random.Range(this.specialAttackConfigs[epochIndex].minX, this.specialAttackConfigs[epochIndex].maxX), 15, 0), Quaternion.identity);
-            yield return new WaitForSeconds(Random.Range(this.specialAttackConfigs[epochIndex].minTimeBetweenSpawning, this.specialAttackConfigs[epochIndex].maxTimeBetweenSpawning));
+            Vector3 randomPosition = new Vector3(Random.Range(config.minX, config.maxX), 15, 0);
+            GameObject projectile = GameObject.Instantiate(config.projectile, randomPosition, Quaternion.identity);
+            projectile.tag = attackEnemyTeam ? "PlayerSoldier" : "EnemySoldier";
+            yield return new WaitForSeconds(Random.Range(config.minTimeBetweenSpawning, config.maxTimeBetweenSpawning));
         }
     }
 }
