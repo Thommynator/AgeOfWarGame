@@ -18,6 +18,7 @@ public class SoldierConfig : ScriptableObject
     public float meleeAttackRange;
     public float rangeAttackRange;
     public bool canAttackMultiple;
+    public GameObject rangeProjectile;
 
 
     [Header("Visuals")]

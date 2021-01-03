@@ -5,7 +5,6 @@ public class TargetingShot : ProjectileAttack
 {
     private Rigidbody2D body;
     private Collider2D colliderObject;
-    private GameObject target;
 
     void Awake()
     {
@@ -16,7 +15,7 @@ public class TargetingShot : ProjectileAttack
     public override void AttackObject(GameObject target, float damage)
     {
         base.damage = damage;
-        this.target = target;
+        base.target = target;
 
         Vector2 s = (Vector2)target.transform.position - (Vector2)this.transform.position;
         float alpha = 85 * Mathf.Deg2Rad;
@@ -36,7 +35,7 @@ public class TargetingShot : ProjectileAttack
         // when it starts to fall down, move incremental to target
         while (true)
         {
-            Vector2 moveToPosition = Vector2.MoveTowards(this.transform.position, this.target.transform.position, 0.2f);
+            Vector2 moveToPosition = Vector2.MoveTowards(this.transform.position, base.target.transform.position, 0.2f);
             this.body.MovePosition(moveToPosition);
             yield return new WaitForSeconds(0.01f);
         }

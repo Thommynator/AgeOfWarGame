@@ -27,8 +27,8 @@ TagManager:
   - EnemySoldier
   - PlayerBuilding
   - EnemyBuilding
-  - 
-  - 
+  - PlayerProjectile
+  - EnemyProjectile
   - 
   - 
   - 

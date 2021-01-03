@@ -14,6 +14,8 @@ public class HorizontalThrow : ProjectileAttack
     public override void AttackObject(GameObject target, float damage)
     {
         base.damage = damage;
+        base.target = target;
+
         Vector2 differenceToTarget = (Vector2)target.transform.position - (Vector2)this.transform.position;
 
         // horizontal throw can not go higher than its start position

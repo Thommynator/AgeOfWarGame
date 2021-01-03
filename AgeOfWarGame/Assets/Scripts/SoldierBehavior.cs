@@ -34,7 +34,6 @@ public class SoldierBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(this.animator.GetBool("isWalking"));
         if (this.currentStats.health <= 0)
         {
             Die();
@@ -122,7 +121,26 @@ public class SoldierBehavior : MonoBehaviour
     {
         foreach (RaycastHit2D hit in this.nextSoldiersToAttack)
         {
-            hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+            if (this.soldierConfig.attackType == SoldierConfig.AttackType.MELEE)
+            {
+                // hitscan -> instant damage
+                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+            }
+            else if (this.soldierConfig.attackType == SoldierConfig.AttackType.RANGE)
+            {
+                // projectile
+                GameObject projectile = GameObject.Instantiate(this.soldierConfig.rangeProjectile, this.transform.position + Vector3.up * 0.2f, Quaternion.identity);
+                if (this.gameObject.tag == "PlayerSoldier")
+                {
+                    projectile.layer = LayerMask.NameToLayer("PlayerProjectile");
+                }
+                else if (this.gameObject.tag == "EnemySoldier")
+                {
+                    projectile.layer = LayerMask.NameToLayer("EnemyProjectile");
+                }
+                projectile.GetComponent<ProjectileAttack>().AttackObject(hit.collider.gameObject, this.soldierConfig.strength);
+            }
+
             if (!this.soldierConfig.canAttackMultiple)
             {
                 break;
