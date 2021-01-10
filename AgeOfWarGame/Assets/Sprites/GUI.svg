@@ -447,32 +447,6 @@
        width="57.495167"
        height="59.875542"
        id="rect1795" />
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter1312"
-       x="-0.00032845962"
-       width="1.0006569"
-       y="-0.0003284618"
-       height="1.0006569">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.0083412018"
-         id="feGaussianBlur1314" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter1316"
-       x="-5.9619208e-05"
-       width="1.0001192"
-       y="-0.00024302924"
-       height="1.0004861">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="0.0051618292"
-         id="feGaussianBlur1318" />
-    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -481,17 +455,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.51087636"
-     inkscape:cx="2268.373"
-     inkscape:cy="-727.09403"
+     inkscape:zoom="0.36812178"
+     inkscape:cx="1016.2775"
+     inkscape:cy="-1368.6142"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
      inkscape:snap-global="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1002"
+     inkscape:window-width="1536"
+     inkscape:window-height="811"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -639,7 +613,9 @@
     <g
        id="g1250"
        transform="translate(-92.05447,-15.480879)"
-       style="filter:url(#filter1316)">
+       inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\HeaderGUI\XP-bar.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
       <g
          id="g1602"
          inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\middle-bar.png"
@@ -786,7 +762,7 @@
        inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\HeaderGUI\special-attack.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300"
-       style="opacity:1;filter:url(#filter1312)">
+       style="opacity:1;">
       <g
          id="g2991"
          transform="matrix(0.31810911,0,0,0.31810911,14.434551,-160.64464)">
@@ -1244,6 +1220,27 @@
                id="path860-1" />
           </g>
         </g>
+      </g>
+    </g>
+    <g
+       id="g3005-0"
+       transform="matrix(0.6188352,0,0,0.6188352,220.10631,-264.52867)"
+       inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\HeaderGUI\special-attack-cooldown-overlay.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       style="opacity:1;">
+      <g
+         id="g2991-8"
+         transform="matrix(0.31810911,0,0,0.31810911,14.434551,-160.64464)">
+        <path
+           id="path891-4"
+           style="opacity:1;fill:#e3f2f1;fill-opacity:1;stroke:none;stroke-width:4.99999;stroke-linecap:round"
+           d="m 340.53425,-82.28289 a 92.56353,92.56353 0 0 1 -92.46014,92.563472 92.56353,92.56353 0 0 1 -92.66669,-92.356685 92.56353,92.56353 0 0 1 92.25312,-92.769797 92.56353,92.56353 0 0 1 92.87278,92.149437" />
+        <path
+           id="path2998-1"
+           style="opacity:1;fill:#1a3836;fill-opacity:1;stroke:none;stroke-width:6.22148;stroke-linecap:round"
+           d="m 352.30469,-821.26562 a 115.17671,115.17671 0 0 0 -114.78907,115.43359 115.17671,115.17671 0 0 0 115.30469,114.91797 115.17671,115.17671 0 0 0 115.04883,-115.17578 l -0.002,-0.51368 a 115.17671,115.17671 0 0 0 -115.5625,-114.6621 z m 0.0137,3.88671 a 111.28933,111.28933 0 0 1 111.66211,110.79102 v 0.49805 A 111.28933,111.28933 0 0 1 352.81641,-594.80078 111.28933,111.28933 0 0 1 241.40234,-705.8418 111.28933,111.28933 0 0 1 352.31836,-817.37891 Z"
+           transform="matrix(0.83173768,0,0,0.83173768,-45.376101,504.99855)" />
       </g>
     </g>
   </g>
