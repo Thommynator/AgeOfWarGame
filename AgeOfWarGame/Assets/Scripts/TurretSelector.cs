@@ -9,7 +9,7 @@ public class TurretSelector : MonoBehaviour
     void Start()
     {
         this.purchaseManager = GameObject.Find("GameManager").GetComponent<PurchaseManager>();
-        HideTurretOptions();
+        ShowTurretOptions();
     }
 
     public void ShowTurretOptions()
@@ -18,17 +18,23 @@ public class TurretSelector : MonoBehaviour
         GameObject[] allSelections = GameObject.FindGameObjectsWithTag("TurretOptions");
         foreach (GameObject selection in allSelections)
         {
+            if (selection.gameObject == this.gameObject)
+            {
+                continue;
+            }
             selection.GetComponent<TurretSelector>().HideTurretOptions();
         }
 
         // show current selection
+        this.gameObject.transform.localScale = Vector3.zero;
         this.gameObject.SetActive(true);
-        StartCoroutine(AutoHideTurretOptions(5));
+        LeanTween.scale(this.gameObject, Vector3.one, 0.2f);
+        StartCoroutine(AutoHideTurretOptions(2));
     }
 
     public void HideTurretOptions()
     {
-        this.gameObject.SetActive(false);
+        LeanTween.scale(this.gameObject, Vector3.zero, 0.2f).setOnComplete(() => this.gameObject.SetActive(false));
     }
 
     private IEnumerator AutoHideTurretOptions(float duration)
