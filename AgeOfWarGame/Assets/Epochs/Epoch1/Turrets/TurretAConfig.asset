@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7f263151338f74da9998c988e588b4, type: 3}
   m_Name: TurretAConfig
   m_EditorClassIdentifier: 
+  turretName: Rocky
+  description: Throws rocks and deals decent damage.
   buyingPrice: 100
   sellingPrice: 50
+  specialAbility: None
   strength: 10
   attackCooldown: 1
   attackRange: 10

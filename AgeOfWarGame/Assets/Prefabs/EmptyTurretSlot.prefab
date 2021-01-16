@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 8281677502600569265}
   - component: {fileID: 7485732949305130043}
   - component: {fileID: 5748123893662008345}
+  - component: {fileID: 4269842553330751029}
   m_Layer: 5
   m_Name: BuyTurretBButton
   m_TagString: Untagged
@@ -603,6 +604,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4269842553330751029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4451878404395577602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d60738ea5399f04fadccb4e69e13102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableObject: {fileID: 11400000, guid: ffe56e6e7e0c1fe4882664e2fc962e6e, type: 2}
 --- !u!1 &5522242421043231203
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +629,7 @@ GameObject:
   - component: {fileID: 6955571609501817492}
   - component: {fileID: 5899278656030417156}
   - component: {fileID: 5358755663051984199}
+  - component: {fileID: 6366217716741272343}
   m_Layer: 5
   m_Name: BuyTurretCButton
   m_TagString: Untagged
@@ -733,6 +748,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6366217716741272343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522242421043231203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d60738ea5399f04fadccb4e69e13102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableObject: {fileID: 11400000, guid: 225d8278c58ee75409693ef9aa632ada, type: 2}
 --- !u!1 &5944198739498886244
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +956,7 @@ GameObject:
   - component: {fileID: 2707376717546119012}
   - component: {fileID: 1035451264449568079}
   - component: {fileID: 7988174969729438863}
+  - component: {fileID: 4878976707459248426}
   m_Layer: 5
   m_Name: BuyTurretAButton
   m_TagString: Untagged
@@ -1046,3 +1075,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4878976707459248426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088574831460358472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d60738ea5399f04fadccb4e69e13102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableObject: {fileID: 11400000, guid: 9f242d09ab4d5d949b246bb31c4e5fc8, type: 2}

@@ -10,6 +10,7 @@ public class TooltipSystem : MonoBehaviour
 
     public GeneralTooltip generalTooltip;
     public SoldierTooltip soldierTooltip;
+    public TurretTooltip turretTooltip;
 
     void Awake()
     {
@@ -25,6 +26,10 @@ public class TooltipSystem : MonoBehaviour
         else if (scriptableObject.GetType() == typeof(GeneralTooltipInfoConfig))
         {
             current.tooltip = current.generalTooltip;
+        }
+        else if (scriptableObject.GetType() == typeof(TurretConfig))
+        {
+            current.tooltip = current.turretTooltip;
         }
         else
         {
@@ -44,6 +49,11 @@ public class TooltipSystem : MonoBehaviour
         {
             current.tooltip.gameObject.SetActive(false);
         }
+    }
+
+    public static Tooltip GetCurrentTooltip()
+    {
+        return current.tooltip;
     }
 
 }
