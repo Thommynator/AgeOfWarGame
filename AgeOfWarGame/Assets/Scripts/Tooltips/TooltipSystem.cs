@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TooltipSystem : MonoBehaviour
 {
@@ -11,6 +9,7 @@ public class TooltipSystem : MonoBehaviour
     public GeneralTooltip generalTooltip;
     public SoldierTooltip soldierTooltip;
     public TurretTooltip turretTooltip;
+    public SpecialAttackTooltip specialAttackTooltip;
 
     void Awake()
     {
@@ -30,6 +29,10 @@ public class TooltipSystem : MonoBehaviour
         else if (scriptableObject.GetType() == typeof(TurretConfig))
         {
             current.tooltip = current.turretTooltip;
+        }
+        else if (scriptableObject.GetType() == typeof(SpecialAttackConfig))
+        {
+            current.tooltip = current.specialAttackTooltip;
         }
         else
         {

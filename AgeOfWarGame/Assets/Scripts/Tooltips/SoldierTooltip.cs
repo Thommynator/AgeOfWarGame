@@ -28,12 +28,12 @@ public class SoldierTooltip : Tooltip
 
         this.nameText.text = soldierConfig.soldierName;
         this.descriptionText.text = soldierConfig.description;
-        this.costsText.text = soldierConfig.price.ToString() + "$";
+        this.costsText.text = soldierConfig.price.ToString() + " $";
         this.healthText.text = soldierConfig.health.ToString();
         this.speedText.text = soldierConfig.maxSpeed.ToString();
         this.spawnTimeText.text = soldierConfig.spawnDuration.ToString();
         this.strengthText.text = soldierConfig.strength.ToString();
-        this.cooldownText.text = soldierConfig.attackCooldown.ToString() + "s";
+        this.cooldownText.text = soldierConfig.attackCooldown.ToString() + " s";
         this.rangeText.text = soldierConfig.attackType == SoldierConfig.AttackType.MELEE ? soldierConfig.meleeAttackRange.ToString() : soldierConfig.rangeAttackRange.ToString();
         this.attackTypeText.text = soldierConfig.attackType == SoldierConfig.AttackType.MELEE ? "melee" : "range";
     }

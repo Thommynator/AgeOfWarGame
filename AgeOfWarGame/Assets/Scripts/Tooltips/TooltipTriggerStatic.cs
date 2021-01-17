@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TooltipTriggerStatic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private static LTDescr delay;
     public ScriptableObject scriptableObject;

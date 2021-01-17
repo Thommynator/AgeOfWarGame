@@ -8,7 +8,7 @@ public class SpecialAttackDamage : MonoBehaviour
     {
         if (isOpposingTeam(collision))
         {
-            collision.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(specialAttackConfig.damage);
+            collision.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(specialAttackConfig.strength);
         }
         Destroy(this.gameObject);
     }

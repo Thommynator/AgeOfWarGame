@@ -27,12 +27,12 @@ public class TurretTooltip : Tooltip
 
         this.nameText.text = turretConfig.turretName;
         this.descriptionText.text = turretConfig.description;
-        this.costsText.text = turretConfig.buyingPrice.ToString() + "$";
-        this.refundText.text = turretConfig.sellingPrice.ToString() + "$";
+        this.costsText.text = turretConfig.buyingPrice.ToString() + " $";
+        this.refundText.text = turretConfig.sellingPrice.ToString() + " $";
         this.specialAbilityText.text = turretConfig.specialAbility;
 
         this.strengthText.text = turretConfig.strength.ToString();
-        this.cooldownText.text = turretConfig.attackCooldown.ToString() + "s";
+        this.cooldownText.text = turretConfig.attackCooldown.ToString() + " s";
         this.rangeText.text = turretConfig.attackRange.ToString();
     }
 }

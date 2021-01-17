@@ -10,7 +10,6 @@ public class Tooltip : MonoBehaviour
     void Update()
     {
         Vector2 mousePosition = Input.mousePosition;
-
         GetComponent<RectTransform>().pivot = GetPivot(mousePosition);
         this.transform.position = mousePosition;
     }
@@ -26,21 +25,13 @@ public class Tooltip : MonoBehaviour
 
         float offset = 0.2f;
 
-        if (mx >= 0 && mx < w / 2 && my >= h / 2 && my <= h)
+        if (my >= h / 2 && my <= h)
         {
-            return new Vector2(0, 1 + offset);
-        }
-        else if (mx >= w / 2 && mx <= w && my >= h / 2 && my <= h)
-        {
-            return new Vector2(1, 1 + offset);
-        }
-        else if (mx >= 0 && mx < w / 2 && my >= 0 && my < h / 2)
-        {
-            return new Vector2(0, 0 - offset);
+            return new Vector2(mx / Screen.width, 1 + offset);
         }
         else
         {
-            return new Vector2(1, 0 - offset);
+            return new Vector2(mx / Screen.width, 0 - offset);
         }
 
     }

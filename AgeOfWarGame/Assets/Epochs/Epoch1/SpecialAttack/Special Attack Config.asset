@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 359730076809458137, guid: 60b30a901f3aec645be1ec69d4626278,
     type: 3}
+  attackName: Meteor Rain
+  description: Burning meteors will crush the enemies. No worries, you're save!
   amountOfProjectiles: 20
   xpCosts: 100
-  cooldownDuration: 120
-  damage: 100
+  attackCooldown: 120
+  strength: 100
   minTimeBetweenSpawning: 0.2
   maxTimeBetweenSpawning: 0.5
   minX: -12
