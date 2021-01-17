@@ -42,7 +42,7 @@ public class TooltipSystem : MonoBehaviour
         current.tooltip.SetContent(scriptableObject);
         current.tooltip.gameObject.transform.localScale = Vector3.zero;
         current.tooltip.gameObject.SetActive(true);
-        LeanTween.scale(current.tooltip.gameObject, Vector3.one, 0.2f).setEaseInExpo();
+        LeanTween.scale(current.tooltip.gameObject, Vector3.one, 0.5f).setEaseOutBack();
     }
 
 

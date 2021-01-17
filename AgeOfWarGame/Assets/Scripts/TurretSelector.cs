@@ -32,8 +32,8 @@ public class TurretSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if (!this.gameObject.activeSelf)
         {
             this.gameObject.SetActive(true);
-            this.gameObject.transform.localScale = Vector3.zero;
-            LeanTween.scale(this.gameObject, Vector3.one, 0.2f);
+            this.gameObject.transform.localScale = new Vector3(1, 0, 1);
+            LeanTween.scaleY(this.gameObject, 1, 0.75f).setEaseOutElastic();
         }
 
         StartCoroutine(AutoHideTurretOptionsWhenMouseIsNotOn(3));
@@ -47,7 +47,7 @@ public class TurretSelector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
         if (this.gameObject.activeSelf)
         {
-            LeanTween.scale(this.gameObject, Vector3.zero, 0.2f).setOnComplete(() => this.gameObject.SetActive(false));
+            LeanTween.scaleY(this.gameObject, 0, 0.2f).setEaseOutExpo().setOnComplete(() => this.gameObject.SetActive(false));
         }
     }
 
