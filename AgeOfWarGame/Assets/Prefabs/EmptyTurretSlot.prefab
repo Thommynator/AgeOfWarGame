@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.521, y: 0.3768}
+  m_AnchoredPosition: {x: 1.521, y: 0}
   m_SizeDelta: {x: 1.3, y: 3.6925354}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2189481476665465316
@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 8281677502600569265}
   - component: {fileID: 7485732949305130043}
   - component: {fileID: 5748123893662008345}
+  - component: {fileID: 4606907102391130232}
   m_Layer: 5
   m_Name: BuyTurretBButton
   m_TagString: Untagged
@@ -509,7 +510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5, y: 0}
+  m_AnchoredPosition: {x: 1.5, y: -0.4}
   m_SizeDelta: {x: 17.6065, y: 19.397934}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8281677502600569265
@@ -603,6 +604,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4606907102391130232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4451878404395577602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72135eff0dc9cff429536e41376f7ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: 1
+  index: 1
 --- !u!1 &5522242421043231203
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +630,7 @@ GameObject:
   - component: {fileID: 6955571609501817492}
   - component: {fileID: 5899278656030417156}
   - component: {fileID: 5358755663051984199}
+  - component: {fileID: 6945470314171695161}
   m_Layer: 5
   m_Name: BuyTurretCButton
   m_TagString: Untagged
@@ -639,7 +655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5, y: -0.8}
+  m_AnchoredPosition: {x: 1.5, y: -1.2}
   m_SizeDelta: {x: 17.6065, y: 19.397934}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6955571609501817492
@@ -733,6 +749,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6945470314171695161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522242421043231203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72135eff0dc9cff429536e41376f7ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: 1
+  index: 2
 --- !u!1 &5944198739498886244
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,8 +800,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.191, y: 0}
+  m_SizeDelta: {x: 4.553744, y: 3.8731937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7786390808221871839
 MonoBehaviour:
@@ -928,6 +958,7 @@ GameObject:
   - component: {fileID: 2707376717546119012}
   - component: {fileID: 1035451264449568079}
   - component: {fileID: 7988174969729438863}
+  - component: {fileID: 3584473342521317480}
   m_Layer: 5
   m_Name: BuyTurretAButton
   m_TagString: Untagged
@@ -952,7 +983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5, y: 0.8}
+  m_AnchoredPosition: {x: 1.5, y: 0.4}
   m_SizeDelta: {x: 17.6065, y: 19.397934}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2707376717546119012
@@ -1046,3 +1077,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3584473342521317480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088574831460358472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72135eff0dc9cff429536e41376f7ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: 1
+  index: 0

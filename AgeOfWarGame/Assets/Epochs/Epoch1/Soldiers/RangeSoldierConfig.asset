@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144034004779d8c4cb92889f57ad0b14, type: 3}
   m_Name: RangeSoldierConfig
   m_EditorClassIdentifier: 
+  soldierName: Slingshot Sophie
+  description: Low health, but fast range attack.
   price: 50
   health: 15
   maxSpeed: 15

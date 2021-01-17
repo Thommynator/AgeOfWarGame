@@ -4,8 +4,12 @@
 public class TurretConfig : ScriptableObject
 {
     [Header("General")]
+    public string turretName;
+    public string description;
     public int buyingPrice;
     public int sellingPrice;
+    public string specialAbility;
+
 
     [Header("Combat")]
     public float strength;

@@ -23,9 +23,9 @@ public class SpecialAttackSpawner : MonoBehaviour
         {
             if (this.xpManager.xp >= config.xpCosts)
             {
-                this.timeOfNextPossibleExecution = Time.time + config.cooldownDuration;
+                this.timeOfNextPossibleExecution = Time.time + config.attackCooldown;
                 GameEvents.current.DecreasecreaseXp(config.xpCosts);
-                this.cooldownVisualization.GetComponent<CooldownController>().StartCooldown(config.cooldownDuration);
+                this.cooldownVisualization.GetComponent<CooldownController>().StartCooldown(config.attackCooldown);
                 StartCoroutine(SpawnRandomly(true));
             }
             else

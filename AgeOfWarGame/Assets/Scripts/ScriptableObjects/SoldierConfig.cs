@@ -4,6 +4,8 @@
 public class SoldierConfig : ScriptableObject
 {
     [Header("General")]
+    public string soldierName;
+    public string description;
     public int price;
     public float health;
     public float maxSpeed;

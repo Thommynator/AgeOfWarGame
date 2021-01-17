@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144034004779d8c4cb92889f57ad0b14, type: 3}
   m_Name: TankSoldierConfig
   m_EditorClassIdentifier: 
+  soldierName: Muscle Man
+  description: The hulk guy - slow but powerful.
   price: 100
   health: 80
   maxSpeed: 5
@@ -24,4 +26,5 @@ MonoBehaviour:
   meleeAttackRange: 2
   rangeAttackRange: 0
   canAttackMultiple: 1
+  rangeProjectile: {fileID: 0}
   characterQueueIcon: {fileID: 21300000, guid: 8621afeabf245ab4cb2f4bc9128798c0, type: 3}

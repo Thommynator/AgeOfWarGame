@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7f263151338f74da9998c988e588b4, type: 3}
   m_Name: TurretBConfig
   m_EditorClassIdentifier: 
+  turretName: Multi Tasker
+  description: Pretty weak, but can attack all enemies in range at once.
   buyingPrice: 500
   sellingPrice: 200
+  specialAbility: Multi-Attack
   strength: 1
   attackCooldown: 1
   attackRange: 10

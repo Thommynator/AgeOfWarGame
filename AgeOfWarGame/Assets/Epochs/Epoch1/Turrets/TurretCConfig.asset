@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7f263151338f74da9998c988e588b4, type: 3}
   m_Name: TurretCConfig
   m_EditorClassIdentifier: 
+  turretName: The Pusher
+  description: The lower the tower, the stronger the push.
   buyingPrice: 800
   sellingPrice: 350
+  specialAbility: Knock-Back
   strength: 5
   attackCooldown: 3
   attackRange: 10
