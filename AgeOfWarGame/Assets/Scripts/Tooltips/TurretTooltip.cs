@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class TurretTooltip : Tooltip
-{
+public class TurretTooltip : Tooltip {
     [Header("General")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
@@ -16,10 +15,8 @@ public class TurretTooltip : Tooltip
     public TextMeshProUGUI cooldownText;
     public TextMeshProUGUI rangeText;
 
-    public override void SetContent(ScriptableObject scriptableObject)
-    {
-        if (scriptableObject.GetType() != typeof(TurretConfig))
-        {
+    public override void SetContent(ScriptableObject scriptableObject) {
+        if (scriptableObject.GetType() != typeof(TurretConfig)) {
             return;
         }
 

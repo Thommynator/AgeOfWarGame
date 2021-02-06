@@ -3,15 +3,12 @@ using TMPro;
 using UnityEngine.UI;
 
 
-public class GeneralTooltip : Tooltip
-{
+public class GeneralTooltip : Tooltip {
     public TextMeshProUGUI header;
     public TextMeshProUGUI content;
 
-    public override void SetContent(ScriptableObject scriptableObject)
-    {
-        if (scriptableObject.GetType() != typeof(GeneralTooltipInfoConfig))
-        {
+    public override void SetContent(ScriptableObject scriptableObject) {
+        if (scriptableObject.GetType() != typeof(GeneralTooltipInfoConfig)) {
             return;
         }
 

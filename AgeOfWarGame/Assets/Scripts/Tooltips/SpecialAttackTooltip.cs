@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class SpecialAttackTooltip : Tooltip
-{
+public class SpecialAttackTooltip : Tooltip {
     [Header("General")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
@@ -13,10 +12,8 @@ public class SpecialAttackTooltip : Tooltip
     public TextMeshProUGUI strengthText;
     public TextMeshProUGUI cooldownText;
 
-    public override void SetContent(ScriptableObject scriptableObject)
-    {
-        if (scriptableObject.GetType() != typeof(SpecialAttackConfig))
-        {
+    public override void SetContent(ScriptableObject scriptableObject) {
+        if (scriptableObject.GetType() != typeof(SpecialAttackConfig)) {
             return;
         }
 

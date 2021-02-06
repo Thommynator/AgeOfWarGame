@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class SoldierTooltip : Tooltip
-{
+public class SoldierTooltip : Tooltip {
     [Header("General")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
@@ -17,10 +16,8 @@ public class SoldierTooltip : Tooltip
     public TextMeshProUGUI rangeText;
     public TextMeshProUGUI attackTypeText;
 
-    public override void SetContent(ScriptableObject scriptableObject)
-    {
-        if (scriptableObject.GetType() != typeof(SoldierConfig))
-        {
+    public override void SetContent(ScriptableObject scriptableObject) {
+        if (scriptableObject.GetType() != typeof(SoldierConfig)) {
             return;
         }
 
