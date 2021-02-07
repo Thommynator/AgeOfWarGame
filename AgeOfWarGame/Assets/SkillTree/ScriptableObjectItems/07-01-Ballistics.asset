@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
-  m_Name: 10
+  m_Name: 07-01-Ballistics
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
+  skillName: Ballistics
+  description: Turrets can shoot a greater distance.
   moneyCosts: 0
   xpCosts: 0
+  requirements: []
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
+  canBuildTurrets: 0
   turretRelativeStrength: 0
   turretRelativePrice: 0
-  turretRelativeRange: 0
+  turretRelativeRange: 20
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 0

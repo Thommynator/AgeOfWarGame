@@ -6,11 +6,23 @@ public class TurretManager : MonoBehaviour {
     public GameObject emptyTurretSlotPrefab;
     private GameObject turretCanvas;
     private int maxSlotAmount;
+    private bool canBuildTurrets;
 
     void Start() {
         this.maxSlotAmount = 3;
         this.turretSlots = new List<TurretSlot>(maxSlotAmount);
         this.turretCanvas = GameObject.Find("TurretCanvas");
+        this.turretCanvas.SetActive(false);
+        this.canBuildTurrets = false;
+    }
+
+    void Update() {
+        if (!this.canBuildTurrets) {
+            this.canBuildTurrets = SkillTreeManager.current.CanBuildTurrets();
+        }
+        if (this.canBuildTurrets) {
+            this.turretCanvas.SetActive(true);
+        }
     }
 
     public bool AddNewEmptyTurretSlot() {
@@ -40,7 +52,8 @@ public class TurretManager : MonoBehaviour {
     }
 
     public int GetTurretCosts(int turretType) {
-        return EpochManager.current.GetTurretsOfCurrentPlayerEpoch()[turretType].GetComponent<TurretBehavior>().turretConfig.buyingPrice;
+        TurretConfig turretConfig = SkillTreeManager.current.GetTurretConfigWithUpgrades(EpochManager.current.GetTurretsOfCurrentPlayerEpoch()[turretType].GetComponent<TurretBehavior>().turretConfig);
+        return turretConfig.buyingPrice;
     }
 
     public void BuyTurretForSlot(int turretType, int slotId) {

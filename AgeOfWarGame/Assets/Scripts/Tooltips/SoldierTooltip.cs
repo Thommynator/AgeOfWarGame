@@ -21,7 +21,7 @@ public class SoldierTooltip : Tooltip {
             return;
         }
 
-        SoldierConfig soldierConfig = (SoldierConfig)scriptableObject;
+        SoldierConfig soldierConfig = SkillTreeManager.current.GetSoldierConfigWithUpgrades((SoldierConfig)scriptableObject);
 
         this.nameText.text = soldierConfig.soldierName;
         this.descriptionText.text = soldierConfig.description;

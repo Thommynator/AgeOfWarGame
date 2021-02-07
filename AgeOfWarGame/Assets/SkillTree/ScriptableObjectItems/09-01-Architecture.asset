@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
-  m_Name: 7Ballistics
+  m_Name: 09-01-Architecture
   m_EditorClassIdentifier: 
-  skillName: Ballistics
-  description: Greater range for your turrets.
+  skillName: Architecture
+  description: Turrets for the base can be created.
   moneyCosts: 0
   xpCosts: 0
+  requirements: []
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
+  canBuildTurrets: 1
   turretRelativeStrength: 0
   turretRelativePrice: 0
-  turretRelativeRange: 5
+  turretRelativeRange: 0
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 0

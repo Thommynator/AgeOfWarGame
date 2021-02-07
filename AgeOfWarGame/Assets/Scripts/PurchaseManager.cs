@@ -2,10 +2,17 @@
 using UnityEngine;
 
 public class PurchaseManager : MonoBehaviour {
+
+    public static PurchaseManager current;
     public int playerMoney;
     public ParticleSystem decreaseMoneyPS;
     public GameObject queue;
     private TurretManager turretManager;
+    private float timeOfPreviousBasicIncome;
+
+    private void Awake() {
+        current = this;
+    }
 
     void Start() {
         GameEvents.current.onIncreaseMoney += (int money) => this.playerMoney += money;
@@ -15,6 +22,15 @@ public class PurchaseManager : MonoBehaviour {
         };
 
         this.turretManager = GetComponent<TurretManager>();
+        this.timeOfPreviousBasicIncome = 0;
+    }
+
+    void Update() {
+        float incomeInterval = 1;
+        if (Time.time - timeOfPreviousBasicIncome > incomeInterval) {
+            BasicIncome();
+            timeOfPreviousBasicIncome = Time.time;
+        }
     }
 
     public void TryToBuySoldier(int soldierType) {
@@ -26,7 +42,7 @@ public class PurchaseManager : MonoBehaviour {
         }
 
         GameObject soldier = soldiersOfCurrentEpoch[soldierType];
-        SoldierConfig soldierConfig = soldier.GetComponent<SoldierBehavior>().soldierConfig;
+        SoldierConfig soldierConfig = SkillTreeManager.current.GetSoldierConfigWithUpgrades(soldier.GetComponent<SoldierBehavior>().soldierConfig);
         if (this.playerMoney >= soldierConfig.price) {
             if (queue.GetComponent<Queue>().AddSoldierToQueue(soldier)) {
                 GameEvents.current.DecreaseMoney(soldierConfig.price);
@@ -60,10 +76,15 @@ public class PurchaseManager : MonoBehaviour {
     }
 
     public bool SellExistingTurret(int slotId) {
-        int sellingPrice = this.turretManager.turretSlots[slotId].turret.GetComponent<TurretBehavior>().turretConfig.sellingPrice;
+        int sellingPrice = SkillTreeManager.current.GetTurretConfigWithUpgrades(this.turretManager.turretSlots[slotId].turret.GetComponent<TurretBehavior>().turretConfig).sellingPrice;
         this.turretManager.RemoveTurretFromTurretSlot(slotId);
         GameEvents.current.IncreaseMoney(sellingPrice);
         return true;
+    }
+
+    private void BasicIncome() {
+        EconomyConfig config = SkillTreeManager.current.GetEconomyConfigWithUpgrades();
+        playerMoney += config.basicMoneyIncome;
     }
 
 }

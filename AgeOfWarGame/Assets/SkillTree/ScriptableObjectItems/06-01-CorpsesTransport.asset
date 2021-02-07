@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
-  m_Name: 8SacrificialOffering
+  m_Name: 06-01-CorpsesTransport
   m_EditorClassIdentifier: 
-  skillName: Sacrificial Offerings
-  description: The religous offerings of your citiziens will shorten the cooldown
-    time for the supernatural events.
-  moneyCosts: 0
-  xpCosts: 0
+  skillName: Corpses Transport
+  description: You will receive a  price refund for each of your fallen soldiers.
+  moneyCosts: 1000
+  xpCosts: 500
+  requirements: []
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
+  canBuildTurrets: 0
   turretRelativeStrength: 0
   turretRelativePrice: 0
   turretRelativeRange: 0
   constantMoneyIncome: 0
-  specialAttackRelativeCooldown: -20
-  relativeSoldierCashback: 0
+  specialAttackRelativeCooldown: 0
+  relativeSoldierCashback: 30

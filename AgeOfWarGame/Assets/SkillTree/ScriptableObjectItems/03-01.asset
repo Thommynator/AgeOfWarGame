@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
-  m_Name: 6CorpsesTransport
+  m_Name: 03-01
   m_EditorClassIdentifier: 
-  skillName: Corpses Transport
-  description: You will receive a small price refund for each of your fallen soldiers.
-  moneyCosts: 1000
-  xpCosts: 500
+  skillName: 
+  description: 
+  moneyCosts: 0
+  xpCosts: 0
+  requirements: []
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
+  canBuildTurrets: 0
   turretRelativeStrength: 0
   turretRelativePrice: 0
   turretRelativeRange: 0
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0
-  relativeSoldierCashback: 10
+  relativeSoldierCashback: 0

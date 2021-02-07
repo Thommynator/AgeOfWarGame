@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
-  m_Name: 2ImprovedAiming
+  m_Name: 08-01-SacrificialOffering
   m_EditorClassIdentifier: 
-  skillName: Improved Aiming
-  description: Increased range for soldiers.
-  moneyCosts: 500
-  xpCosts: 200
+  skillName: Sacrificial Offerings
+  description: Religous offerings of your citiziens will shorten the cooldown time
+    for the supernatural events.
+  moneyCosts: 0
+  xpCosts: 0
+  requirements: []
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
-  soldierRelativeRange: 5
+  soldierRelativeRange: 0
+  canBuildTurrets: 0
   turretRelativeStrength: 0
   turretRelativePrice: 0
   turretRelativeRange: 0
   constantMoneyIncome: 0
-  specialAttackRelativeCooldown: 0
+  specialAttackRelativeCooldown: -20
   relativeSoldierCashback: 0

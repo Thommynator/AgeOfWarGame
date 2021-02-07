@@ -61,7 +61,8 @@ public class Queue : MonoBehaviour {
     }
 
     private IEnumerator StartCooldownForFirstSoldier() {
-        float spawnDuration = this.soldiersInQueue.Peek().GetComponent<SoldierBehavior>().soldierConfig.spawnDuration;
+        SoldierConfig soldierConfig = SkillTreeManager.current.GetSoldierConfigWithUpgrades(this.soldiersInQueue.Peek().GetComponent<SoldierBehavior>().soldierConfig);
+        float spawnDuration = soldierConfig.spawnDuration;
         yield return new WaitForSeconds(spawnDuration);
         while (!isSpawnAreaFree) {
             yield return new WaitForSeconds(0.2f);

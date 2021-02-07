@@ -3,17 +3,22 @@ using UnityEngine;
 
 public class TurretBehavior : MonoBehaviour {
     public TurretConfig turretConfig;
+
+    private TurretConfig turretConfigWithUpgrades;
+
     private float timeOfPreviousAttack;
 
     void Start() {
         this.timeOfPreviousAttack = 0;
+        this.turretConfigWithUpgrades = SkillTreeManager.current.GetTurretConfigWithUpgrades(this.turretConfig);
     }
 
     void Update() {
-        if (Time.time - this.timeOfPreviousAttack > this.turretConfig.attackCooldown) {
+        this.turretConfigWithUpgrades = SkillTreeManager.current.GetTurretConfigWithUpgrades(this.turretConfig);
+        if (Time.time - this.timeOfPreviousAttack > this.turretConfigWithUpgrades.attackCooldown) {
             List<Collider2D> enemieColliders = FindAllEnemiesInRange();
             if (enemieColliders.Count > 0) {
-                if (this.turretConfig.canAttackMultiple) {
+                if (this.turretConfigWithUpgrades.canAttackMultiple) {
                     enemieColliders.ForEach(AttackColliderPosition);
                 } else {
                     // TODO the first one is not always the closest one... not sure if I want that
@@ -25,9 +30,9 @@ public class TurretBehavior : MonoBehaviour {
     }
 
     private void AttackColliderPosition(Collider2D collider) {
-        GameObject projectile = Instantiate(this.turretConfig.projectile, this.transform);
+        GameObject projectile = Instantiate(this.turretConfigWithUpgrades.projectile, this.transform);
         projectile.transform.SetParent(null);
-        projectile.GetComponent<ProjectileAttack>().AttackObject(collider.gameObject, this.turretConfig.strength);
+        projectile.GetComponent<ProjectileAttack>().AttackObject(collider.gameObject, this.turretConfigWithUpgrades.strength);
     }
 
     private List<Collider2D> FindAllEnemiesInRange() {
@@ -38,7 +43,7 @@ public class TurretBehavior : MonoBehaviour {
         } else if (this.tag == "EnemyTurret") {
             contactFilter.SetLayerMask(LayerMask.GetMask(new string[] { "PlayerSoldier" }));
         }
-        Physics2D.OverlapCircle(this.transform.position, this.turretConfig.attackRange, contactFilter, enemieColliders);
+        Physics2D.OverlapCircle(this.transform.position, this.turretConfigWithUpgrades.attackRange, contactFilter, enemieColliders);
         return enemieColliders;
     }
 
@@ -46,6 +51,6 @@ public class TurretBehavior : MonoBehaviour {
         if (!Application.isPlaying) return;
 
         Gizmos.color = new Color(1, 1, 1, 0.2F);
-        Gizmos.DrawSphere(this.transform.position, this.turretConfig.attackRange);
+        Gizmos.DrawSphere(this.transform.position, this.turretConfigWithUpgrades.attackRange);
     }
 }

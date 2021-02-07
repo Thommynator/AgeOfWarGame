@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
-  m_Name: 4ForceTheory
+  m_Name: 04-01-ForceTheory
   m_EditorClassIdentifier: 
   skillName: Force Theory
-  description: Makes your turrets stronger, but also more expensive.
+  description: Turrets are stronger, but also more expensive.
   moneyCosts: 1000
   xpCosts: 800
+  requirements: []
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
-  turretRelativeStrength: 10
+  canBuildTurrets: 0
+  turretRelativeStrength: 20
   turretRelativePrice: 0
   turretRelativeRange: 0
   constantMoneyIncome: 0

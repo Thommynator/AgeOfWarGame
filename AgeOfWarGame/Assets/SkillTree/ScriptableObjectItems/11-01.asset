@@ -10,17 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
-  m_Name: 12
+  m_Name: 11-01
   m_EditorClassIdentifier: 
-  skillName: 
-  description: 
+  skillName: Building Material
+  description: Citiziens will produce more building material, which reduces the turret
+    costs.
   moneyCosts: 0
   xpCosts: 0
+  requirements: []
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
-  turretRelativeStrength: 0
-  turretRelativePrice: 0
+  canBuildTurrets: 0
+  turretRelativeStrength: 10
+  turretRelativePrice: -25
   turretRelativeRange: 0
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0

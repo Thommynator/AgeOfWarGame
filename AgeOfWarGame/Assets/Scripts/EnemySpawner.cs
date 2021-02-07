@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     private float CalculateProbabilityWeight(GameObject soldier) {
-        SoldierConfig soldierConfig = soldier.GetComponent<SoldierBehavior>().soldierConfig;
+        SoldierConfig soldierConfig = SkillTreeManager.current.GetSoldierConfigWithUpgrades(soldier.GetComponent<SoldierBehavior>().soldierConfig);
         float weight = 100.0f / (soldierConfig.price + soldierConfig.health + soldierConfig.strength / soldierConfig.attackCooldown);
         return weight;
     }

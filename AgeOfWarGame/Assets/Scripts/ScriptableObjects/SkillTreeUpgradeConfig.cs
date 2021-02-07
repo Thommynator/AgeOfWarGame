@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "Skill Tree Upgrade", menuName = "ScriptableObjects/SkillTreeUpgrade", order = 1)]
-public class SkillTreeUpgradeConfig : ScriptableObject
-{
+public class SkillTreeUpgradeConfig : ScriptableObject {
 
     [Header("General")]
     public string skillName;
     public string description;
-    public float moneyCosts;
-    public float xpCosts;
+    public int moneyCosts;
+    public int xpCosts;
+    public List<SkillTreeUpgradeConfig> requirements;
 
     [Header("Soldier")]
     public float soldierRelativeStrength;
@@ -17,6 +18,7 @@ public class SkillTreeUpgradeConfig : ScriptableObject
     public float soldierRelativeRange;
 
     [Header("Turret")]
+    public bool canBuildTurrets;
     public float turretRelativeStrength;
     public float turretRelativePrice;
     public float turretRelativeRange;
