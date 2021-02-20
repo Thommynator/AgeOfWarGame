@@ -59,11 +59,18 @@ public class SoldierBehavior : MonoBehaviour {
 
     private void Die() {
         if (isEnemy()) {
+            // Kill Reward
             GameEvents.current.IncreaseMoney(this.soldierConfig.rewardMoney);
             GameEvents.current.IncreaseXp(this.soldierConfig.rewardXp);
 
             GameObject earner = GameObject.Instantiate(earnerGameObject, transform.position, Quaternion.identity);
             earner.GetComponent<Earner>().Play();
+        } else {
+            // Soldier Cashback
+            EconomyConfig economyConfig = SkillTreeManager.current.GetEconomyConfigWithUpgrades();
+            if (economyConfig.relativeSoldierCashback > 0) {
+                GameEvents.current.IncreaseMoney(Mathf.CeilToInt(this.soldierConfig.price * economyConfig.relativeSoldierCashback));
+            }
         }
 
         if (painSounds.Length > 0) {

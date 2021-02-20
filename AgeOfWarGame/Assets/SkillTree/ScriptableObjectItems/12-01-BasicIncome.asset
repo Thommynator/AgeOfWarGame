@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
-  m_Name: 08-01-SacrificialOffering
+  m_Name: 12-01-BasicIncome
   m_EditorClassIdentifier: 
-  skillName: Sacrificial Offerings
-  description: Religous offerings of your citiziens will shorten the cooldown time
-    for the supernatural events.
-  moneyCosts: 0
-  xpCosts: 0
+  skillName: Basic Income
+  description: Constant  money flow on the bank account.
+  moneyCosts: 1000
+  xpCosts: 200
   requirements: []
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
@@ -25,6 +24,6 @@ MonoBehaviour:
   turretRelativeStrength: 0
   turretRelativePrice: 0
   turretRelativeRange: 0
-  constantMoneyIncome: 0
-  specialAttackRelativeCooldown: -20
+  constantMoneyIncome: 10
+  specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 0

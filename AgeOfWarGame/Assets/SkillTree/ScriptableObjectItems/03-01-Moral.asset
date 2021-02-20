@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
-  m_Name: 11-01
+  m_Name: 03-01-Moral
   m_EditorClassIdentifier: 
-  skillName: Building Material
-  description: Citiziens will produce more building material, which reduces the turret
-    costs.
+  skillName: Moral
+  description: The more soldiers on the battlefield, the stronger each of them gets.
   moneyCosts: 0
   xpCosts: 0
   requirements: []
@@ -22,8 +21,8 @@ MonoBehaviour:
   soldierRelativePrice: 0
   soldierRelativeRange: 0
   canBuildTurrets: 0
-  turretRelativeStrength: 10
-  turretRelativePrice: -25
+  turretRelativeStrength: 0
+  turretRelativePrice: 0
   turretRelativeRange: 0
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0

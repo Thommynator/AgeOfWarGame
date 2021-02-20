@@ -15,12 +15,14 @@ public class SpecialAttackSpawner : MonoBehaviour {
 
     public void StartAttackForPlayer() {
         SpecialAttackConfig config = EpochManager.current.GetSpecialAttackConfigOfCurrentPlayerEpoch();
+        EconomyConfig economyConfig = SkillTreeManager.current.GetEconomyConfigWithUpgrades();
+        float cooldown = config.attackCooldown * economyConfig.specialAttackRelativeCooldown;
 
         if (Time.time > timeOfNextPossibleExecution) {
             if (this.xpManager.xp >= config.xpCosts) {
-                this.timeOfNextPossibleExecution = Time.time + config.attackCooldown;
+                this.timeOfNextPossibleExecution = Time.time + cooldown;
                 GameEvents.current.DecreasecreaseXp(config.xpCosts);
-                this.cooldownVisualization.GetComponent<CooldownController>().StartCooldown(config.attackCooldown);
+                this.cooldownVisualization.GetComponent<CooldownController>().StartCooldown(cooldown);
                 StartCoroutine(SpawnRandomly(true));
             } else {
                 Debug.Log("Not enough XP!");

@@ -163,7 +163,7 @@ public class SkillTreeManager : MonoBehaviour {
         EconomyConfig config = ScriptableObject.CreateInstance<EconomyConfig>();
         config.basicMoneyIncome = Mathf.CeilToInt(this.aggregatedStats.constantMoneyIncome);
         config.specialAttackRelativeCooldown = this.aggregatedStats.specialAttackRelativeCooldown;
-        config.relativeSoldierCashback = Mathf.CeilToInt(this.aggregatedStats.relativeSoldierCashback);
+        config.relativeSoldierCashback = this.aggregatedStats.relativeSoldierCashback - 1;
         return config;
     }
 
