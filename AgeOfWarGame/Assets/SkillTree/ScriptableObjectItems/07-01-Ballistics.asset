@@ -16,7 +16,8 @@ MonoBehaviour:
   description: Turrets can shoot a greater distance.
   moneyCosts: 0
   xpCosts: 0
-  requirements: []
+  requirements:
+  - {fileID: 11400000, guid: 898456f295136ee4cb8c9bf9eed6c18a, type: 2}
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
@@ -27,3 +28,7 @@ MonoBehaviour:
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: 7b9543ecfb7007546a3fbf185816a3d6,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 9f84d9ed505dd564caa2e81c0491d0dd,
+    type: 3}

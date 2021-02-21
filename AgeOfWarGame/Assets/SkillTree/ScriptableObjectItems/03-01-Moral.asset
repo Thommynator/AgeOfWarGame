@@ -16,7 +16,8 @@ MonoBehaviour:
   description: The more soldiers on the battlefield, the stronger each of them gets.
   moneyCosts: 0
   xpCosts: 0
-  requirements: []
+  requirements:
+  - {fileID: 11400000, guid: c7c4180c2091edc4d8ce41a168bf008a, type: 2}
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
@@ -27,3 +28,7 @@ MonoBehaviour:
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: ef518433d98dea047bc7ea764baf5993,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 26278c76b9ceee34991c9c7b3fc6acec,
+    type: 3}

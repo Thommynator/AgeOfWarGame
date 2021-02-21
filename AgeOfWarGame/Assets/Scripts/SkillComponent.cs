@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillComponent : MonoBehaviour {
 
@@ -15,17 +14,32 @@ public class SkillComponent : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (isUnlocked) {
-            // show unlocked visualization
-            Debug.Log(this.config.skillName + " is unlocked.");
-        } else if (SkillTreeManager.current.IsUnlockable(this)) {
-            // show unlockable visualization
-            Debug.Log(this.config.skillName + " is unlockable.");
+        if (this.IsUnlockable()) {
+            GetComponent<Button>().interactable = true;
+            GetComponent<Image>().sprite = config.skillUnlockableSprite;
+        } else if (!this.IsUnlocked()) {
+            GetComponent<Button>().interactable = false;
+        } else if (this.IsUnlocked()) {
+            GetComponent<Image>().sprite = config.skillUnlockedSprite;
         }
     }
 
     public void TryToUnlockSkill() {
-        this.isUnlocked = SkillTreeManager.current.TryToUnlockSkill(this);
+        if (!this.IsUnlocked()) {
+            this.isUnlocked = SkillTreeManager.current.TryToUnlockSkill(this);
+        }
     }
+
+    public bool IsUnlocked() {
+        return this.isUnlocked;
+    }
+
+    public bool IsUnlockable() {
+        return SkillTreeManager.current.IsUnlockable(this);
+    }
+
+
+
+
 
 }

@@ -28,3 +28,7 @@ MonoBehaviour:
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: -50
   relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: 35f5fbaca8af5ff41a8ef4de928c96cf,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 24e64627a37ad2b419b23458490a0b06,
+    type: 3}

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretManager : MonoBehaviour {
     public List<TurretSlot> turretSlots;
@@ -7,13 +8,14 @@ public class TurretManager : MonoBehaviour {
     private GameObject turretCanvas;
     private int maxSlotAmount;
     private bool canBuildTurrets;
+    private GameObject addTurretSlotButton;
 
     void Start() {
         this.maxSlotAmount = 3;
         this.turretSlots = new List<TurretSlot>(maxSlotAmount);
         this.turretCanvas = GameObject.Find("TurretCanvas");
-        this.turretCanvas.SetActive(false);
         this.canBuildTurrets = false;
+        this.addTurretSlotButton = GameObject.Find("AddTurretSlotButton");
     }
 
     void Update() {
@@ -21,7 +23,7 @@ public class TurretManager : MonoBehaviour {
             this.canBuildTurrets = SkillTreeManager.current.CanBuildTurrets();
         }
         if (this.canBuildTurrets) {
-            this.turretCanvas.SetActive(true);
+            this.addTurretSlotButton.GetComponent<Button>().interactable = true;
         }
     }
 

@@ -17,7 +17,9 @@ MonoBehaviour:
     costs.
   moneyCosts: 0
   xpCosts: 0
-  requirements: []
+  requirements:
+  - {fileID: 11400000, guid: 501ca3396fdf12245b5f8163928fefb2, type: 2}
+  - {fileID: 11400000, guid: 0c95c9b1f1b57af4a9f87c3413d1d08b, type: 2}
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
@@ -28,3 +30,7 @@ MonoBehaviour:
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: 547fef70235265f429bc5344d9564e37,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 8df7aa72a49610e46b7bb9d6d4ca1bbc,
+    type: 3}

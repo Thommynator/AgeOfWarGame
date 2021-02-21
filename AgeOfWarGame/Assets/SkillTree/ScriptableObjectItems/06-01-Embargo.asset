@@ -16,7 +16,9 @@ MonoBehaviour:
   description: The enemy oconomy is weakened.
   moneyCosts: 0
   xpCosts: 0
-  requirements: []
+  requirements:
+  - {fileID: 11400000, guid: 817bbe40a777a6e4d8dbd05b61f858c3, type: 2}
+  - {fileID: 11400000, guid: a20b1feee36628b4d954b55a95fc7660, type: 2}
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
@@ -27,3 +29,7 @@ MonoBehaviour:
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: 6e50be173a4b16c4983babc4aee3aba6,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: f95050725e7c50240a64635b296d06f2,
+    type: 3}

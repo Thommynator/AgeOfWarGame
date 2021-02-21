@@ -28,5 +28,9 @@ public class SkillTreeUpgradeConfig : ScriptableObject {
     public float specialAttackRelativeCooldown;
     public float relativeSoldierCashback;
 
+    [Header("Images")]
+    public Sprite skillUnlockableSprite;
+    public Sprite skillUnlockedSprite;
+
 
 }

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Basic Income
   description: Constant  money flow on the bank account.
-  moneyCosts: 1000
-  xpCosts: 200
-  requirements: []
+  moneyCosts: 0
+  xpCosts: 0
+  requirements:
+  - {fileID: 11400000, guid: 7a5eca0083597d34fb53d85aabd3d191, type: 2}
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
@@ -27,3 +28,7 @@ MonoBehaviour:
   constantMoneyIncome: 10
   specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: 9448c2c5291587543b6837033fd89a46,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 7a92cb5865cbd244ebcdcd4bf38e55b7,
+    type: 3}

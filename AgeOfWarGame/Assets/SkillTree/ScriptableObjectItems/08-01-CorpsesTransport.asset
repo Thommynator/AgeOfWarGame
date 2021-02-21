@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Corpses Transport
   description: You will receive a  price refund for each of your fallen soldiers.
-  moneyCosts: 1000
-  xpCosts: 500
-  requirements: []
+  moneyCosts: 0
+  xpCosts: 0
+  requirements:
+  - {fileID: 11400000, guid: 7a5eca0083597d34fb53d85aabd3d191, type: 2}
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
@@ -27,3 +28,7 @@ MonoBehaviour:
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 50
+  skillUnlockableSprite: {fileID: 21300000, guid: 5ed74f84134c4bc4c8c6c0f60fabc000,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 8419045e35ed2334b891c68e4429d36f,
+    type: 3}

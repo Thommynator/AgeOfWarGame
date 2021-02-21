@@ -67,7 +67,6 @@ public class SkillTreeManager : MonoBehaviour {
     public bool IsUnlockable(SkillComponent skill) {
         // check if player has enough money & xp
         if (XpManager.current.xp < skill.config.xpCosts || PurchaseManager.current.playerMoney < skill.config.moneyCosts) {
-            Debug.Log("Not enough XP or money to buy the skill!");
             return false;
         }
 

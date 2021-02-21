@@ -17,6 +17,11 @@ public class SoldierBehavior : MonoBehaviour {
     public List<RaycastHit2D> nextSoldiersToAttack;
 
     void Start() {
+
+        if (!this.IsEnemy()) {
+            this.soldierConfig = SkillTreeManager.current.GetSoldierConfigWithUpgrades(this.soldierConfig);
+        }
+
         this.body = GetComponent<Rigidbody2D>();
         this.currentStats = gameObject.AddComponent(typeof(CurrentStats)) as CurrentStats;
         this.currentStats.currentSpeed = this.soldierConfig.maxSpeed;
@@ -45,7 +50,7 @@ public class SoldierBehavior : MonoBehaviour {
 
     protected void Walk() {
         this.animator.SetBool("isWalking", true);
-        if (isEnemy()) {
+        if (IsEnemy()) {
             WalkIntoDirection(LayerMask.GetMask(new string[1] { "EnemySoldier" }), Vector3.left);
         } else {
             WalkIntoDirection(LayerMask.GetMask(new string[1] { "PlayerSoldier" }), Vector3.right);
@@ -58,7 +63,7 @@ public class SoldierBehavior : MonoBehaviour {
     }
 
     private void Die() {
-        if (isEnemy()) {
+        if (IsEnemy()) {
             // Kill Reward
             GameEvents.current.IncreaseMoney(this.soldierConfig.rewardMoney);
             GameEvents.current.IncreaseXp(this.soldierConfig.rewardXp);
@@ -150,7 +155,7 @@ public class SoldierBehavior : MonoBehaviour {
     protected List<RaycastHit2D> FindSoldiersToAttack(float attackRange) {
         Vector2 direction;
         int layerMask;
-        if (isEnemy()) {
+        if (IsEnemy()) {
             layerMask = LayerMask.GetMask(new string[2] { "PlayerSoldier", "PlayerBuilding" });
             direction = Vector2.left;
         } else {
@@ -184,7 +189,7 @@ public class SoldierBehavior : MonoBehaviour {
         }
     }
 
-    private bool isEnemy() {
+    private bool IsEnemy() {
         return this.gameObject.tag == "EnemySoldier";
     }
 }

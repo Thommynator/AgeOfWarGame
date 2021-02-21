@@ -17,7 +17,7 @@ MonoBehaviour:
   moneyCosts: 1000
   xpCosts: 50
   requirements: []
-  soldierRelativeStrength: 20
+  soldierRelativeStrength: 50
   soldierRelativePrice: 30
   soldierRelativeRange: 0
   canBuildTurrets: 0
@@ -27,3 +27,7 @@ MonoBehaviour:
   constantMoneyIncome: 0
   specialAttackRelativeCooldown: 0
   relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: 6be8a6cf76f502747b0acce6e8a613ea,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 60ad136d5e8f6ea45bfc4a11321a5c3f,
+    type: 3}
