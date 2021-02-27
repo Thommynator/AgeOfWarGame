@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
+  m_Name: 12-01-BasicIncome
+  m_EditorClassIdentifier: 
+  skillName: Basic Income
+  description: Constant  money flow on the bank account.
+  moneyCosts: 0
+  xpCosts: 0
+  requirements:
+  - {fileID: 11400000, guid: 7a5eca0083597d34fb53d85aabd3d191, type: 2}
+  soldierRelativeStrength: 0
+  soldierRelativePrice: 0
+  soldierRelativeRange: 0
+  canBuildTurrets: 0
+  turretRelativeStrength: 0
+  turretRelativePrice: 0
+  turretRelativeRange: 0
+  constantMoneyIncome: 10
+  specialAttackRelativeCooldown: 0
+  relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: 9448c2c5291587543b6837033fd89a46,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 7a92cb5865cbd244ebcdcd4bf38e55b7,
+    type: 3}

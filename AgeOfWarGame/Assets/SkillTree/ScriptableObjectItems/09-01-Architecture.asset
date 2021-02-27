@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
+  m_Name: 09-01-Architecture
+  m_EditorClassIdentifier: 
+  skillName: Architecture
+  description: Turrets for the base can be created.
+  moneyCosts: 0
+  xpCosts: 0
+  requirements: []
+  soldierRelativeStrength: 0
+  soldierRelativePrice: 0
+  soldierRelativeRange: 0
+  canBuildTurrets: 1
+  turretRelativeStrength: 0
+  turretRelativePrice: 0
+  turretRelativeRange: 0
+  constantMoneyIncome: 0
+  specialAttackRelativeCooldown: 0
+  relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: 89d838ae52903e443bcb5867035344aa,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 0462124a7f09e684dbdfef1622c00b1a,
+    type: 3}

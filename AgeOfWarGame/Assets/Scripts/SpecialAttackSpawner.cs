@@ -1,55 +1,45 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class SpecialAttackSpawner : MonoBehaviour
-{
+public class SpecialAttackSpawner : MonoBehaviour {
     public GameObject cooldownVisualization;
 
     private XpManager xpManager;
 
     private float timeOfNextPossibleExecution;
 
-    public void Start()
-    {
+    public void Start() {
         this.xpManager = GameObject.Find("GameManager").GetComponent<XpManager>();
         this.timeOfNextPossibleExecution = 0;
     }
 
-    public void StartAttackForPlayer()
-    {
+    public void StartAttackForPlayer() {
         SpecialAttackConfig config = EpochManager.current.GetSpecialAttackConfigOfCurrentPlayerEpoch();
+        EconomyConfig economyConfig = SkillTreeManager.current.GetEconomyConfigWithUpgrades();
+        float cooldown = config.attackCooldown * economyConfig.specialAttackRelativeCooldown;
 
-        if (Time.time > timeOfNextPossibleExecution)
-        {
-            if (this.xpManager.xp >= config.xpCosts)
-            {
-                this.timeOfNextPossibleExecution = Time.time + config.attackCooldown;
+        if (Time.time > timeOfNextPossibleExecution) {
+            if (this.xpManager.xp >= config.xpCosts) {
+                this.timeOfNextPossibleExecution = Time.time + cooldown;
                 GameEvents.current.DecreasecreaseXp(config.xpCosts);
-                this.cooldownVisualization.GetComponent<CooldownController>().StartCooldown(config.attackCooldown);
+                this.cooldownVisualization.GetComponent<CooldownController>().StartCooldown(cooldown);
                 StartCoroutine(SpawnRandomly(true));
-            }
-            else
-            {
+            } else {
                 Debug.Log("Not enough XP!");
             }
-        }
-        else
-        {
+        } else {
             Debug.Log("Special attack is on cooldown!");
         }
     }
 
-    public void StartAttackForEnemy()
-    {
+    public void StartAttackForEnemy() {
         StartCoroutine(SpawnRandomly(false));
     }
 
-    private IEnumerator SpawnRandomly(bool attackEnemyTeam)
-    {
+    private IEnumerator SpawnRandomly(bool attackEnemyTeam) {
         SpecialAttackConfig config = EpochManager.current.GetSpecialAttackConfigOfCurrentPlayerEpoch();
 
-        for (int i = 0; i < config.amountOfProjectiles; i++)
-        {
+        for (int i = 0; i < config.amountOfProjectiles; i++) {
             Vector3 randomPosition = new Vector3(Random.Range(config.minX, config.maxX), 15, 0);
             GameObject projectile = GameObject.Instantiate(config.projectile, randomPosition, Quaternion.identity);
             projectile.tag = attackEnemyTeam ? "PlayerSoldier" : "EnemySoldier";

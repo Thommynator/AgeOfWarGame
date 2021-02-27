@@ -1,24 +1,34 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TurretManager : MonoBehaviour
-{
+public class TurretManager : MonoBehaviour {
     public List<TurretSlot> turretSlots;
     public GameObject emptyTurretSlotPrefab;
     private GameObject turretCanvas;
     private int maxSlotAmount;
+    private bool canBuildTurrets;
+    private GameObject addTurretSlotButton;
 
-    void Start()
-    {
+    void Start() {
         this.maxSlotAmount = 3;
         this.turretSlots = new List<TurretSlot>(maxSlotAmount);
         this.turretCanvas = GameObject.Find("TurretCanvas");
+        this.canBuildTurrets = false;
+        this.addTurretSlotButton = GameObject.Find("AddTurretSlotButton");
     }
 
-    public bool AddNewEmptyTurretSlot()
-    {
-        if (IsMaxTurrsetSlotLimitReached())
-        {
+    void Update() {
+        if (!this.canBuildTurrets) {
+            this.canBuildTurrets = SkillTreeManager.current.CanBuildTurrets();
+        }
+        if (this.canBuildTurrets) {
+            this.addTurretSlotButton.GetComponent<Button>().interactable = true;
+        }
+    }
+
+    public bool AddNewEmptyTurretSlot() {
+        if (IsMaxTurrsetSlotLimitReached()) {
             return false;
         }
 
@@ -30,29 +40,25 @@ public class TurretManager : MonoBehaviour
         return true;
     }
 
-    public int GetCostsForNextTurretSlot()
-    {
+    public int GetCostsForNextTurretSlot() {
         List<int> costs = new List<int>(new int[3] { 250, 800, 2500 });
         return costs[this.turretSlots.Count];
     }
 
-    public bool IsMaxTurrsetSlotLimitReached()
-    {
+    public bool IsMaxTurrsetSlotLimitReached() {
         return turretSlots.Count >= maxSlotAmount;
     }
 
-    public bool IsSlotFree(int slotId)
-    {
+    public bool IsSlotFree(int slotId) {
         return this.turretSlots[slotId].isFree;
     }
 
-    public int GetTurretCosts(int turretType)
-    {
-        return EpochManager.current.GetTurretsOfCurrentPlayerEpoch()[turretType].GetComponent<TurretBehavior>().turretConfig.buyingPrice;
+    public int GetTurretCosts(int turretType) {
+        TurretConfig turretConfig = SkillTreeManager.current.GetTurretConfigWithUpgrades(EpochManager.current.GetTurretsOfCurrentPlayerEpoch()[turretType].GetComponent<TurretBehavior>().turretConfig);
+        return turretConfig.buyingPrice;
     }
 
-    public void BuyTurretForSlot(int turretType, int slotId)
-    {
+    public void BuyTurretForSlot(int turretType, int slotId) {
         List<GameObject> turretsPerEpoch = EpochManager.current.GetTurretsOfCurrentPlayerEpoch();
         GameObject turret = Instantiate(turretsPerEpoch[turretType], this.turretSlots[slotId].turret.transform);
         turret.transform.SetParent(this.turretCanvas.transform);
@@ -62,8 +68,7 @@ public class TurretManager : MonoBehaviour
         this.turretSlots[slotId] = new TurretSlot(turret, false);
     }
 
-    public void RemoveTurretFromTurretSlot(int slotId)
-    {
+    public void RemoveTurretFromTurretSlot(int slotId) {
         GameObject currentTurret = this.turretSlots[slotId].turret;
         GameObject emptySlot = Instantiate(this.emptyTurretSlotPrefab, currentTurret.transform);
         emptySlot.transform.SetParent(this.turretCanvas.transform);
@@ -72,13 +77,11 @@ public class TurretManager : MonoBehaviour
         this.turretSlots[slotId] = new TurretSlot(emptySlot, true);
     }
 
-    public class TurretSlot
-    {
+    public class TurretSlot {
         public GameObject turret;
         public bool isFree;
 
-        public TurretSlot(GameObject turret, bool isFree)
-        {
+        public TurretSlot(GameObject turret, bool isFree) {
             this.turret = turret;
             this.isFree = isFree;
         }

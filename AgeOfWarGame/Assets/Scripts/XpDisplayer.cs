@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class XpDisplayer : MonoBehaviour
-{
+public class XpDisplayer : MonoBehaviour {
     public GameObject gameManager;
 
     private TextMeshProUGUI xpText;
 
-    void Start()
-    {
+    void Start() {
         xpText = this.GetComponent<TextMeshProUGUI>();
     }
 
-    void Update()
-    {
+    void Update() {
         xpText.text = gameManager.GetComponent<XpManager>().xp.ToString();
     }
 }

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ed5dfe2c2d42647aa77801de915d0d, type: 3}
+  m_Name: 01-01-ImprovedTraining
+  m_EditorClassIdentifier: 
+  skillName: Improved Training
+  description: Soldiers are stronger, but also more expensive.
+  moneyCosts: 1000
+  xpCosts: 50
+  requirements: []
+  soldierRelativeStrength: 50
+  soldierRelativePrice: 30
+  soldierRelativeRange: 0
+  canBuildTurrets: 0
+  turretRelativeStrength: 0
+  turretRelativePrice: 0
+  turretRelativeRange: 0
+  constantMoneyIncome: 0
+  specialAttackRelativeCooldown: 0
+  relativeSoldierCashback: 0
+  skillUnlockableSprite: {fileID: 21300000, guid: 6be8a6cf76f502747b0acce6e8a613ea,
+    type: 3}
+  skillUnlockedSprite: {fileID: 21300000, guid: 60ad136d5e8f6ea45bfc4a11321a5c3f,
+    type: 3}
