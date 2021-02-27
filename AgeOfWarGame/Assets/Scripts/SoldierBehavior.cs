@@ -12,6 +12,7 @@ public class SoldierBehavior : MonoBehaviour {
     private Vector3 relativAttackPosition;
     private HealthBar healthBar;
     private Animator animator;
+    private GameObject bloodSplashObject;
 
     [SerializeField]
     public List<RaycastHit2D> nextSoldiersToAttack;
@@ -33,6 +34,7 @@ public class SoldierBehavior : MonoBehaviour {
         this.healthBar.SetMaxHealth(this.soldierConfig.health);
         this.animator = GetComponent<Animator>();
         this.nextSoldiersToAttack = new List<RaycastHit2D>();
+        this.bloodSplashObject = this.transform.Find("BloodSplash").gameObject;
     }
 
     void FixedUpdate() {
@@ -82,6 +84,9 @@ public class SoldierBehavior : MonoBehaviour {
             AudioClip randomClip = painSounds[Random.Range(0, painSounds.Length)];
             AudioSource.PlayClipAtPoint(randomClip, new Vector3(transform.position.x, transform.position.y, -10));
         }
+
+        bloodSplashObject.transform.SetParent(null);
+        bloodSplashObject.transform.Find("ParticleSystem").GetComponent<ParticleSystem>().Play();
 
         Destroy(this.gameObject);
     }
