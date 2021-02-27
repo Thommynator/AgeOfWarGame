@@ -109,10 +109,21 @@ public class SoldierBehavior : MonoBehaviour {
     This function is called by an animation event.
     */
     public void Attack() {
+
+        // Moral 
+        float moralAmplifier = 1;
+        if (!IsEnemy() && this.soldierConfig.isMoralActive) {
+            int soldiersOnBattlefield = GameObject.Find("PlayerSoldiers").transform.childCount;
+            moralAmplifier += soldiersOnBattlefield / 20.0f; // 5% per soldier
+            Debug.Log("Soldiers: " + soldiersOnBattlefield);
+            Debug.Log("Moral: " + moralAmplifier);
+        }
+        float damage = this.soldierConfig.strength * moralAmplifier;
+
         foreach (RaycastHit2D hit in this.nextSoldiersToAttack) {
             if (this.soldierConfig.attackType == SoldierConfig.AttackType.MELEE) {
                 // hitscan -> instant damage
-                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(this.soldierConfig.strength);
+                hit.collider.gameObject.GetComponent<CurrentStats>().TakeDamage(damage);
             } else if (this.soldierConfig.attackType == SoldierConfig.AttackType.RANGE) {
                 // projectile
                 GameObject projectile = GameObject.Instantiate(this.soldierConfig.rangeProjectile, this.transform.position + Vector3.up * 0.2f, Quaternion.identity);
@@ -121,7 +132,7 @@ public class SoldierBehavior : MonoBehaviour {
                 } else if (this.gameObject.tag == "EnemySoldier") {
                     projectile.layer = LayerMask.NameToLayer("EnemyProjectile");
                 }
-                projectile.GetComponent<ProjectileAttack>().AttackObject(hit.collider.gameObject, this.soldierConfig.strength);
+                projectile.GetComponent<ProjectileAttack>().AttackObject(hit.collider.gameObject, damage);
             }
 
             if (!this.soldierConfig.canAttackMultiple) {

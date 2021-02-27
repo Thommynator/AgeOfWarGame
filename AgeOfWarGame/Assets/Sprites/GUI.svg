@@ -905,9 +905,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.99999999"
-     inkscape:cx="-1407.4039"
-     inkscape:cy="-2236.2703"
+     inkscape:zoom="2"
+     inkscape:cx="-2766.6797"
+     inkscape:cy="-1845.59"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -2978,7 +2978,10 @@
     </g>
     <g
        id="g5216"
-       transform="translate(-207.17745,249.60449)">
+       transform="translate(-207.17745,249.60449)"
+       inkscape:export-filename="C:\Development\repos\AgeOfWarGame\AgeOfWarGame\Assets\Sprites\Icons\SkillTree\8-unlocked.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
       <path
          id="circle4616"
          style="opacity:0.5;fill:#fec601;fill-opacity:1;stroke:none;stroke-width:0.414378;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;filter:url(#filter1557);stop-color:#000000"

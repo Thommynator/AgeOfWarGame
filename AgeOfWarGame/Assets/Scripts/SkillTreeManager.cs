@@ -37,6 +37,10 @@ public class SkillTreeManager : MonoBehaviour {
 
 
         this.mainCamera.LeanMoveY(skillTreeCameraHeightY, 1f).setEaseInOutCirc().setOnComplete(() => Time.timeScale = 0.0f);
+        Camera camera = this.mainCamera.GetComponent<Camera>();
+        LeanTween.value(camera.gameObject, camera.orthographicSize, 6.5f, 0.5f).setOnUpdate((float newSizeValue) => {
+            camera.orthographicSize = newSizeValue;
+        });
         ToggleUiLayerCameraVisibility();
         this.isInSkillTreeView = true;
     }
@@ -114,6 +118,9 @@ public class SkillTreeManager : MonoBehaviour {
             aggregatedStats.soldierRelativeStrength *= percentToFactor(skill.soldierRelativeStrength);
             aggregatedStats.soldierRelativePrice *= percentToFactor(skill.soldierRelativePrice);
             aggregatedStats.soldierRelativeRange *= percentToFactor(skill.soldierRelativeRange);
+            if (skill.isMoralActive) {
+                aggregatedStats.isMoralActive = true;
+            }
 
             // engineer
             aggregatedStats.turretRelativeStrength *= percentToFactor(skill.turretRelativeStrength);
@@ -143,6 +150,7 @@ public class SkillTreeManager : MonoBehaviour {
         copy.strength = Mathf.CeilToInt(soldierConfig.strength * this.aggregatedStats.soldierRelativeStrength);
         copy.price = Mathf.FloorToInt(soldierConfig.price * this.aggregatedStats.soldierRelativePrice);
         copy.rangeAttackRange = Mathf.CeilToInt(soldierConfig.rangeAttackRange * this.aggregatedStats.soldierRelativeRange);
+        copy.isMoralActive = this.aggregatedStats.isMoralActive;
         return copy;
     }
 

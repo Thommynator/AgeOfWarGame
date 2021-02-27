@@ -21,6 +21,8 @@ MonoBehaviour:
   soldierRelativeStrength: 0
   soldierRelativePrice: 0
   soldierRelativeRange: 0
+  isMoralActive: 1
+  moralPerSoldierRelativeStrength: 5
   canBuildTurrets: 0
   turretRelativeStrength: 0
   turretRelativePrice: 0

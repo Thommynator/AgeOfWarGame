@@ -16,6 +16,8 @@ public class SkillTreeUpgradeConfig : ScriptableObject {
     public float soldierRelativeStrength;
     public float soldierRelativePrice;
     public float soldierRelativeRange;
+    public bool isMoralActive;
+    public float moralPerSoldierRelativeStrength;
 
     [Header("Turret")]
     public bool canBuildTurrets;

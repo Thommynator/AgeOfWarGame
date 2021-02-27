@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Soldier Config", menuName = "ScriptableObjects/SoldierConfig", order = 1)]
-public class SoldierConfig : ScriptableObject
-{
+public class SoldierConfig : ScriptableObject {
     [Header("General")]
     public string soldierName;
     public string description;
@@ -21,14 +20,14 @@ public class SoldierConfig : ScriptableObject
     public float rangeAttackRange;
     public bool canAttackMultiple;
     public GameObject rangeProjectile;
+    public bool isMoralActive;
 
 
     [Header("Visuals")]
     public Sprite characterQueueIcon;
 
 
-    public enum AttackType
-    {
+    public enum AttackType {
         MELEE, RANGE
     }
 }

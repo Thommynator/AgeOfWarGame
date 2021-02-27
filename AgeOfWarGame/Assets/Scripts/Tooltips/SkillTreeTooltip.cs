@@ -36,8 +36,9 @@ public class SkillTreeTooltip : Tooltip {
         this.xpCostsText.text = skillTreeUpgrade.xpCosts.ToString() + " XP";
 
         // Soldier
-        AdjustTextStyle(this.soldierRelativeStrengthText, skillTreeUpgrade.soldierRelativeStrength);
-        this.soldierRelativeStrengthText.text = AddSignToAttribute(skillTreeUpgrade.soldierRelativeStrength) + "%";
+        float relativeStrength = skillTreeUpgrade.soldierRelativeStrength + skillTreeUpgrade.moralPerSoldierRelativeStrength;
+        AdjustTextStyle(this.soldierRelativeStrengthText, relativeStrength);
+        this.soldierRelativeStrengthText.text = AddSignToAttribute(relativeStrength) + "%";
 
         AdjustTextStyle(this.soldierRelativePriceText, skillTreeUpgrade.soldierRelativePrice);
         this.soldierRelativePriceText.text = AddSignToAttribute(skillTreeUpgrade.soldierRelativePrice) + "%";
