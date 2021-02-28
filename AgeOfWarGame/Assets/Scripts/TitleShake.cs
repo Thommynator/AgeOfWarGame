@@ -9,8 +9,8 @@ public class TitleShake : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        LeanTween.scale(this.gameObject, 1.1f * Vector3.one, duration).setLoopPingPong();
-        LeanTween.rotateZ(this.gameObject, this.rotationAngle, 2 * duration).setLoopPingPong();
+        LeanTween.scale(this.gameObject, 1.1f * Vector3.one, duration).setIgnoreTimeScale(true).setLoopPingPong();
+        LeanTween.rotateZ(this.gameObject, this.rotationAngle, 2 * duration).setIgnoreTimeScale(true).setLoopPingPong();
     }
 
     // Update is called once per frame

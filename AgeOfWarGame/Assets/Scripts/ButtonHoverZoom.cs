@@ -1,26 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ButtonHoverZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
-    private LTDescr loopAnimation;
+    private LTDescr loopAnimation = new LTDescr();
 
     public void OnPointerEnter(PointerEventData eventData) {
-        this.loopAnimation = LeanTween.scale(this.gameObject, Vector3.one * 1.1f, 0.3f).setLoopPingPong();
+        if (GetComponent<Button>().IsInteractable()) {
+            this.loopAnimation = LeanTween.scale(this.gameObject, Vector3.one * 1.1f, 0.3f).setIgnoreTimeScale(true).setLoopPingPong();
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         LeanTween.cancel(this.loopAnimation.id);
-        LeanTween.scale(this.gameObject, Vector3.one, 0.3f);
+        LeanTween.scale(this.gameObject, Vector3.one, 0.3f).setIgnoreTimeScale(true);
     }
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-
-    }
 }
