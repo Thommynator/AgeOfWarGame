@@ -13,7 +13,7 @@ public class Castle : MonoBehaviour {
 
     void Update() {
         this.healthBar.SetHealth(this.currentStats.health);
-        if (this.currentStats.health < 0) {
+        if (this.currentStats.health <= 0) {
             if (this.tag == "PlayerBuilding") {
                 GameEvents.current.GameOver();
             } else if (this.tag == "EnemyBuilding") {

@@ -13,14 +13,12 @@ public class WinLoseNotifier : MonoBehaviour {
     }
 
     private void GameWin() {
-        // Time.timeScale = 0.1f;
         this.canvas.SetActive(true);
         this.gameWinObject.SetActive(true);
         this.gameLoseObject.SetActive(false);
+        KillAllSoldiers();
     }
-
     private void GameOver() {
-        // Time.timeScale = 0.1f;
         this.canvas.SetActive(true);
         this.gameWinObject.SetActive(false);
         this.gameLoseObject.SetActive(true);
@@ -31,7 +29,6 @@ public class WinLoseNotifier : MonoBehaviour {
         this.canvas.SetActive(false);
         this.gameWinObject.SetActive(false);
         this.gameLoseObject.SetActive(false);
-        KillAllSoldiers();
     }
 
     public void KillAllSoldiers() {
