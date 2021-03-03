@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour {
 
     public float zoomOutLimit;
 
-    private void Update() {
+    private void LateUpdate() {
 
         // move right
         if (transform.position.x < rightLimit && Input.mousePosition.x > Screen.width - boundary) {
