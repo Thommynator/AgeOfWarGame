@@ -67,8 +67,14 @@ public class GameEvents : MonoBehaviour {
         }
     }
 
-    public event Action onGameOver;
+    public event Action onGameWin;
+    public void GameWin() {
+        if (onGameWin != null) {
+            onGameWin();
+        }
+    }
 
+    public event Action onGameOver;
     public void GameOver() {
         if (onGameOver != null) {
             onGameOver();

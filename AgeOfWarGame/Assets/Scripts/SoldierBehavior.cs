@@ -84,10 +84,12 @@ public class SoldierBehavior : MonoBehaviour {
             AudioClip randomClip = painSounds[Random.Range(0, painSounds.Length)];
             AudioSource.PlayClipAtPoint(randomClip, new Vector3(transform.position.x, transform.position.y, -10));
         }
+        Explode();
+    }
 
+    public void Explode() {
         bloodSplashObject.transform.SetParent(null);
         bloodSplashObject.transform.Find("ParticleSystem").GetComponent<ParticleSystem>().Play();
-
         Destroy(this.gameObject);
     }
 
