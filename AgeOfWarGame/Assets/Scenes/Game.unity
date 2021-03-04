@@ -1112,11 +1112,11 @@ RectTransform:
   m_Father: {fileID: 678241700}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 57.02, y: -8.7}
-  m_SizeDelta: {x: 17.998741, y: 18.460255}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 60.699997, y: 9.907761}
+  m_SizeDelta: {x: 27.284977, y: 27.984604}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &61593882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38343,7 +38343,7 @@ MonoBehaviour:
   levelUpButton: {fileID: 61593880}
   soldiersOfAllEpochs:
   - {fileID: 11400000, guid: ca6df978a42c84645a1d48fac77aa7f4, type: 2}
-  - {fileID: 11400000, guid: ca6df978a42c84645a1d48fac77aa7f4, type: 2}
+  - {fileID: 11400000, guid: 8529418874efdd24bae72527f1fd5ebe, type: 2}
   turretsOfAllEpochs:
   - {fileID: 11400000, guid: ced9cfdd45a2584419b86c66d1ae1d6c, type: 2}
   specialAttacksOfAllEpochs:

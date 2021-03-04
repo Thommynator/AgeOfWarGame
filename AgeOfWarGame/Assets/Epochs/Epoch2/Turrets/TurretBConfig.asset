@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7f263151338f74da9998c988e588b4, type: 3}
+  m_Name: TurretBConfig
+  m_EditorClassIdentifier: 
+  turretName: Multi Tasker
+  description: Pretty weak, but can attack all enemies in range at once.
+  buyingPrice: 500
+  sellingPrice: 200
+  specialAbility: Multi-Attack
+  strength: 1
+  attackCooldown: 1
+  attackRange: 10
+  canAttackMultiple: 1
+  projectile: {fileID: 894529288043472092, guid: 108c596b03b0ceb47a2dcb6ea6b6c09b,
+    type: 3}

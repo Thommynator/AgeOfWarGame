@@ -14,20 +14,18 @@ public class EpochManager : MonoBehaviour {
     public int playerEpoch;
     public int enemyEpoch;
 
+    private bool isLevelUpButtonVisible;
 
     private void Awake() {
         current = this;
         this.playerEpoch = 0;
         this.enemyEpoch = 0;
-        this.levelUpButton.SetActive(false);
+        this.levelUpButton.transform.localScale = Vector3.zero;
+        this.isLevelUpButtonVisible = false;
     }
 
     void Update() {
-        if (this.CanUpgradeToNextEpoch()) {
-            this.levelUpButton.SetActive(true);
-        } else {
-            this.levelUpButton.SetActive(false);
-        }
+        VisualizeLevelUpButton();
     }
 
     public List<GameObject> GetSoldiersOfCurrentPlayerEpoch() {
@@ -55,16 +53,37 @@ public class EpochManager : MonoBehaviour {
     }
 
     public void EvolveToNextPlayerEpoch() {
+        GameEvents.current.DecreasecreaseXp(GetXpCostsForNextEpoch());
         this.playerEpoch++;
+    }
+
+    private void VisualizeLevelUpButton() {
+        if (!this.isLevelUpButtonVisible && this.CanUpgradeToNextEpoch()) {
+            this.isLevelUpButtonVisible = true;
+            LeanTween.scale(this.levelUpButton, Vector3.one, 2f)
+                .setEaseOutBounce()
+                .setIgnoreTimeScale(true)
+                .setOnComplete(() =>
+                    LeanTween.scale(this.levelUpButton, Vector3.one * 1.1f, 0.3f).setIgnoreTimeScale(true).setLoopPingPong()
+                );
+
+        } else if (!this.CanUpgradeToNextEpoch()) {
+            LeanTween.cancel(this.levelUpButton);
+            this.isLevelUpButtonVisible = false;
+            this.levelUpButton.transform.localScale = Vector3.zero;
+        }
     }
 
     private bool CanUpgradeToNextEpoch() {
         if (this.playerEpoch < this.soldiersOfAllEpochs.Count - 1) {
-            int[] xpLimits = new int[] { 10, 2000, 5000, 15000 };
-            int nextLimit = xpLimits[this.playerEpoch];
-            return XpManager.current.xp >= nextLimit;
+            return XpManager.current.xp >= GetXpCostsForNextEpoch();
         }
         return false;
+    }
+
+    private int GetXpCostsForNextEpoch() {
+        int[] xpLimits = new int[] { 10, 2000, 5000, 15000 };
+        return xpLimits[this.playerEpoch];
     }
 
 }
