@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7f263151338f74da9998c988e588b4, type: 3}
+  m_Name: TurretCConfig
+  m_EditorClassIdentifier: 
+  turretName: The Pusher
+  description: The lower the tower, the stronger the push.
+  buyingPrice: 800
+  sellingPrice: 350
+  specialAbility: Knock-Back
+  strength: 5
+  attackCooldown: 3
+  attackRange: 10
+  canAttackMultiple: 0
+  projectile: {fileID: 894529288043472092, guid: 4eeab8a276f225546abffe9d06c0da20,
+    type: 3}
