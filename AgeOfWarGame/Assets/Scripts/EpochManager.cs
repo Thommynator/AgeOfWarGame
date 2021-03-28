@@ -57,6 +57,12 @@ public class EpochManager : MonoBehaviour {
         this.playerEpoch++;
     }
 
+    public void EvolveToNextEnemyEpoch() {
+        if (this.enemyEpoch < this.soldiersOfAllEpochs.Count - 1) {
+            this.enemyEpoch++;
+        }
+    }
+
     private void VisualizeLevelUpButton() {
         if (!this.isLevelUpButtonVisible && this.CanUpgradeToNextEpoch()) {
             this.isLevelUpButtonVisible = true;
